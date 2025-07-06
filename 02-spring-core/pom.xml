@@ -42,5 +42,7 @@
   </build>
   <modules>
   	<module>01-spring-ioc</module>
+  	
+  	<module>02-spring-beans</module>
   </modules>
 </project>

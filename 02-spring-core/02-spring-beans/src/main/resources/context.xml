@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- defaultService will be alias names -->
+	<bean name="default defaultService" class="com.jdc.beans.MyDefaultService"></bean>
+	<bean name="custom" class="com.jdc.beans.MyCustomService"></bean>
+	
+	 <bean id="client" class="com.jdc.beans.MyClient" >
+		<!-- <constructor-arg ref="default">	</constructor-arg> -->
+		<property name="service" ref="default"></property>
+	</bean> 
+	
+	
+	
+</beans>

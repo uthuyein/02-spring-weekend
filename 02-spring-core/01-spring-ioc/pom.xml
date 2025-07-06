@@ -6,4 +6,12 @@
     <version>1.0</version>
   </parent>
   <artifactId>01-spring-ioc</artifactId>
+  
+  <dependencies>
+  	<dependency>
+  	 <groupId>javax.annotation</groupId>
+  	 <artifactId>jsr250-api</artifactId>
+  	 <version>1.0</version>
+  	</dependency>
+  </dependencies>
 </project>

@@ -4,9 +4,11 @@ package com.jdc.annotations;
 import java.util.Date;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope(scopeName = "singleton")
 public class MyClientConfig {
 
 	/*
@@ -14,7 +16,8 @@ public class MyClientConfig {
 	 * @return date
 	 */
 	@Bean(name = {"currentDate","curDate"})
-	public Date getDate() {
+	@Scope("prototype")
+	public Date getDefaultDate() {
 		return new Date();
 	}
 }

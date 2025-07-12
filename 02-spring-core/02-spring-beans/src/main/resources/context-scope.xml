@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="custom" lazy-init="true" class="com.jdc.beans.MyCustomService"></bean>
+	<bean id="default" lazy-init="true" class="com.jdc.beans.MyDefaultService"></bean>
+	
+	<!-- default scope 'singleton' -->
+    <bean name="client" lazy-init="true" class="com.jdc.beans.MyClient">
+    	<constructor-arg name="service" ref="default"> </constructor-arg>
+    </bean>
+
+</beans>

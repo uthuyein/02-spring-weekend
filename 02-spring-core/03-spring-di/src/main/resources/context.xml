@@ -6,11 +6,11 @@
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="custom" class="com.jdc.dto.MyCustomService"></bean>
+	<!-- <bean id="custom" class="com.jdc.dto.MyCustomService"></bean>
 	<bean id="default" class="com.jdc.dto.MyDefaultService"></bean> 
-
+ -->
 	<!-- Explicit Injection -->
 	<!-- <bean id="client" class="com.jdc.dto.MyClient" c:service-ref="default"/> -->
 	<!-- setter method name will be bean name and inject -->
-	<bean id="client" class="com.jdc.dto.MyClient" autowire="byName"></bean>
+	<!-- <bean id="client" class="com.jdc.dto.MyClient" autowire="byName"></bean> -->
 </beans>

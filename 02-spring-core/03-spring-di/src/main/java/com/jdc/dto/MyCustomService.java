@@ -1,8 +1,5 @@
 package com.jdc.dto;
 
-import org.springframework.stereotype.Component;
-
-
 public class MyCustomService implements MyService {
 
 	@Override

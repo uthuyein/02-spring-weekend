@@ -10,11 +10,13 @@
     
     <context:component-scan base-package="com.jdc.dto"></context:component-scan>
     
-    <aop:config>
+    <aop:config proxy-target-class="true">
+    
     	<aop:pointcut  id="point" expression="execution(public void com.jdc.dto.MyClient.doSomething())"/>
     	<aop:aspect ref="aspectLogger">   	
     		<aop:before method="beforeExecution" pointcut-ref="point"/>
     		<aop:after method="afterExecution" pointcut-ref="point"/>
+    		
     	</aop:aspect>
     	
     </aop:config>

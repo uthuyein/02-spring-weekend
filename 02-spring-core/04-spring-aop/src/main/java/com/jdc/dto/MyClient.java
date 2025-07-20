@@ -19,4 +19,8 @@ public class MyClient implements MyClientInter {
 	public int divided(int a,int b) {
 		return a/b;
 	}
+	
+	public void setData(Data data) {
+		
+	}
 }

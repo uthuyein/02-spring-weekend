@@ -11,9 +11,15 @@
     <context:component-scan base-package="com.jdc.dto"></context:component-scan>
     
     <aop:config proxy-target-class="true">
+    	<!-- <aop:pointcut expression="execution(public int com.jdc.dto.MyClient.divided(..)) and args(x,y)" id="dividedBean"/> -->
+    	<aop:pointcut expression="bean(myClient) " id="dividedBean"/>
     	<aop:aspect ref="aspectLogger">
-    		<aop:before method="beforeExecution" arg-names="x,y" pointcut="execution(public int com.jdc.dto.MyClient.divided(..)) and args(x,y)"/>
+    		<aop:before  method="beforeExecution" arg-names="x,y" pointcut="bean(myClient) and args(x,y)"/>
+    		<aop:after-returning method="afterReturn"  arg-names="x,y" returning="value" pointcut="bean(myClient) "/>
+    		<aop:after-throwing  method="afterThrowing"  throwing="tt"  pointcut="bean(myClient)"/>
+    		<!-- <aop:around method="arroundAdvice" pointcut-ref="dividedBean"/> -->
     	</aop:aspect>
+    	
     </aop:config>
 
 </beans>

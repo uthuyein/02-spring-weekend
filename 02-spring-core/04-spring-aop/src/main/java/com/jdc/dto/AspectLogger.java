@@ -26,6 +26,7 @@ public class AspectLogger {
 			showLog(joinpoint, "After Finally With Arround");			
 		}
 		
+		System.out.println("Return message :"+joinpoint.getKind());
 		return obj;
 	}
 
@@ -38,12 +39,14 @@ public class AspectLogger {
 		showLog(joinpoint, "AfterExecution method");
 	}
 	
-	public void afterReturn(JoinPoint joinpoint) {
+	public void afterReturn(JoinPoint joinpoint,int value) {
 		showLog(joinpoint, "After Returning");
+		System.out.println("Return message :"+value);
 		
 	}
 	
-	public void afterThrowing(JoinPoint joinpoint) {
-		showLog(joinpoint, "After throwing exception");
+	public void afterThrowing(JoinPoint joinpoint, Throwable th) {
+		showLog(joinpoint, "       After throwing exception");
+		System.out.println("       Exception message :"+th.getMessage());
 	}
 }

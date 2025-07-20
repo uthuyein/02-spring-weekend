@@ -5,8 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import com.jdc.dto.MyClient;
+import com.jdc.utils.ShowLogger;
 
-@SpringJUnitConfig(locations = "classpath:context.xml")
+@SpringJUnitConfig(locations = "classpath:context-args.xml")
 public class AopTest {
 
 	@Autowired
@@ -14,6 +15,9 @@ public class AopTest {
 	
 	@Test
 	void test() {
-		client.doSomething();
+		//client.getMessage();
+		//client.doSomething();
+		int result = client.divided(30, 5);
+		ShowLogger.output(result+"");
 	}
 }

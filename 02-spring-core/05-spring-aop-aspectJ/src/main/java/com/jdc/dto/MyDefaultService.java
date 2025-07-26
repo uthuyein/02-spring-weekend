@@ -13,5 +13,18 @@ public class MyDefaultService implements MyService{
 	public void doSomething() {
 		ShowLogger.output("My Default Service !");
 	}
+	
+	@Override
+	public void setData(String message, int id) {
+		if(null == message) {
+			throw new RuntimeException("There is no message");
+		}
+		ShowLogger.output("Id :%-10d\tMessage :%-10s".formatted(id,message));
+	}
+
+	@Override
+	public int getCount() {
+		return 1;
+	}
 
 }

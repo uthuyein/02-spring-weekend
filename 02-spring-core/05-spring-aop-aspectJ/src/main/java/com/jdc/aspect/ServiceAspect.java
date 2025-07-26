@@ -17,31 +17,41 @@ import com.jdc.utils.ShowLogger;
 @Aspect
 public class ServiceAspect {
 
-	@Pointcut("execution( * doSomething())")
+	@Pointcut("this(com.jdc.dto.MyService)")
 	public void doSome() {
 	}
-
-	@Before("doSome()")
-	public void before(JoinPoint joinpoint) {
+	
+	@Before(argNames = "mess",
+			value = "execution(* setData(..)) and args(mess,..)")
+	public void before(JoinPoint joinpoint, String mes) {
 		ShowLogger.showLog(joinpoint, "Before execution method !");
+		ShowLogger.output("Args values :%s".formatted(mes));
 	}
 
-	@After("doSome()")
+	
+
+	@AfterReturning(
+			argNames = "val",
+			value = "execution(* getCount(..))",
+			returning = "val")
+	public void afterReturn(JoinPoint joinPoint,int value) {
+		ShowLogger.showLog(joinPoint, "After Return method!");
+		ShowLogger.output("Return Value : "+value);
+	}
+	
+	
+	//@After("doSome()")
 	public void after(JoinPoint joinPoint) {
 		ShowLogger.showLog(joinPoint, "After method");
+		
 	}
 
-	@AfterReturning("doSome()")
-	public void afterReturn(JoinPoint joinPoint) {
-		ShowLogger.showLog(joinPoint, "After Return method!");
-	}
-
-	@AfterThrowing("doSome()")
+	//@AfterThrowing("doSome()")
 	public void afterThrow(JoinPoint joinPoint) {
 		ShowLogger.showLog(joinPoint, "After Throwing method!");
 	}
 
-	@Around("doSome()")
+	//@Around("doSome()")
 	public Object arround(ProceedingJoinPoint joinPoint) {
 		
 		Object obj = null;

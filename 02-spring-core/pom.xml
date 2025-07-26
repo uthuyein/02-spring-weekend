@@ -51,5 +51,6 @@
   	<module>02-spring-beans</module>
   	<module>03-spring-di</module>
   	<module>04-spring-aop</module>
+  	<module>05-spring-aop-aspectJ</module>
   </modules>
 </project>

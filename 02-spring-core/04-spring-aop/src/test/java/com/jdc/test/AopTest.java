@@ -11,16 +11,17 @@ public class AopTest {
 
 	@Autowired
 	MyClient client;
-//	@Autowired
+
+// @Autowired
 //	MyService service;
-	
+
 	@Test
 	void test() {
 		client.doSomething();
-		
+
 //		client.getMessage();
 //		client.divided(30, 10);
-		//ShowLogger.output(result+"");
+		// ShowLogger.output(result+"");
 //		client.setData(new Data(1,"ss"));
 //		
 //		service.doWork();

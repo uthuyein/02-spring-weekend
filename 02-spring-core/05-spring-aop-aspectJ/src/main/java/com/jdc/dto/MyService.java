@@ -4,5 +4,5 @@ public interface MyService {
 
 	void doSomething();
 	void setData(String message,int id);
-	int getCount();
+	int getCount(String value);
 }

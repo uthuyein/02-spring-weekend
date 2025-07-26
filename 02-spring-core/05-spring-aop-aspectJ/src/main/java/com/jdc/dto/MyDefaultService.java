@@ -23,8 +23,8 @@ public class MyDefaultService implements MyService{
 	}
 
 	@Override
-	public int getCount() {
-		return 1;
+	public int getCount(String value) {
+		return Integer.parseInt(value);
 	}
 
 }

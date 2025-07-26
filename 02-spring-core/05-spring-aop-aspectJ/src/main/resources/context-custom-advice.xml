@@ -7,19 +7,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
    
-   <context:component-scan base-package="com.jdc.interType"/>
-   <aop:config proxy-target-class="true">
-   	
-   	<aop:pointcut expression="bean(worker) and execution(* doWork())" id="point"/>
-   		<aop:aspect id="workerAspectBean" ref="workerAspect">
-   			<aop:before method="beforeWork" pointcut-ref="point"/>
-   			
-   			<aop:declare-parents 
-   			types-matching="com.jdc.interType.Worker" 
-   			implement-interface="com.jdc.interType.MyService"
-   			default-impl="com.jdc.interType.MyServiceImpl"/>
-   			
-   		</aop:aspect>
-   		
+   <context:component-scan base-package="com.jdc.advicer"></context:component-scan>
+   <aop:config>
+   		<aop:advisor advice-ref="beforeAdvice" pointcut="bean(myEmployeeService)"/>
    </aop:config>
 </beans>

@@ -6,20 +6,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import com.jdc.AppConfig;
-import com.jdc.dto.MyDefaultService;
+import com.jdc.dto.MyEmployeeService;
+import com.jdc.dto.MyService;
 
 @SpringJUnitConfig(classes = AppConfig.class)
 public class A_AspectJTest {
 
 	@Autowired
 	//@Qualifier("custom")
-	MyDefaultService service;
+	MyService service;
+	
+	@Autowired
+	MyEmployeeService emp;
 	
 	@Test
-	void testException() {
-		//service.setData("Test Message", 0);
-		service.getCount();
+	void testCombine() {
+		emp.sale();
+		emp.save(null);
+		
+		if(emp instanceof MyService ser) {
+			ser.doSomething();
+		}
 	}
+	
+//	@Test
+//	void testException() {
+//		//service.setData("Test Message", 0);
+//		service.getCount("50");
+//	}
 	
 	@Test
 	@Disabled

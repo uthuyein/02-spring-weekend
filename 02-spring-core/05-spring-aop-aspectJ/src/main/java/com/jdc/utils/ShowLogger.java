@@ -25,7 +25,7 @@ public class ShowLogger {
 
 	}
 
-	private static void showArgs(Object[] array) {
+	public static void showArgs(Object[] array) {
 		System.out.print("       Args : ");
 		for (int i = 0; i < array.length; i++) {
 			var arg = array[i];

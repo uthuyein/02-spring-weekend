@@ -2,20 +2,34 @@ package com.jdc.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.DeclareParents;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
+import com.jdc.dto.MyDefaultService;
+import com.jdc.dto.MyService;
 import com.jdc.utils.ShowLogger;
 
 @Component
 @Aspect
 public class ServiceAspect {
+	
+	@DeclareParents(
+			value = "com.jdc.dto.MyEmployeeService",
+			defaultImpl = MyDefaultService.class)
+	public static MyService service;
 
-	@Pointcut("this(com.jdc.dto.MyService)")
+	@Pointcut("within(com.jdc.dto.*Service)")
 	public void doSome() {
+	}
+	
+	
+	@Pointcut("execution(* sale())")
+	public void doSomeArgs() {
 	}
 	
 	@Before(argNames = "mess",
@@ -25,19 +39,18 @@ public class ServiceAspect {
 		ShowLogger.output("Args values :%s".formatted(mes));
 	}
 
-	
-
 	@AfterReturning(
-			argNames = "val",
-			value = "execution(* getCount(..))",
-			returning = "val")
-	public void afterReturn(JoinPoint joinPoint,int value) {
+			argNames = "dat,val",//can't change args list order
+			value = "execution(* getCount(..)) and args(val)",
+			returning = "dat")
+	public void afterReturn(JoinPoint joinPoint,int value,String data) {
 		ShowLogger.showLog(joinPoint, "After Return method!");
 		ShowLogger.output("Return Value : "+value);
+		ShowLogger.output("Args Value : "+data);
 	}
 	
 	
-	//@After("doSome()")
+	@After("doSome() && doSomeArgs()")
 	public void after(JoinPoint joinPoint) {
 		ShowLogger.showLog(joinPoint, "After method");
 		

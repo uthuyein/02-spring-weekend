@@ -21,8 +21,8 @@ public class MyCustomService implements MyService{
 	}
 
 	@Override
-	public int getCount() {
-		return 2;
+	public int getCount(String value) {
+		return Integer.parseInt(value);
 	}
 
 }

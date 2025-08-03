@@ -45,5 +45,6 @@
   </build>
   <modules>
   	<module>01-using-jdbc-api</module>
+  	<module>02-using-spring-data-jdbc</module>
   </modules>
 </project>

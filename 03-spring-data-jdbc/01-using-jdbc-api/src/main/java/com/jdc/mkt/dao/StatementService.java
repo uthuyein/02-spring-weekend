@@ -8,7 +8,7 @@ import java.util.List;
 import com.jdc.mkt.dto.Person;
 import com.jdc.mkt.dto.Person.Days;
 
-public class StatementService implements DbServiceInt<Person> {
+public non-sealed class StatementService implements DbServiceInt<Person> {
 
 	@Override
 	public int save(Person p) {

@@ -5,7 +5,7 @@ import java.util.List;
 import com.jdc.mkt.dto.Person;
 import static com.jdc.mkt.utils.Connector.getConnection;
 
-public class PrepareStatementService implements DbServiceInt<Person>{
+public final class PrepareStatementService implements DbServiceInt<Person>{
 
 	@Override
 	public int save(Person p) {

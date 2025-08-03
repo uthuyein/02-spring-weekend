@@ -2,23 +2,67 @@ package com.jdc.mkt.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import com.jdc.mkt.Logger;
 import com.jdc.mkt.dao.StatementService;
 import com.jdc.mkt.dto.Person;
 import com.jdc.mkt.dto.Person.Days;
+import com.jdc.mkt.utils.anno.Connector;
 
+@TestMethodOrder(OrderAnnotation.class)
+@Connector(name = "testDb", user = "root", password = "admin")
 public class StatementTest {
 
+	static Logger logger;
+	static StatementService service;
+
+	@BeforeAll
+	static void init() {
+		logger = Logger.getInstance(StatementTest.class);
+		logger.updateQueryAsTable("truncate table person_tbl");
+		service = new StatementService();
+	}
+
+	@Order(2)
 	@ParameterizedTest
-	@CsvSource({
-		"Aung Aung,20,MONDAY",
-		"Andrew,45,WEDNESDAY"})
-	void insertTest(String name,int age,String day) {
-		var p = new Person(name,age,Days.valueOf(day));
-		var service = new StatementService();
+	@CsvSource(value = { 
+			"a:::2", 
+			":45::1", 
+			"Aung Aung:20::1" }, delimiter = ':')
+	void selectTest(String name, Integer age, String day, int res) {
+		var p = new Person();
+	
+		p.setName(name);
+		p.setAge(age);
+
+		if (null != day) {
+			p.setDay(Days.valueOf(day));
+		}
+		var list = service.select(p);
+		assertEquals(res, list.size());
+	}
+
+	@Order(1)
+	@ParameterizedTest
+	@CsvSource(value = { "Aung Aung:20:MONDAY", "Andrew:45:WEDNESDAY" }, delimiter = ':')
+	void insertTest(String name, int age, String day) {
+
+		var p = new Person();
+		p.setName(name);
+		p.setAge(age);
+
+		if (null != day) {
+			p.setDay(Days.valueOf(day));
+		}
 		var res = service.save(p);
 		assertEquals(1, res);
+
+		logger.printResultSetAsTable("select * from person_tbl");
 	}
 }

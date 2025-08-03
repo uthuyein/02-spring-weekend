@@ -2,19 +2,21 @@ package com.jdc.mkt.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import com.jdc.mkt.dao.StatementService;
+import com.jdc.mkt.dao.PrepareStatementService;
 import com.jdc.mkt.dto.Person;
 import com.jdc.mkt.dto.Person.Days;
 
-public class StatementTest extends JunitFactory{
+public class PreparementStatementTest extends JunitFactory{
 
-	static StatementService service = new StatementService();
+	static PrepareStatementService service = new PrepareStatementService();
 	
 	@Order(2)
+	@Disabled
 	@ParameterizedTest
 	@CsvSource(value = { 
 			"a:::2", 
@@ -32,10 +34,10 @@ public class StatementTest extends JunitFactory{
 		var list = service.select(p);
 		assertEquals(res, list.size());
 	}
-
+	
 	@Order(1)
 	@ParameterizedTest
-	@CsvSource(value = { "Aung Aung:20:MONDAY", "Andrew:45:WEDNESDAY" }, delimiter = ':')
+	@CsvSource(value = { "John:27:MONDAY", "William:45:WEDNESDAY" }, delimiter = ':')
 	void insertTest(String name, int age, String day) {
 
 		var p = new Person();

@@ -16,7 +16,8 @@ public non-sealed class StatementService implements DbServiceInt<Person> {
 
 			int row = stmt.executeUpdate("insert into person_tbl(name,age,day) values('%s',%d,'%s')"
 					.formatted(p.getName(), p.getAge(), p.getDay().name()));
-
+			
+			
 			return row;
 
 		} catch (Exception e) {

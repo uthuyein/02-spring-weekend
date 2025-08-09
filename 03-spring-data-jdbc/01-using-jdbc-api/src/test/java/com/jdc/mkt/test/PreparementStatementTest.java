@@ -16,12 +16,11 @@ public class PreparementStatementTest extends JunitFactory{
 	static PrepareStatementService service = new PrepareStatementService();
 	
 	@Order(2)
-	@Disabled
 	@ParameterizedTest
 	@CsvSource(value = { 
-			"a:::2", 
+			"w:::1", 
 			":45::1", 
-			"Aung Aung:20::1" }, delimiter = ':')
+			"John:27::1" }, delimiter = ':')
 	void selectTest(String name, Integer age, String day, int res) {
 		var p = new Person();
 	
@@ -36,6 +35,7 @@ public class PreparementStatementTest extends JunitFactory{
 	}
 	
 	@Order(1)
+	//@Disabled
 	@ParameterizedTest
 	@CsvSource(value = { "John:27:MONDAY", "William:45:WEDNESDAY" }, delimiter = ':')
 	void insertTest(String name, int age, String day) {

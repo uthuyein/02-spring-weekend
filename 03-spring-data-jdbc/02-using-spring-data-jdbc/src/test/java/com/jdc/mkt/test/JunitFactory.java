@@ -8,7 +8,7 @@ import com.jdc.mkt.Logger;
 import com.jdc.mkt.utils.anno.Connector;
 
 @TestMethodOrder(OrderAnnotation.class)
-@Connector(name = "testDb", user = "root", password = "admin")
+@Connector(value="H2", name = "testDb", user = "root", password = "admin")
 public class JunitFactory {
 
 	static Logger logger;
@@ -16,7 +16,7 @@ public class JunitFactory {
 	@BeforeAll
 	static void init() {
 		logger = Logger.getInstance(JunitFactory.class);
-		logger.updateQueryAsTable("truncate table person_tbl");
+		//logger.updateQueryAsTable("truncate table person_tbl");
 		
 	}
 }

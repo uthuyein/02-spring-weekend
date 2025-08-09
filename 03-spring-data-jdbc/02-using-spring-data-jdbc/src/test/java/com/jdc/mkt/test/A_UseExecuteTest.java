@@ -13,7 +13,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import com.jdc.mkt.AppConfig;
-import com.jdc.mkt.dao.PersonService;
+import com.jdc.mkt.dao.PersonExecuteService;
 import com.jdc.mkt.dto.Person;
 import com.jdc.mkt.dto.Person.Days;
 
@@ -22,12 +22,11 @@ import com.jdc.mkt.dto.Person.Days;
 public class A_UseExecuteTest extends JunitFactory {
 
 	@Autowired
-	PersonService service;
+	PersonExecuteService service;
 	
 	@Order(5)
 	@Test
 	@DisplayName("5.select query with PreparedStatementCreatorFactory and preparedStatementCallback")
-	@Sql(scripts = "classpath:/person.sql")
 	void selectCreatorTest() {
 		System.out.println("Test 5");
 		var res = service.selectPersonWithPerparedStatementCreator(2);		
@@ -37,7 +36,6 @@ public class A_UseExecuteTest extends JunitFactory {
 	@Order(4)
 	@Test
 	@DisplayName("4.select query with string query and callablestatement")
-	@Sql(scripts = "classpath:/person.sql")
 	void selectTest() {
 		var res = service.selectPersonWithCallableStatement();
 		assertEquals(1, res.size());
@@ -48,7 +46,6 @@ public class A_UseExecuteTest extends JunitFactory {
 	@ParameterizedTest
 	@ValueSource(ints = 1)
 	@DisplayName("3.delete query with string query and preparedStatementCallback")
-	@Sql(scripts = "classpath:/person.sql")
 	void deleteTest(int id) {
 		var res = service.deletePersonWithPrepStement(id);
 		assertEquals(1, res);

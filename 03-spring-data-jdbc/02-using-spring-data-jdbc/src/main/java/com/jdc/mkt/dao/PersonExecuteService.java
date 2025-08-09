@@ -18,7 +18,7 @@ import com.jdc.mkt.dto.Person;
 import com.jdc.mkt.dto.Person.Days;
 
 @Service
-public class PersonService {
+public class PersonExecuteService {
 
 	@Autowired
 	private JdbcTemplate jdbc;

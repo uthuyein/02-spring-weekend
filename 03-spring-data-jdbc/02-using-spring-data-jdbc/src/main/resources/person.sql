@@ -1,4 +1,3 @@
-drop table if exists person_tbl;
 
 create table if not exists person_tbl(
 	id int primary key auto_increment,
@@ -6,3 +5,5 @@ create table if not exists person_tbl(
 	age int ,
 	days varchar(45) not null
 );
+
+truncate table person_tbl;

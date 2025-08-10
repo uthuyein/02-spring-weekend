@@ -6,15 +6,27 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
+import com.jdc.mkt.dto.Person;
+import com.jdc.mkt.dto.Person.Days;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-@ComponentScan("com.jdc.mkt.dao")
-@PropertySource({"classpath:/person_dml.properties","classpath:/datasource.properties"})
+@ComponentScan(basePackages =  {
+		"com.jdc.mkt.dao",
+		"com.jdc.mkt.aspect",
+		"com.jdc.mkt.factory"})
+@PropertySource({
+		"classpath:/p_statement.properties",
+		"classpath:/s_statement.properties",
+		"classpath:/datasource.properties"
+	})
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class AppConfig {
 
 	@Value("${sql.url}")
@@ -23,6 +35,18 @@ public class AppConfig {
 	String user;
 	@Value("${sql.pass}")
 	String pass;
+	
+	@Bean
+	RowMapper<Person> rowMapper(){
+		return (rs,num) -> {
+			var p = new Person();
+			p.setId(rs.getInt("id"));
+			p.setName(rs.getString("name"));
+			p.setAge(rs.getInt("age"));
+			p.setDay(Days.valueOf(rs.getString("days")));
+			return p;
+		};
+	}
 	
 	@Bean
 	JdbcTemplate jdbcTemplate(DataSource datasource) {

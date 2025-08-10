@@ -23,6 +23,19 @@ public class B_UseQueryTest{
 	PersonQueryService service;
 	
 	@Test
+	@Order(5)
+	@Sql(scripts = {
+			"classpath:/person.sql",
+			"classpath:/insert.sql"
+	})
+	@DisplayName("5.select by age between query with PreparedStatementCreator")
+	void testFive() {
+		var list = service.selectWithPreparedStatementCreatorByAge(20,25);
+		assertEquals(3, list.size());
+		
+	}
+	
+	@Test
 	@Order(4)
 	@Sql(scripts = {
 			"classpath:/person.sql",
@@ -30,7 +43,7 @@ public class B_UseQueryTest{
 	})
 	@DisplayName("4.select by name like query with PreparedStatementCreator")
 	void testFour() {
-		var list = service.selectWithPreparedStatementCreator("a".concat("%"));
+		var list = service.selectWithPreparedStatementCreatorByName("a".concat("%"));
 		assertEquals(2, list.size());
 		
 	}

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreatorFactory;
 import org.springframework.jdbc.core.RowMapper;
@@ -25,9 +26,28 @@ public class PersonQueryService {
 	RowMapper<Person> rowMapper;
 	
 	@Autowired
+	@Qualifier("byName")
 	PreparedStatementCreatorFactory nameFactory;
 	
-	public List<Person> selectWithPreparedStatementCreator(String name){		
+	@Autowired
+	@Qualifier("byAge")
+	PreparedStatementCreatorFactory ageFactory;
+	
+	public List<Person> selectWithPreparedStatementCreatorByAge(int first,int last){		
+		var creator = ageFactory.newPreparedStatementCreator(List.of(first,last));		
+		var list = new ArrayList<Person>();
+		jdbc.query(creator, r -> {
+			var p = new Person();
+			p.setId(r.getInt("id"));
+			p.setName(r.getString("name"));
+			p.setAge(r.getInt("age"));
+			p.setDay(Days.valueOf(r.getString("days")));
+			list.add(p);
+		});
+		return list;
+	}
+	
+	public List<Person> selectWithPreparedStatementCreatorByName(String name){		
 		var creator = nameFactory.newPreparedStatementCreator(List.of(name));		
 		return jdbc.query(creator, rowMapper);
 	}

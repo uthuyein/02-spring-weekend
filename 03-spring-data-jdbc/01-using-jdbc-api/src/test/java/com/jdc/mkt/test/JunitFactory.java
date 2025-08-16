@@ -4,19 +4,19 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import com.jdc.mkt.Logger;
+import com.jdc.mkt.PrintLogger;
 import com.jdc.mkt.utils.anno.Connector;
 
 @TestMethodOrder(OrderAnnotation.class)
 @Connector(name = "testDb", user = "root", password = "admin")
 public class JunitFactory {
 
-	static Logger logger;
+	static PrintLogger logger;
 	
 	@BeforeAll
 	static void init() {
-		logger = Logger.getInstance(StatementTest.class);
-		logger.updateQueryAsTable("truncate table person_tbl");
+		logger = PrintLogger.getInstance(StatementTest.class);
+		logger.PrintTableByupdateQuery("truncate table person_tbl");
 		
 	}
 }

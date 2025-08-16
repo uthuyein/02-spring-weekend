@@ -2,7 +2,9 @@ package com.jdc.mkt.dao;
 
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,6 +35,23 @@ public class PersonQueryService {
 	@Qualifier("byAge")
 	PreparedStatementCreatorFactory ageFactory;
 	
+	
+	
+	public Integer selectCountByNameLike(String sql,String name) {
+		return jdbc.queryForObject(sql, Integer.class,name);
+	}
+	
+	public List<Map<String, Object>> selectWithQueryForListByNameLike(String sql,String name){
+		return jdbc.queryForList(sql,name);
+	}
+	
+	public List<String> selectWithQueryForListByName(String sql,String name){
+		return  jdbc.queryForList(sql,String.class,name);
+	}
+	public List<Person> selectWithRowMapper(String sql){
+		return jdbc.query(sql, rowMapper);
+	}
+	
 	public List<Person> selectWithPreparedStatementCreatorByAge(int first,int last){		
 		var creator = ageFactory.newPreparedStatementCreator(List.of(first,last));		
 		var list = new ArrayList<Person>();
@@ -52,9 +71,7 @@ public class PersonQueryService {
 		return jdbc.query(creator, rowMapper);
 	}
 	
-	public List<Person> selectWithRowMapper(String sql){
-		return jdbc.query(sql, rowMapper);
-	}
+	
 
 	public List<Person> selectWithRowCallbackHandler(String sql) {
 		

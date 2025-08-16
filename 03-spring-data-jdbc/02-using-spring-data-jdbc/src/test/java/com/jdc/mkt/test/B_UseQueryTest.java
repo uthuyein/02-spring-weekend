@@ -23,6 +23,38 @@ public class B_UseQueryTest{
 	PersonQueryService service;
 	
 	@Test
+	@Order(7)
+	@Sql(scripts = {
+			"classpath:/person.sql",
+			"classpath:/insert.sql"
+	})
+	@DisplayName("7.select by name with queryForObject")
+	void testSeven(@Value("${p.select.count.by.name.like}") String query) {
+		var count = service.selectCountByNameLike(query,"a".concat("%"));
+		assertEquals(2,count);
+	
+	}
+	
+	@Test
+	@Order(6)
+	@Sql(scripts = {
+			"classpath:/person.sql",
+			"classpath:/insert.sql"
+	})
+	@DisplayName("6.select by name with queryByListWith Args")
+	void testSix(
+			@Value("${p.select.name.like}") String query1,
+			@Value("${p.select.by.name}") String query2) {
+		
+		var list1 = service.selectWithQueryForListByNameLike(query2,"a".concat("%"));
+		assertEquals(2, list1.size());
+		
+		var list2 = service.selectWithQueryForListByName(query1,"a".concat("%"));
+		assertEquals(2, list2.size());
+		
+		
+	}
+	@Test
 	@Order(5)
 	@Sql(scripts = {
 			"classpath:/person.sql",

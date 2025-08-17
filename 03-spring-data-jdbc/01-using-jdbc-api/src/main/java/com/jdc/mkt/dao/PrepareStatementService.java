@@ -1,6 +1,6 @@
 package com.jdc.mkt.dao;
 
-import java.beans.Statement;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,13 +14,18 @@ public final class PrepareStatementService implements DbServiceInt<Person> {
 	@Override
 	public int save(Person p) {
 		String query = "insert into person_tbl(name,age,day)values(?,?,?)";
-		try (var con = getConnection(); var stmt = con.prepareStatement(query)) {
+		try (var con = getConnection(); var stmt = con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS)) {
 
 			stmt.setString(1, p.getName());
 			stmt.setInt(2, p.getAge());
 			stmt.setString(3, p.getDay().name());
-
-			return stmt.executeUpdate();
+			
+			stmt.executeUpdate();
+			var rs = stmt.getGeneratedKeys();
+			while(rs.next()) {
+				return rs.getInt(1);
+			}
+			return 0;
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,6 +1,5 @@
 package com.jdc.mkt.dao;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,8 @@ public class PersonUpdateService {
 	PreparedStatementCreatorFactory factory;
 	
 	public int insertPersonWithCreatorAndKeyHolder(Person p) {
-		PreparedStatementCreator creator = factory.newPreparedStatementCreator(List.of(p.getName(),p.getAge(),p.getDay().name()));
+		PreparedStatementCreator creator = factory.newPreparedStatementCreator(List.of(p.getName(),
+				p.getAge(),p.getDay().name()));
 		
 		factory.setReturnGeneratedKeys(true);
 		var key = new GeneratedKeyHolder();			

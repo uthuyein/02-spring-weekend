@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.DataClassRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,13 @@ public class E_NamedParam_UpdateService {
 	@Autowired
 	private NamedParameterJdbcTemplate nameParams;
 	
+	//work with record class
+	public List<com.jdc.mkt.dto.rec.Person> selectWithDataClassRowMapper(String sql){
+		var bean = new DataClassRowMapper<com.jdc.mkt.dto.rec.Person>(com.jdc.mkt.dto.rec.Person.class);
+		return nameParams.query(sql, bean);
+	}
+	
+	//work with pojo class
 	public List<Person> selectWithBeanPropertyRowMapper(String sql){
 		var bean = new BeanPropertyRowMapper<Person>(Person.class);
 		return nameParams.query(sql, bean);

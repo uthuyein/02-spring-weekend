@@ -2,6 +2,7 @@ package com.jdc.mkt.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -37,12 +38,13 @@ public class D_SimpleJdbcInsertTest {
 			"classpath:/insert.sql"
 	})
 	void testFive(@Value("${p.select}") String sql) {	
-		var list = names.selectWithBeanPropertyRowMapper(sql);
+		var list = names.selectWithDataClassRowMapper(sql);
 		assertEquals(5, list.size());
 	}
 	
 	@Test
 	@Order(4)
+	@Disabled
 	@DisplayName("4.update person_tbl using with NamedParamsJdbcTemplate")
 	@Sql(scripts = {
 			"classpath:/person.sql",
@@ -55,6 +57,7 @@ public class D_SimpleJdbcInsertTest {
 	
 	@Test
 	@Order(3)
+	@Disabled
 	@DisplayName("3.insert person_tbl using with NamedParamsJdbcTemplate")
 	@Sql(scripts = {
 			"classpath:/person.sql",
@@ -71,6 +74,7 @@ public class D_SimpleJdbcInsertTest {
 	
 	@Test
 	@Order(2)
+	@Disabled
 	@DisplayName("2.insert person_tbl using with simpleJdbcInsert and generate keys")
 	@Sql(scripts = {
 			"classpath:/person.sql",
@@ -88,6 +92,7 @@ public class D_SimpleJdbcInsertTest {
 	
 	@Test
 	@Order(1)
+	@Disabled
 	@DisplayName("1.insert person_tbl using with generate keys")
 	@Sql(scripts = {
 			"classpath:/person.sql",

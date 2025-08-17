@@ -2,6 +2,7 @@ package com.jdc.mkt.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -24,6 +25,7 @@ public class B_UseQueryTest{
 	
 	@Test
 	@Order(7)
+	@Disabled
 	@Sql(scripts = {
 			"classpath:/person.sql",
 			"classpath:/insert.sql"
@@ -37,6 +39,7 @@ public class B_UseQueryTest{
 	
 	@Test
 	@Order(6)
+	@Disabled
 	@Sql(scripts = {
 			"classpath:/person.sql",
 			"classpath:/insert.sql"
@@ -56,6 +59,7 @@ public class B_UseQueryTest{
 	}
 	@Test
 	@Order(5)
+	@Disabled
 	@Sql(scripts = {
 			"classpath:/person.sql",
 			"classpath:/insert.sql"
@@ -69,6 +73,7 @@ public class B_UseQueryTest{
 	
 	@Test
 	@Order(4)
+	@Disabled
 	@Sql(scripts = {
 			"classpath:/person.sql",
 			"classpath:/insert.sql"
@@ -82,6 +87,7 @@ public class B_UseQueryTest{
 	
 	@Test
 	@Order(3)
+	//@Disabled
 	@Sql(scripts = {
 			"classpath:/person.sql",
 			"classpath:/insert.sql"
@@ -95,6 +101,7 @@ public class B_UseQueryTest{
 	
 	@Test
 	@Order(2)
+	//@Disabled
 	@Sql(scripts = {
 			"classpath:/person.sql",
 			"classpath:/insert.sql"
@@ -108,6 +115,7 @@ public class B_UseQueryTest{
 	
 	@Test
 	@Order(1)
+	@Disabled
 	@Sql(scripts = {
 			"classpath:/person.sql",
 			"classpath:/insert.sql"

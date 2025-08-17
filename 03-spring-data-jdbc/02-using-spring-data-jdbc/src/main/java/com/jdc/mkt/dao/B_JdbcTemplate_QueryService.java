@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreatorFactory;
 import org.springframework.jdbc.core.RowMapper;
@@ -49,7 +50,7 @@ public class B_JdbcTemplate_QueryService {
 		return  jdbc.queryForList(sql,String.class,name);
 	}
 	public List<Person> selectWithRowMapper(String sql){
-		return jdbc.query(sql, rowMapper);
+		return jdbc.query(sql, new BeanPropertyRowMapper<Person>(Person.class));
 	}
 	
 	public List<Person> selectWithPreparedStatementCreatorByAge(int first,int last){		

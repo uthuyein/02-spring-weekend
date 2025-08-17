@@ -1,5 +1,7 @@
 package com.jdc.mkt.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -12,6 +14,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import com.jdc.mkt.AppConfig;
 import com.jdc.mkt.dao.D_SimpleJdbcInsert_UpdateService;
+import com.jdc.mkt.dao.E_NamedParam_UpdateService;
 import com.jdc.mkt.dto.Person;
 import com.jdc.mkt.dto.Person.Days;
 
@@ -22,6 +25,49 @@ public class D_SimpleJdbcInsertTest {
 	@Autowired
 	private D_SimpleJdbcInsert_UpdateService service;
 
+	@Autowired
+	private E_NamedParam_UpdateService names;
+	
+	
+	@Test
+	@Order(5)
+	@DisplayName("5.select person_tbl using with BeanPropertyRowMapper")
+	@Sql(scripts = {
+			"classpath:/person.sql",
+			"classpath:/insert.sql"
+	})
+	void testFive(@Value("${p.select}") String sql) {	
+		var list = names.selectWithBeanPropertyRowMapper(sql);
+		assertEquals(5, list.size());
+	}
+	
+	@Test
+	@Order(4)
+	@DisplayName("4.update person_tbl using with NamedParamsJdbcTemplate")
+	@Sql(scripts = {
+			"classpath:/person.sql",
+			"classpath:/insert.sql"
+	})
+	void testFour(@Value("${p.update.with.name.param}") String sql) {	
+		var row = names.updateWithExecute(sql,"Thomas Risberg",56,2);
+		assertEquals(1, row);
+	}
+	
+	@Test
+	@Order(3)
+	@DisplayName("3.insert person_tbl using with NamedParamsJdbcTemplate")
+	@Sql(scripts = {
+			"classpath:/person.sql",
+			"classpath:/insert.sql"
+	})
+	void testThree(@Value("${p.insert.with.name.param}") String sql) {
+		var p = new Person();
+		p.setName("Koung");
+		p.setAge(30);
+		p.setDay(Days.SUNDAY);
+		var row = names.insertWithMap(sql, p);
+		assertEquals(1, row);
+	}
 	
 	@Test
 	@Order(2)

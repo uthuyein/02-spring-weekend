@@ -21,8 +21,7 @@ public class D_SimpleJdbcInsert_UpdateService {
 	@Autowired
 	@Qualifier("insert")
 	private PreparedStatementCreatorFactory factory;
-	@Autowired
-	private NamedParameterJdbcTemplate nameParams;
+	
 	
 	//Use for insert query
 	public int insertWithSimpleJdbcInsert(Person p) {

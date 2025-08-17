@@ -51,8 +51,8 @@ public class AppConfig {
 	}
 	
 	@Bean
-	NamedParameterJdbcTemplate nameParams(DataSource datasource) {
-		return new NamedParameterJdbcTemplate(datasource);
+	NamedParameterJdbcTemplate nameParams(JdbcTemplate template) {
+		return new NamedParameterJdbcTemplate(template);
 	}
 	
 	@Bean

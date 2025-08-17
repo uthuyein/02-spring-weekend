@@ -21,14 +21,20 @@
    			</bean>
    		</constructor-arg>
    </bean>
+   
+   <bean id="simple" class="org.springframework.jdbc.core.simple.SimpleJdbcInsert">
+   		<constructor-arg ref="template"></constructor-arg>
+   		<property name="tableName" value="person_tbl"></property>
+   		<property name="generatedKeyNames" value="id"></property>
+   </bean>
+   
+   <bean id="template" class="org.springframework.jdbc.core.JdbcTemplate">
+  		<constructor-arg ref="dataSource"></constructor-arg>
+  </bean>
   
   <!--  <bean id="dataSource" class="com.mysql.cj.jdbc.MysqlConnectionPoolDataSource">
    		<property name="url" value="${sql.url}"></property>
    		<property name="user" value="${sql.user}"></property>
    		<property name="password" value="${sql.pass}"></property>
    </bean> -->
-   
-   <bean id="template" class="org.springframework.jdbc.core.JdbcTemplate">
-  		<constructor-arg ref="dataSource"></constructor-arg>
-  </bean>
 </beans>

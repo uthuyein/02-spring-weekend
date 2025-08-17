@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class PersonQueryService {
+public class B_JdbcTemplate_QueryService {
 
 	final JdbcTemplate jdbc;
 	

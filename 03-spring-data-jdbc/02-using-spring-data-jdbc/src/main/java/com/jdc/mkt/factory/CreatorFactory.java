@@ -14,6 +14,7 @@ public class CreatorFactory {
 	
 	@Bean
 	@Qualifier("insert")
+	//insert into person_tbl(name,age,days) values(?,?,?)
 	PreparedStatementCreatorFactory factoryInsert(@Value("${p.prep.insert}") String sql) {
 		return new PreparedStatementCreatorFactory(sql,Types.VARCHAR,Types.INTEGER,Types.VARCHAR);
 	}

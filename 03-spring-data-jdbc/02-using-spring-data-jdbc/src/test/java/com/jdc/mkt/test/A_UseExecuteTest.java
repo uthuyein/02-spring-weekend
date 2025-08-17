@@ -16,7 +16,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import com.jdc.mkt.AppConfig;
-import com.jdc.mkt.dao.PersonExecuteService;
+import com.jdc.mkt.dao.A_JdbcTemplate_ExecuteService;
 import com.jdc.mkt.dto.Person;
 import com.jdc.mkt.dto.Person.Days;
 
@@ -26,7 +26,7 @@ import com.jdc.mkt.dto.Person.Days;
 public class A_UseExecuteTest  {
 
 	@Autowired
-	PersonExecuteService service;
+	A_JdbcTemplate_ExecuteService service;
 	
 	@BeforeAll
 	@Sql(statements = "truncate table person_tbl")

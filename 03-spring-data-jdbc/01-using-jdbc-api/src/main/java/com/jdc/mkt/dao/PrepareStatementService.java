@@ -1,13 +1,13 @@
 package com.jdc.mkt.dao;
 
+import static com.jdc.mkt.utils.Connector.getConnection;
+
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.jdc.mkt.dto.Person;
 import com.jdc.mkt.dto.Person.Days;
-
-import static com.jdc.mkt.utils.Connector.getConnection;
 
 public final class PrepareStatementService implements DbServiceInt<Person> {
 
@@ -21,9 +21,10 @@ public final class PrepareStatementService implements DbServiceInt<Person> {
 			stmt.setString(3, p.getDay().name());
 			
 			stmt.executeUpdate();
+			
 			var rs = stmt.getGeneratedKeys();
 			while(rs.next()) {
-				return rs.getInt(1);
+				return rs.getInt("id");
 			}
 			return 0;
 

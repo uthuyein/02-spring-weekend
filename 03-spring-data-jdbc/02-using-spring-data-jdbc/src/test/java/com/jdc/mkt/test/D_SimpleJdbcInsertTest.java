@@ -1,60 +1,44 @@
 package com.jdc.mkt.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import com.jdc.mkt.AppConfig;
-import com.jdc.mkt.dao.C_JdbcTemplate_UpdateService;
+import com.jdc.mkt.dao.D_SimpleJdbcInsert_UpdateService;
 import com.jdc.mkt.dto.Person;
 import com.jdc.mkt.dto.Person.Days;
 
 @TestMethodOrder(OrderAnnotation.class)
 @SpringJUnitConfig(classes = AppConfig.class)
-public class C_UpdateQueryTest {
-
-	@Autowired
-	C_JdbcTemplate_UpdateService service;
+public class D_SimpleJdbcInsertTest {
 	
-	@Test
-	@Order(3)
-	@DisplayName("3.update person_tbl with object var args")
-	@Sql(scripts = {
-			"classpath:/person.sql",
-			"classpath:/insert.sql"
-	})
-	void testThree(@Value("${p.update.name.age.and.day}")String query) {
-		var p = new Person();
-		p.setName("Sopheia");
-		p.setAge(30);
-		p.setDay(Days.SUNDAY);
-		var key = service.updatePersonWithObjectParams(query,"Juergen Hoeller",43,Days.MONDAY,1);
-		System.out.println("Primary Key :"+key);
-	}
+	@Autowired
+	private D_SimpleJdbcInsert_UpdateService service;
+
 	
 	@Test
 	@Order(2)
-	@DisplayName("2.insert person_tbl with params types and values")
+	@DisplayName("2.insert person_tbl using with simpleJdbcInsert and generate keys")
 	@Sql(scripts = {
 			"classpath:/person.sql",
 			"classpath:/insert.sql"
 	})
-	void testTwo(@Value("${p.prep.insert}")String query) {
+	void testTwo() {
 		var p = new Person();
-		p.setName("Sopheia");
+		p.setName("Koung");
 		p.setAge(30);
 		p.setDay(Days.SUNDAY);
-		var row = service.insertPersonWithParamsTypesAndValue(query,p);
-		assertEquals(1, row);
+		var key = service.insertWithSimpleJdbcInsert(p);
+		System.out.println("Primary Key :"+key);
 	}
+
 	
 	@Test
 	@Order(1)
@@ -68,7 +52,8 @@ public class C_UpdateQueryTest {
 		p.setName("Sopheia");
 		p.setAge(30);
 		p.setDay(Days.SUNDAY);
-		var key = service.insertPersonWithCreatorAndKeyHolder(p);
+		var key = service.insertWithJdbcTemplate(query, p);
 		System.out.println("Primary Key :"+key);
 	}
+
 }

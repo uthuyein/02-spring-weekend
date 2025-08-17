@@ -13,14 +13,14 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import com.jdc.mkt.AppConfig;
-import com.jdc.mkt.dao.PersonQueryService;
+import com.jdc.mkt.dao.B_JdbcTemplate_QueryService;
 
 @TestMethodOrder(OrderAnnotation.class)
 @SpringJUnitConfig(classes = AppConfig.class)
 public class B_UseQueryTest{
 
 	@Autowired
-	PersonQueryService service;
+	B_JdbcTemplate_QueryService service;
 	
 	@Test
 	@Order(7)

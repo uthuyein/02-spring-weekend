@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import com.jdc.annotations.MyClientConfig;
-
 public class E_ScopeTest {
 
 	@Test

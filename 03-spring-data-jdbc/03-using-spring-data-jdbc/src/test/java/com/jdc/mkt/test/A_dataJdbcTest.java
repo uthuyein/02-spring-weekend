@@ -1,26 +1,25 @@
 package com.jdc.mkt.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-import com.jdc.mkt.AppConfig;
 import com.jdc.mkt.dto.Person;
 import com.jdc.mkt.dto.Person.Days;
 import com.jdc.mkt.service.PersonService;
 
-@TestMethodOrder(OrderAnnotation.class)
-@SpringJUnitConfig(classes = AppConfig.class)
+
+@SpringBootTest
 public class A_dataJdbcTest {
 	
 	@Autowired
-	PersonService service;
+	PersonService repo;
 	
 	@Order(1)
 	@ParameterizedTest
@@ -29,16 +28,16 @@ public class A_dataJdbcTest {
 			"classpath:/insert.sql"
 	})
 	@DisplayName("1.insert query with spring jdbc insert")
-	@CsvSource(value = { "Sophia:20:MONDAY", "Smith:30:WEDNESDAY" }, delimiter = ':')
-	void testOne(String name, int age, String day) {
+	@CsvSource(value = { "Sophia:20:MONDAY:6", "Smith:30:WEDNESDAY:6" }, delimiter = ':')
+	void testOne(String name, int age, String day,int id) {
 		var p = new Person();
 		p.setName(name);
 		p.setAge(age);
 
 		if (null != day) {
-			p.setDay(Days.valueOf(day));
+			p.setDays(Days.valueOf(day));
 		}
-		service.insert(p);
-		
+		p = repo.insert(p);
+		assertEquals(id, p.getId());
 	}
 }

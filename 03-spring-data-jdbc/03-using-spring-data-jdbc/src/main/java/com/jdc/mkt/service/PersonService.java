@@ -4,14 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jdc.mkt.dto.Person;
+import com.jdc.mkt.repo.PersonRepo;
 
 @Service
 public class PersonService {
 
 	@Autowired
-	PersonService service;
+	PersonRepo service;
 	
-	public void insert(Person p) {
-		service.insert(p);
+	public Person insert(Person p) {
+		return service.save(p);
 	}
 }

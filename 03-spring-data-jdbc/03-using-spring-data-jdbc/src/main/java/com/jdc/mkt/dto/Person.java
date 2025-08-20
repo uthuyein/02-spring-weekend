@@ -15,7 +15,7 @@ public class Person {
 	private int id;
 	private String name;
 	private Integer age;
-	private Days day;
+	private Days days;
 	
 	public enum Days{
 		SUNDAY,

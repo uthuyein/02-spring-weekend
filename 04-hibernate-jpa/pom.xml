@@ -37,6 +37,7 @@
   	  </dependency>
   </dependencies>
   <modules>
-  	<module>01-class-and-field-mappings</module>
+  	
+  	<module>01-classfield-mappings</module>
   </modules>
 </project>

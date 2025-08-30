@@ -1,8 +1,9 @@
 package com.jdc.mkt.class_map;
 
+import java.sql.DriverManager;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
@@ -40,6 +41,8 @@ public class PersonClass {
 	private String name;
 	@Embedded
 	private Account account;
+	
+	
 	
 	@Column(table = "contact_tbl")
 	private String email;

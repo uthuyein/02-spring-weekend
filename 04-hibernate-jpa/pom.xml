@@ -39,5 +39,6 @@
   <modules>
   	
   	<module>01-classfield-mappings</module>
+  	<module>02-relational-mappings</module>
   </modules>
 </project>

@@ -4,9 +4,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.jdc.mkt.entity.Classroom;
-import com.jdc.mkt.entity.Student;
-import com.jdc.mkt.entity.Teacher;
+import com.jdc.mkt.entity.Circle;
+import com.jdc.mkt.entity.Shape;
 
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -17,7 +16,7 @@ public class JpaFactory {
 	
 	@BeforeAll
 	static void init() {
-		emf = Persistence.createEntityManagerFactory("inheritance-mappings");
+		emf = Persistence.createEntityManagerFactory("attribute-converter");
 	}
 	
 	@AfterAll
@@ -28,20 +27,22 @@ public class JpaFactory {
 	}
 	@Test
 	void test() {
-		var em = emf.createEntityManager();
+		var em = emf.createEntityManager();		
 		
-		var room = new Classroom();
-		room.setName("101");
-				
-		var stu = new Teacher();
-		stu.setName("Andrew");
-		stu.setUser("aa");
-		stu.setPassword("12312312");		
-		//stu.setRoom(room);
+		var circle = new Circle(25,"Blue");
+		
+		var shape = new Shape();
+		shape.setCircle(circle);
 		
 		em.getTransaction().begin();
-		em.persist(room);
-		em.persist(stu);
+		em.persist(shape);
 		em.getTransaction().commit();
+		
+		var s1 = em.find(Shape.class, 1);
+		var c1 = s1.getCircle();
+		System.out.println(c1.getColor());
+		System.out.println(c1.getRadius());
+		
+		
 	}
 }

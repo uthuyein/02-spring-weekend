@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name ="cat_id")
 	private int id;
 	
 	@Column(nullable = false,length = 25,unique = true)
@@ -29,8 +31,16 @@ public class Category {
 	@ColumnDefault("true")
 	private boolean active;
 	
-	@OneToMany
-	//@JoinColumn(name = "category_id")
-	private List<Product> proudcts;
+//	@OneToMany
+//	//@JoinColumn(name = "category_id")
+//	@JoinTable(
+//			name = "j_cat_product_tbl",
+//			joinColumns = {
+//					@JoinColumn(name = "cat_id",referencedColumnName = "cat_id")
+//			},
+//			inverseJoinColumns = {
+//					@JoinColumn(name = "prod_id",referencedColumnName = "id")
+//			})
+//	private List<Product> proudcts;
 	
 }

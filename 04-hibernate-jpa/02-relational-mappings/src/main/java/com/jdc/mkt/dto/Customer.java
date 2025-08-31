@@ -1,36 +1,35 @@
 package com.jdc.mkt.dto;
 
-import java.util.List;
-
-import org.hibernate.annotations.ColumnDefault;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "category_tbl")
-public class Category {
+@Table(name = "customer_tbl")
+public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(nullable = false,length = 25,unique = true)
+	@Column(nullable = false,length = 45)
 	private String name;
 	
-	@ColumnDefault("true")
-	private boolean active;
+	@Enumerated(EnumType.STRING)
+	private MemberType memberType;
 	
-	@OneToMany
-	//@JoinColumn(name = "category_id")
-	private List<Product> proudcts;
+	@OneToOne(mappedBy = "customer")
+	private Contact contact;
 	
+	public enum MemberType{
+		Silver,Gold,Platinum,Diamond
+	}
 }

@@ -41,5 +41,6 @@
   	<module>01-classfield-mappings</module>
   	<module>02-relational-mappings</module>
   	<module>03-mapsId-vs-pkeyJoinColumn</module>
+  	<module>04-inheritance-mappings</module>
   </modules>
 </project>

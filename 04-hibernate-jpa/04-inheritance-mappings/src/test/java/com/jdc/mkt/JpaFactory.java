@@ -13,7 +13,7 @@ public class JpaFactory {
 	
 	@BeforeAll
 	static void init() {
-		emf = Persistence.createEntityManagerFactory("pkeyJoinColumn");
+		emf = Persistence.createEntityManagerFactory("inheritance-mappings");
 	}
 	
 	@AfterAll
@@ -24,17 +24,6 @@ public class JpaFactory {
 	}
 	@Test
 	void test() {
-//		var em = emf.createEntityManager();
-//		var profile = new UserProfile();
-//		profile.setId(2);
-//		profile.setDob(LocalDate.now());
-//		var user = new User();
-//		user.setProfile(profile);
-//		
-//		user.setName("Andrew");
-//		em.getTransaction().begin();
-//		em.persist(profile);
-//		em.persist(user);
-//		em.getTransaction().commit();
+
 	}
 }

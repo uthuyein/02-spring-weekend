@@ -1,7 +1,5 @@
 package com.jdc.mkt.class_map;
 
-import java.sql.DriverManager;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.GeneratedValue;

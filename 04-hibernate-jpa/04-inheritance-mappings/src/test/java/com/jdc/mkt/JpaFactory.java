@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.jdc.mkt.entity.Classroom;
-import com.jdc.mkt.entity.Student;
 import com.jdc.mkt.entity.Teacher;
 
 import jakarta.persistence.EntityManagerFactory;

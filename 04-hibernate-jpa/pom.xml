@@ -43,5 +43,6 @@
   	<module>03-mapsId-vs-pkeyJoinColumn</module>
   	<module>04-inheritance-mappings</module>
   	<module>05-attribute-converter</module>
+  	<module>06-entitymanager</module>
   </modules>
 </project>

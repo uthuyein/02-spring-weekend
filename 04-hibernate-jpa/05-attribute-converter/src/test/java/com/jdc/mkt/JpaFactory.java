@@ -43,6 +43,6 @@ public class JpaFactory {
 		System.out.println(c1.getColor());
 		System.out.println(c1.getRadius());
 		
-		
+		System.out.println(circle.equals(c1));
 	}
 }

@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class Circle {
+public class Circle{
 
 	private double radius;
 	private String color;
@@ -15,6 +15,7 @@ public class Circle {
 	public String toString() {
 		return radius+":"+color;
 	}
+
 	
 	
 }

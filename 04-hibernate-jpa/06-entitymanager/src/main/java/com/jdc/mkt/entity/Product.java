@@ -1,14 +1,24 @@
 package com.jdc.mkt.entity;
 
+import java.time.LocalDateTime;
+
 import org.hibernate.annotations.ColumnDefault;
+
+import com.jdc.mkt.entity.listener.EnableTimeListener;
+import com.jdc.mkt.entity.listener.Times;
+import com.jdc.mkt.entity.listener.TimesListener;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PostPersist;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +30,8 @@ import lombok.RequiredArgsConstructor;
 @Table(name = "product_tbl")
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Product {
+//@EntityListeners(TimesListener.class)
+public class Product implements EnableTimeListener{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,5 +52,23 @@ public class Product {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Category category;
 	
+	@Embedded
+	private Times times;
+	
+//	@PrePersist
+//	void beforePersist() {		
+//	System.out.println("Before persist");
+//	
+//	if(null == times) {
+//		times = new Times();
+//		this.setTimes(times);
+//	}
+//	times.setCreateTime(LocalDateTime.now());
+//	}
+//	
+//	@PostPersist
+//	void postPersist() {
+//		System.out.println("After persist");
+//	}
 	
 }

@@ -20,20 +20,23 @@
 	    <artifactId>hibernate-core</artifactId>
 	    <version>${hibernate.version}</version>
 	</dependency>
-  	  <dependency>
-  	  	<groupId>com.jdc.mkt</groupId>
-  	  	<artifactId>PrintLogger</artifactId>
-  	  	<version>${printlogger.version}</version>
-  	  </dependency>
-	  <dependency>
+	 <dependency>
 	    <groupId>org.projectlombok</groupId>
 	    <artifactId>lombok</artifactId>
 	    <version>${lombok.version}</version>
 	  </dependency>
   	  <dependency>
+  	  	<groupId>com.jdc.mkt</groupId>
+  	  	<artifactId>PrintLogger</artifactId>
+  	  	<version>${printlogger.version}</version>
+  	  	<scope>test</scope>
+  	  </dependency>
+	 
+  	  <dependency>
 	  	 <groupId>org.junit.jupiter</groupId>
 	  	 <artifactId>junit-jupiter</artifactId>
 	  	 <version>${junit.version}</version>
+	  	 <scope>test</scope>
   	  </dependency>
   </dependencies>
   <modules>

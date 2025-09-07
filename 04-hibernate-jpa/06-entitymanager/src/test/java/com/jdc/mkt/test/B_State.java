@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import com.jdc.mkt.entity.Category;
 import com.jdc.mkt.entity.Product;
 
-public class B_State_Change extends JpaFactory {
+public class B_State extends JpaFactory {
 
 	@Test
 	@Disabled
@@ -78,17 +78,19 @@ public class B_State_Change extends JpaFactory {
 	void removeTest() {
 		var em = emf.createEntityManager();
 
-		// To Be Managed
-		var p = em.find(Product.class, 1);
+		em.getTransaction().begin();
+		
+		// To Be Managed			
+		var p = em.find(Category.class, 1);
 		assertTrue(em.contains(p));
 
-		em.getTransaction().begin();
-
-		// To Be Removed
-		em.remove(p);
-		assertFalse(em.contains(p));
+		var list = p.getProducts();
+		System.out.println(list);
+		System.out.println(list.get(1).getName());
+		list.remove(1);
 		
 		em.getTransaction().commit();
+		logger.printTableByStringQuery("select * from product_tbl");
 		em.close();
 	}
 

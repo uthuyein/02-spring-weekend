@@ -37,13 +37,14 @@ public class JpaFactory {
 	
 	@BeforeEach
 	void createEm() {
-		em = emf.createEntityManager();		
+		//em = emf.createEntityManager();		
 	}
 	
 	@AfterEach
 	void log() {
-		logger.printTableByStringQuery("select * from category_tbl");
-		logger.printTableByStringQuery("select * from product_tbl");
+		
+		//logger.printTableByStringQuery("select * from category_tbl");
+		//logger.printTableByStringQuery("select * from product_tbl");
 			
 	}
 	

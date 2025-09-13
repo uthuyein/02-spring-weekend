@@ -1,24 +1,18 @@
 package com.jdc.mkt.entity;
 
-import java.time.LocalDateTime;
-
 import org.hibernate.annotations.ColumnDefault;
 
 import com.jdc.mkt.entity.listener.EnableTimeListener;
 import com.jdc.mkt.entity.listener.Times;
-import com.jdc.mkt.entity.listener.TimesListener;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PostPersist;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;

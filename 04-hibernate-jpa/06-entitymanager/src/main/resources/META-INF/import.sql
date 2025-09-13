@@ -7,3 +7,6 @@ insert into product_tbl(name,price,category_id) values('Durian',12000.00,1);
 insert into product_tbl(name,price,category_id) values('Beef',20000.00,2);
 insert into product_tbl(name,price,category_id) values('Pork',20000.00,2);
 insert into product_tbl(name,price,category_id) values('Chicken',30000.00,2);
+
+insert into account_tbl(name,balance) values('Patrick',50000);
+insert into account_tbl(name,balance) values('William',50000);

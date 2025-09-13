@@ -52,16 +52,16 @@ public class E_SynchronizationDb extends JpaFactory {
 			var a1 = em.find(Account.class, 1);
 			try {
 				em.getTransaction().begin();
-				System.out.println("=====  Before update opertaion Two ======");
+				System.out.println("   =====  Before update opertaion Two ======");
 
-				System.out.println("===== (Two)Before Update Balance :" + a1.getBalance() + " ======");
+				System.out.println("----- (Two)Before Update Balance :" + a1.getBalance() + "  ------");
 
 				Thread.sleep(500);
 				//em.refresh(a1);
 				a1.setBalance(a1.getBalance() + balance);
 				em.flush();
-				System.out.println("=====  After update opertaion Two ======");
-				System.out.println("=====(Two)After Update Balance :" + a1.getBalance() + " ======");
+				System.out.println("   =====  After update opertaion Two ======");
+				System.out.println("-----  (Two)After Update Balance :" + a1.getBalance() + " -----");
 
 				em.getTransaction().commit();
 				em.close();

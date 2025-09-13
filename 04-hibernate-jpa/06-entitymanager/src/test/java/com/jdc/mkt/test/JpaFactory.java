@@ -9,7 +9,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import com.jdc.mkt.PrintLogger;
 import com.jdc.mkt.utils.anno.Connector;
-import com.mysql.cj.jdbc.MysqlConnectionPoolDataSource;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

@@ -2,6 +2,7 @@ package com.jdc.mkt.dto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,6 +25,6 @@ public class Contact {
 	@Column(length = 12,unique = true)
 	private String secondaryPhone;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER,optional = false)
 	private Customer customer;
 }

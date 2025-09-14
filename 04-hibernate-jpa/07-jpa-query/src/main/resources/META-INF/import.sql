@@ -45,7 +45,7 @@ INSERT INTO voucher_tbl (customer_id) VALUES (4);
 INSERT INTO voucher_tbl (customer_id) VALUES (5);
 INSERT INTO voucher_tbl (customer_id) VALUES (1);
 INSERT INTO voucher_tbl (customer_id) VALUES (2);
-INSERT INTO voucher_tbl (customer_id) VALUES (4); -- 1,4,6,11
+INSERT INTO voucher_tbl (customer_id) VALUES (4); -- 1,4,6,11 -- 2,7,12
 
 
 INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, subTotal)VALUES (1, 1, 1, 1299.00); -- 1x iPhone 15 Pro

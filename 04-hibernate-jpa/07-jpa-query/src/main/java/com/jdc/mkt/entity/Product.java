@@ -1,4 +1,6 @@
-package com.jdc.mkt.dto;
+package com.jdc.mkt.entity;
+
+import java.util.List;
 
 import org.hibernate.annotations.Check;
 import org.hibernate.annotations.ColumnDefault;
@@ -11,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -38,5 +41,8 @@ public class Product {
 	
 	@ManyToOne(fetch = FetchType.EAGER,optional = true)
 	private Category category;
+	
+	@OneToMany(mappedBy = "product")
+	private List<VoucherDetail> voucherDetails;
 	
 }

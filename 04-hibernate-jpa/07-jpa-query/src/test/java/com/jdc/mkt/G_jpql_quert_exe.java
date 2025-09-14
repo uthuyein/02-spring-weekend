@@ -5,14 +5,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import com.jdc.mkt.dto.Product;
+import com.jdc.mkt.entity.Product;
+import com.jdc.mkt.entity.Customer.MemberType;
 
 public class G_jpql_quert_exe extends JpaFactory {
-
+	
 	@ParameterizedTest
 	@CsvSource({
-		"Alice Johnson,5"
+		"Silver,3"
 	})
+	void selectProductByMemberType(String memberType,int size) {
+		var query = em.createQuery("""
+				select p from Product p join p.voucherDetails vd
+				where vd.voucher.customer.memberType = :type
+				""",Product.class);
+		query.setParameter("type", MemberType.valueOf(memberType));
+		var list = query.getResultList();
+		assertEquals(size, list.size());
+	}
+
 	/*
 	 * select * from product_tbl p
 	 * join voucher_detail_tbl vd on vd.product_id = p.id
@@ -21,10 +32,14 @@ public class G_jpql_quert_exe extends JpaFactory {
 	 * where c.name = ?
 	 */
 	
+	@ParameterizedTest
+	@CsvSource({
+		"Alice Johnson,5"
+	})
 	void selectProductByCustomerBuy(String customer,int size) {
 		var query = em.createQuery("""
-				select vd.id.product from VoucherDetail vd 
-				where vd.id.voucher.customer.name = :name
+				select vd.product from VoucherDetail vd 
+				where vd.voucher.customer.name = :name
 				""",Product.class);
 		query.setParameter("name", customer);
 		var list = query.getResultList();

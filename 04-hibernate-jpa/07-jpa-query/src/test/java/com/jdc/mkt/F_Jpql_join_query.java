@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import com.jdc.mkt.dto.Category;
-import com.jdc.mkt.dto.Product;
+import com.jdc.mkt.entity.Category;
+import com.jdc.mkt.entity.Product;
 
 public class F_Jpql_join_query extends JpaFactory{
 

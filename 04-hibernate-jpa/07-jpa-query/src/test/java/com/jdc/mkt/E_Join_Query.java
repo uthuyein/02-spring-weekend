@@ -3,9 +3,9 @@ package com.jdc.mkt;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-import com.jdc.mkt.dto.Category;
-import com.jdc.mkt.dto.Contact;
-import com.jdc.mkt.dto.Product;
+import com.jdc.mkt.entity.Category;
+import com.jdc.mkt.entity.Contact;
+import com.jdc.mkt.entity.Product;
 
 public class E_Join_Query extends JpaFactory{
 

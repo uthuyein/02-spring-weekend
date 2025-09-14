@@ -1,4 +1,4 @@
-package com.jdc.mkt.dto;
+package com.jdc.mkt.entity;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

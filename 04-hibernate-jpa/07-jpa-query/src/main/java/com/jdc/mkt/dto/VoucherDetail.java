@@ -2,7 +2,6 @@ package com.jdc.mkt.dto;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -17,8 +16,13 @@ public class VoucherDetail {
 	private int qty;
 	private double subTotal;
 	
-	@ManyToOne
-	private Product product;
-	@ManyToOne
-	private Voucher voucher;
+//	@ManyToOne
+//	//@MapsId("productId")
+//	//@JoinColumn(insertable = false,updatable = false)
+//	private Product product;
+//	
+//	@ManyToOne
+//	//@MapsId("voucherId")
+//	//@JoinColumn(insertable = false,updatable = false)
+//	private Voucher voucher;
 }

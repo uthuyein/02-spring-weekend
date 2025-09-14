@@ -22,7 +22,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
+//@Entity
 @NoArgsConstructor
 @Table(name = "category_tbl")
 //@EntityListeners(TimesListener.class)

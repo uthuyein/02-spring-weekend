@@ -29,6 +29,7 @@ public class E_SynchronizationDb extends JpaFactory {
 				System.out.println("===== (One) Before Update Balance :" + a1.getBalance() + " ======");
 
 				Thread.sleep(800);
+				
 				em.refresh(a1);
 				
 				a1.setBalance(a1.getBalance() + balance);

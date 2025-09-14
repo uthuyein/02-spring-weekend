@@ -20,7 +20,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Data
-@Entity
+//@Entity
 @Table(name = "product_tbl")
 @NoArgsConstructor
 @RequiredArgsConstructor

@@ -54,8 +54,6 @@ INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, subTotal)VALUES (1,
 INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, subTotal)VALUES (2, 3, 3, 75.00);  -- 3x Men T-Shirt
 INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, subTotal)VALUES (2, 4, 1, 55.00);  -- 1x Women Jeans
 
-INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, subTotal) VALUES (1, 1, 1, 1299.00); -- iPhone 15 Pro
-INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, subTotal) VALUES (1, 2, 1, 1099.00); -- Samsung Galaxy S24
 
 INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, subTotal) VALUES (2, 3, 2, 50.00);  -- 2x T-Shirt
 INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, subTotal) VALUES (2, 4, 1, 55.00);  -- 1x Jeans

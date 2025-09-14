@@ -1,7 +1,5 @@
 package com.jdc.mkt.dto;
 
-import org.hibernate.annotations.ColumnDefault;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

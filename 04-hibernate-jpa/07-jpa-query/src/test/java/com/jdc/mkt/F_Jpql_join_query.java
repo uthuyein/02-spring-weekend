@@ -28,8 +28,8 @@ public class F_Jpql_join_query extends JpaFactory{
 	@Test
 	void toOneTest() {
 		var query = em.createQuery("""
-				select p from Product p left join p.category
-				where p.category.name = :name
+				select p from Product p  join p.category c
+				where c.name = :name
 				""",Product.class);
 		query.setParameter("name","Electronics" );
 		assertEquals(2, query.getResultList().size());

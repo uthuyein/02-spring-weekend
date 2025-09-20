@@ -16,7 +16,8 @@ public class G_jpql_quert_exe extends JpaFactory {
 	})
 	void selectProductByMemberType(String memberType,int size) {
 		var query = em.createQuery("""
-				select p from Product p join p.voucherDetails vd
+				select p from Product p 
+				join p.voucherDetails vd
 				where vd.voucher.customer.memberType = :type
 				""",Product.class);
 		query.setParameter("type", MemberType.valueOf(memberType));

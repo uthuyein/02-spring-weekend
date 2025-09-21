@@ -13,7 +13,7 @@ import jakarta.persistence.EntityManagerFactory;
 @Configuration
 @ComponentScan(basePackages = {"com.jdc.mkt.entity","com.jdc.mkt.service"})
 @EnableTransactionManagement
-public class AppConfig {
+public class LocalEntityManagerBeanConfig {
 
 	@Bean
 	LocalEntityManagerFactoryBean entityManagerFactoryBean() {

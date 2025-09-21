@@ -20,6 +20,12 @@
 	    <artifactId>hibernate-core</artifactId>
 	    <version>${hibernate.version}</version>
 	</dependency>
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-jpamodelgen</artifactId>
+	    <version>${hibernate.version}</version>
+	    <scope>provided</scope>
+	</dependency>
 	 <dependency>
 	    <groupId>org.projectlombok</groupId>
 	    <artifactId>lombok</artifactId>
@@ -39,8 +45,8 @@
 	  	 <scope>test</scope>
   	  </dependency>
   </dependencies>
-  <modules>
-  	
+  
+  <modules>  	
   	<module>01-classfield-mappings</module>
   	<module>02-relational-mappings</module>
   	<module>03-mapsId-vs-pkeyJoinColumn</module>
@@ -49,4 +55,24 @@
   	<module>06-entitymanager</module>
   	<module>07-jpa-query</module>
   </modules>
+    
+  <build>
+  	<plugins>
+  		<plugin>
+  		 <groupId>org.apache.maven.plugins</groupId>
+  		 <artifactId>maven-compiler-plugin</artifactId>
+  		 <version>3.14.0</version>
+  		 <configuration>
+  		 	<annotationProcessorPaths>
+  		 		<annotationProcessorPath>
+  		 			<groupId>org.hibernate</groupId>
+	    			<artifactId>hibernate-jpamodelgen</artifactId>
+	   				<version>${hibernate.version}</version>
+  		 		</annotationProcessorPath>
+  		 	</annotationProcessorPaths>
+  		 </configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+  
 </project>

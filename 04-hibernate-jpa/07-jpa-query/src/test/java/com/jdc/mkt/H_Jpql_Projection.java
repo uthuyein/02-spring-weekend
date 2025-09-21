@@ -5,8 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import com.jdc.mkt.entity.dto.SelectPNameWithCName;
 import com.jdc.mkt.entity.dto.SelectPNameWithSaleQty;
+import com.jdc.mkt.utils.JpaFactory;
 
-public class H_projection extends JpaFactory{
+public class H_Jpql_Projection extends JpaFactory{
 
 	@Test
 	void selectSaleProductWithQty() {

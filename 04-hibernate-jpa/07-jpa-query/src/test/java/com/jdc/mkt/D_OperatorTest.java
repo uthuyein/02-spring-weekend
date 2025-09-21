@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import com.jdc.mkt.entity.Product;
+import com.jdc.mkt.utils.JpaFactory;
 
 public class D_OperatorTest extends JpaFactory {
 

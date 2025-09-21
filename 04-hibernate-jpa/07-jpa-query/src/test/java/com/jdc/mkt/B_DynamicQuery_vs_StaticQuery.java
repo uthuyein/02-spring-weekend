@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import com.jdc.mkt.utils.JpaFactory;
+
 public class B_DynamicQuery_vs_StaticQuery extends JpaFactory{
 
 	@Order(2)

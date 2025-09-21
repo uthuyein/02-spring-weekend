@@ -1,5 +1,7 @@
 package com.jdc.mkt.entity;
 
+import java.util.List;
+
 import org.hibernate.annotations.Check;
 import org.hibernate.annotations.ColumnDefault;
 
@@ -10,11 +12,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "product_tbl")
 @Check(constraints = "dt_price >= ws_price")
 @NamedQuery(name = "countByProductDtPrice",
@@ -36,7 +41,9 @@ public class Product {
 	private boolean active;
 	
 	@ManyToOne
-	private Category category;
+	private Category category ;
 	
+	@OneToMany(mappedBy = "product")
+	private List<VoucherDetail> voucherDetails;
 	
 }

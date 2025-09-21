@@ -9,6 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import com.jdc.mkt.entity.Product;
+import com.jdc.mkt.utils.JpaFactory;
 
 public class A_query_vs_typedQuery extends JpaFactory{
 

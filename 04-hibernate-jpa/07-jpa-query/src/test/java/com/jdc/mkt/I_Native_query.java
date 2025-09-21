@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import com.jdc.mkt.entity.Product;
 import com.jdc.mkt.entity.dto.SelectPNameWithCName;
+import com.jdc.mkt.utils.JpaFactory;
 
 @SuppressWarnings("unchecked")
 public class I_Native_query extends JpaFactory{

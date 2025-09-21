@@ -1,4 +1,4 @@
-package com.jdc.mkt;
+package com.jdc.mkt.utils;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -15,7 +15,7 @@ import jakarta.persistence.Persistence;
 public class JpaFactory {
 
 	protected static EntityManagerFactory emf ;
-	EntityManager em;
+	protected EntityManager em;
 	
 	@BeforeEach
 	void createEm() {

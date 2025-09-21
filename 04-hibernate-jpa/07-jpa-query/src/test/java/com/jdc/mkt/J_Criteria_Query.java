@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.jdc.mkt.entity.Product;
+import com.jdc.mkt.utils.JpaFactory;
 
 public class J_Criteria_Query extends JpaFactory{
 	
@@ -54,7 +55,7 @@ public class J_Criteria_Query extends JpaFactory{
 		cq.select(root);
 		
 		//lower(name) like lower(?)
-		var predicate = cb.like(cb.lower(root.get("name")), "s".concat("%"));
+		var predicate = cb.like(cb.lower(root.get("name")), "s".toLowerCase().concat("%"));
 		
 		//where lower(name) like lower(?)
 		cq.where(predicate);

@@ -7,8 +7,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import com.jdc.mkt.entity.Product;
 import com.jdc.mkt.entity.Customer.MemberType;
+import com.jdc.mkt.utils.JpaFactory;
 
-public class G_jpql_quert_exe extends JpaFactory {
+public class G_jpql_query extends JpaFactory {
 	
 	@ParameterizedTest
 	@CsvSource({

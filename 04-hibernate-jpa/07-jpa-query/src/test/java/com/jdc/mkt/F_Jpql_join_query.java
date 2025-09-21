@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import com.jdc.mkt.entity.Category;
 import com.jdc.mkt.entity.Product;
+import com.jdc.mkt.utils.JpaFactory;
 
 public class F_Jpql_join_query extends JpaFactory{
 

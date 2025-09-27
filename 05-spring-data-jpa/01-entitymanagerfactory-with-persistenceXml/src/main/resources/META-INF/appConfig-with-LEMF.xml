@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
    		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<context:component-scan base-package="com.jdc.mkt.entity com.jdc.mkt.service"/>
+	<context:component-scan base-package="com.jdc.mkt.service"/>
 	
 	<bean id= "entityManagerFactoryBean" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
 		<property name="persistenceProviderClass" value="org.hibernate.jpa.HibernatePersistenceProvider" ></property>

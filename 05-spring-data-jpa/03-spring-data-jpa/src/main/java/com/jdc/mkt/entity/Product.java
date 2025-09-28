@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -21,6 +22,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "product_tbl")
 @Check(constraints = "dt_price >= ws_price")
+//@NamedQuery(
+//		name = "Product.selectWithCNamePNameAndQty",
+//		
+//		query = """
+//				select new com.jdc.mkt.entity.dto.SelectCNamePNameAndTotalQty(
+//				p.category.name,p.name,sum(vd.qty))  
+//				from Product p join p.voucherDetails vd
+//				group by p.category.name,p.name
+//				""")
 public class Product {
 
 	@Id

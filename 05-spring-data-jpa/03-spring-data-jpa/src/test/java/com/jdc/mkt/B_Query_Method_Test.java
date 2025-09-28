@@ -2,6 +2,7 @@ package com.jdc.mkt;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,19 @@ public class B_Query_Method_Test {
 	private ProductService service;
 	
 	@Test
+	@Order(5)
+	void findCategoryByProductNameStartsWithTest() {
+	}
+	
+	@Test
+	@Disabled
+	@Order(4)
+	void countByDtPriceLessThanTest() {
+		var count = service.countByDtPriceLessThan(100.00);
+		assertEquals(5,count);
+	}
+	@Test
+	@Disabled
 	@Order(3)
 	void frist3StratWithTest() {
 		var list = service.findFirst3ByStartsWith("S");
@@ -26,6 +40,7 @@ public class B_Query_Method_Test {
 	}
 	
 	@Test
+	@Disabled
 	@Order(2)
 	void streamByProductNameTest() {
 		var list = service.getProductByCategoryName("S");
@@ -33,6 +48,7 @@ public class B_Query_Method_Test {
 	}
 	
 	@Test
+	@Disabled
 	@Order(1)
 	void findByCategoryNameTest() {
 		var list = service.findProductByCategoryName("Books");

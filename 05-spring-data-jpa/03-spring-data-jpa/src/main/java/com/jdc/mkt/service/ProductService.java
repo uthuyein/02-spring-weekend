@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jdc.mkt.entity.Product;
+import com.jdc.mkt.entity.dto.SelectCNamePNameAndTotalQty;
 import com.jdc.mkt.repository.ProductRepo;
 
 @Service
@@ -27,4 +28,13 @@ public class ProductService {
 	public List<Product> findFirst3ByStartsWith(String name){
 		return repo.findFirst3ByNameStartsWith(name);
 	}
+	
+	public Long countByDtPriceLessThan(double d) {
+		return repo.countProductBydtPriceLessThanEqual(d);
+	}
+	
+	public List<SelectCNamePNameAndTotalQty> findCNamePNameWithTotalQty(){
+		return repo.selectWithCNamePNameAndQty();
+	}
+	
 }

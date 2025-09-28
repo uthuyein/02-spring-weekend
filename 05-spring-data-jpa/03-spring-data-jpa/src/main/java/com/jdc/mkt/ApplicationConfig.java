@@ -62,7 +62,7 @@ public class ApplicationConfig {
 	
 	Map<String, String> getPropertiesMap(){
 		Map<String, String> map = new HashMap<>();
-		map.put("hibernate.hbm2ddl.auto", "create-drop");
+		map.put("hibernate.hbm2ddl.auto", "none");
 		map.put("hibernate.show_sql", "true");
 		map.put("hibernate.format_sql", "true");
 		return map;

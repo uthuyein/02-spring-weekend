@@ -6,4 +6,5 @@ import com.jdc.mkt.entity.Category;
 
 public interface CategoryRepo extends JpaRepository<Category, Integer> {
 
+	
 }

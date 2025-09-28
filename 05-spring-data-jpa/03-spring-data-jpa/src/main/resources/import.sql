@@ -24,13 +24,13 @@ INSERT INTO customer_tbl (name, member_type) VALUES ('Alice Johnson', 'Gold');
 INSERT INTO customer_tbl (name, member_type) VALUES ('Bob Smith', 'Silver');
 INSERT INTO customer_tbl (name, member_type) VALUES ('Charlie Brown', 'NoMember');
 INSERT INTO customer_tbl (name, member_type) VALUES ('Diana Prince', 'Platinum');
-INSERT INTO customer_tbl (name, member_type) VALUES ('Ethan Hunt', 'Diamond');
+INSERT INTO customer_tbl (name, member_type) VALUES ('Bthan Hunt', 'Diamond');
 
 
 INSERT INTO contact_tbl (email, primaryPhone, secondaryPhone, customer_id)VALUES ('alice.johnson@example.com', '0911111111', '0922222222', 1);
 INSERT INTO contact_tbl (email, primaryPhone, secondaryPhone, customer_id)VALUES ('bob.smith@example.com', '0933333333', '0944444444', 2);
 INSERT INTO contact_tbl (email, primaryPhone, secondaryPhone, customer_id)VALUES ('charlie.brown@example.com', '0955555555', '0966666666', 3);
-INSERT INTO contact_tbl (email, primaryPhone, secondaryPhone, customer_id)VALUES ('diana.prince@example.com', '0977777777', '0988888888', 4);
+INSERT INTO contact_tbl (email, primaryPhone, secondaryPhone, customer_id)VALUES ('diana.prince@example.com', '0977777777', '0911111111', 4);
 INSERT INTO contact_tbl (email, primaryPhone, secondaryPhone, customer_id)VALUES ('ethan.hunt@example.com', '0999999999', '0901234567', 5);
 
 INSERT INTO voucher_tbl (customer_id) VALUES (1);

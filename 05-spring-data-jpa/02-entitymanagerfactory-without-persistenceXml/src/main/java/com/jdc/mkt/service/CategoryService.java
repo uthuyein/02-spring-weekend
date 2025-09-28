@@ -16,6 +16,7 @@ public class CategoryService {
 	
 	@Transactional
 	public void create(Category c) {
+		
 		em.persist(c);
 	}
 }

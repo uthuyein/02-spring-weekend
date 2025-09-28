@@ -5,31 +5,44 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableJpaRepositories
 @EnableTransactionManagement
+@PropertySource("classpath:/mysqlDatasource.properties")
 @ComponentScan(
 		basePackages = {"com.jdc.mkt.service","com.jdc.mkt.repository"})
 public class ApplicationConfig {
 
 	@Bean
-	DataSource datasource() {
-		return new EmbeddedDatabaseBuilder()
-				.setType(EmbeddedDatabaseType.HSQL)
-				.build();
+	DataSource datasource(
+			@Value("${ds.url}") String url,
+			@Value("${ds.user}") String user,
+			@Value("${ds.pass}") String pass) {
+		
+		HikariConfig config = new HikariConfig();
+		config.setJdbcUrl(url);
+		config.setUsername(user);
+		config.setPassword(pass);
+		return new HikariDataSource(config);
+//		return new EmbeddedDatabaseBuilder()
+//				.setType(EmbeddedDatabaseType.HSQL)
+//				.build();
 	}
 	
 	@Bean

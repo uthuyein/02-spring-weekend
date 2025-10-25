@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jdc.mkt.entity.Product;
+import com.jdc.mkt.entity.dto.SelectCNamePNameAndTotalInt;
 import com.jdc.mkt.entity.dto.SelectCNamePNameAndTotalQty;
 import com.jdc.mkt.repository.ProductRepo;
 
@@ -33,8 +34,16 @@ public class ProductService {
 		return repo.countProductBydtPriceLessThanEqual(d);
 	}
 	
-	public List<SelectCNamePNameAndTotalQty> findCNamePNameWithTotalQty(){
-		return repo.selectWithCNamePNameAndQty();
+	public List<SelectCNamePNameAndTotalQty> findCNamePNameWithTotalQtyByJpql(){
+		return repo.selectWithCNamePNameAndQtyByJpql();
+	}
+	
+	public List<SelectCNamePNameAndTotalQty> findCNamePNameWithTotalQtyBySql(){
+		return repo.selectWithCNamePNameAndQtyBySql();
+	}
+	
+	public List<SelectCNamePNameAndTotalInt> findCNamePNameWithTotalQtyByInt(){
+		return repo.selectWithCNamePNameAndQtyByInt();
 	}
 	
 }

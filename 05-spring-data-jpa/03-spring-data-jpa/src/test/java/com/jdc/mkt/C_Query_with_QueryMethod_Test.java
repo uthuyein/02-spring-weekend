@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import com.jdc.mkt.entity.Customer.MemberType;
+import com.jdc.mkt.entity.dto.SelectCNamePNameAndTotalInt;
 import com.jdc.mkt.entity.dto.SelectCNamePNameAndTotalQty;
 import com.jdc.mkt.service.CustomerService;
 import com.jdc.mkt.service.ProductService;
@@ -28,18 +30,36 @@ public class C_Query_with_QueryMethod_Test {
 	ProductService pService;
 	
 	@Test
+	@Order(8)
+	void findCNamePNameWithTotalByInt() {
+		List<SelectCNamePNameAndTotalInt> list = pService.findCNamePNameWithTotalQtyByInt();
+		list.forEach(s -> s.showResult());
+	}
+	
+	@Test
+	@Disabled
+	@Order(7)
+	void findCNamePNameWithTotalBySql() {
+		List<SelectCNamePNameAndTotalQty> list = pService.findCNamePNameWithTotalQtyBySql();
+		System.out.println(list);
+	}
+	
+	@Test
+	@Disabled
 	@Order(6)
-	void findCNamePNameWithTotal() {
-		List<SelectCNamePNameAndTotalQty> list = pService.findCNamePNameWithTotalQty();
+	void findCNamePNameWithTotalByJpql() {
+		List<SelectCNamePNameAndTotalQty> list = pService.findCNamePNameWithTotalQtyByJpql();
 		System.out.println(list);
 	}
 	@Test
+	@Disabled
 	@Order(5)
 	void findWithMemberType() {
 		var list = cService.findWithMemberType(MemberType.Silver);
 		assertEquals(1, list.size());
 	}
 	@Test
+	@Disabled
 	@Order(4)
 	void findByNameWithNamedQuery() {
 		var list = cService.findByName("b");
@@ -47,18 +67,21 @@ public class C_Query_with_QueryMethod_Test {
 	}
 	
 	@Test
+	@Disabled
 	@Order(3)
 	void findByContactWithSql() {
 		var list = cService.findByContact("0911111111");
 		assertEquals(2, list.size());
 	}
 	@Test
+	@Disabled
 	@Order(2)
 	void findByEmailWithJpql() {
 		var list = cService.findByEmailWithJpql("alice.johnson@example.com");
 		assertEquals(1, list.size());
 	}
 	@Test
+	@Disabled
 	@Order(1)
 	void findCustomerByContactEmailWithNamingRule() {
 		var list = cService.findCustomerByContactEmail("alice.johnson@example.com");

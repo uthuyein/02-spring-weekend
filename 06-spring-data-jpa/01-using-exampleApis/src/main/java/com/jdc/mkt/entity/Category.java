@@ -1,16 +1,12 @@
 package com.jdc.mkt.entity;
 
-import java.util.List;
-
 import org.hibernate.annotations.ColumnDefault;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -21,15 +17,13 @@ public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
 	@Column(nullable = false, length = 25, unique = true)
 	private String name;
 
 	@ColumnDefault("true")
-	private boolean active;
+	private Boolean active;
 
-	@OneToMany(mappedBy = "category",orphanRemoval = true,cascade = CascadeType.ALL)
-	private List<Product> products;
 
 }

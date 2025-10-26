@@ -9,9 +9,9 @@ import org.springframework.data.repository.NoRepositoryBean;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 
+
 @NoRepositoryBean
 public interface BaseRepo<T,ID> extends JpaRepository<T, ID>{
 
 	<R>List<R> search(Function<CriteriaBuilder, CriteriaQuery<R>> queryFun);
-	
 }

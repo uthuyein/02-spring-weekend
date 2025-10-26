@@ -25,7 +25,7 @@ public class ProductService {
 	}
 
 	private Function<CriteriaBuilder,CriteriaQuery<SelectCNamePNameAndDtPrice>> searchFunction(SearchByPNameLikeAndDtPrice search) {
-		Function<CriteriaBuilder,CriteriaQuery<SelectCNamePNameAndDtPrice>> fun = cb -> {
+		return  cb -> {
 			
 			var query = cb.createQuery(SelectCNamePNameAndDtPrice.class);
 			
@@ -38,6 +38,6 @@ public class ProductService {
 			return query;
 		};
 		
-		return fun;
+		
 	}
 }

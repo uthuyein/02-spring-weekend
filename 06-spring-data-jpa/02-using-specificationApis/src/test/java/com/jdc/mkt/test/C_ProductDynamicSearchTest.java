@@ -8,7 +8,7 @@ import com.jdc.mkt.entity.search.SearchByPNameLikeAndDtPrice;
 import com.jdc.mkt.service.ProductService;
 
 @SpringBootTest
-public class C_ProductTest {
+public class C_ProductDynamicSearchTest {
 	
 	@Autowired
 	private ProductService service;
@@ -20,7 +20,7 @@ public class C_ProductTest {
 	
 	@Test
 	void searchBy() {
-		var list = service.searchBy(new SearchByPNameLikeAndDtPrice("Diary", "Milk", 0, 0));
+		var list = service.searchBy(new SearchByPNameLikeAndDtPrice("Diary","m", 0, 0));
 		System.out.println(list);
 	}
 	

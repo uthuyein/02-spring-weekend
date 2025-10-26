@@ -14,24 +14,24 @@ import jakarta.persistence.criteria.Root;
 public record SearchByPNameLikeAndDtPrice(
 		String cName,
 		String pName,
-		double from,
-		double to
+		Integer from,
+		Integer to
 		) {
 
 	public  Predicate[] search(CriteriaBuilder cb, Root<Product> root) {
 		var params = new ArrayList<Predicate>();
 		
 		if(!StringUtils.isBlank(cName)) {
-			cb.equal(root.get(Product_.category).get(Category_.name), cName);
+			params.add(cb.equal(root.get(Product_.category).get(Category_.name), cName));
 		}
 		
 		if(!StringUtils.isBlank(pName)) {
-			cb.like(cb.lower( root.get(Product_.name)), cName.concat("%"));
+			params.add(cb.like(cb.lower( root.get(Product_.name)), pName.concat("%")));
 		}
-//		
-//		if(from > 0 && to > 0) {
-//			cb.between(cb., null, null);
-//		}
+		
+		if(from > 0 && to > 0) {
+			params.add(cb.between(root.get(Product_.dtPrice), from, to));
+		}
 		
 		return params.toArray(size -> new Predicate[size]);
 	}

@@ -56,3 +56,44 @@ insert into product (name,dt_price,ws_price,category_id) values('Glass cleaner',
 insert into product (name,dt_price,ws_price,category_id) values('Dish soap',500,400,6);
 insert into product (name,dt_price,ws_price,category_id) values('Laundry soap',2200,2000,6);
 insert into product (name,dt_price,ws_price,category_id) values('Body Wash soap',2200,2000,6);
+
+
+
+--INSERT INTO voucher_tbl (customer_id) VALUES (1);
+--INSERT INTO voucher_tbl (customer_id) VALUES (2);
+--INSERT INTO voucher_tbl (customer_id) VALUES (3);
+--INSERT INTO voucher_tbl (customer_id) VALUES (1);
+--INSERT INTO voucher_tbl (customer_id) VALUES (5);
+--INSERT INTO voucher_tbl (customer_id) VALUES (1);
+--INSERT INTO voucher_tbl (customer_id) VALUES (2);
+--INSERT INTO voucher_tbl (customer_id) VALUES (3);
+--INSERT INTO voucher_tbl (customer_id) VALUES (4);
+--INSERT INTO voucher_tbl (customer_id) VALUES (5);
+--INSERT INTO voucher_tbl (customer_id) VALUES (1);
+--INSERT INTO voucher_tbl (customer_id) VALUES (2);
+--INSERT INTO voucher_tbl (customer_id) VALUES (4); -- 1,4,6,11 -- 2,7,12
+
+
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total)VALUES (1, 1, 1, 1299.00); -- 1x iPhone 15 Pro
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total)VALUES (1, 2, 2, 2198.00); -- 2x Samsung Galaxy S24
+--
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total)VALUES (2, 3, 3, 75.00);  -- 3x Men T-Shirt
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total)VALUES (2, 4, 1, 55.00);  -- 1x Women Jeans
+--
+--
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total) VALUES (2, 3, 2, 50.00);  -- 2x T-Shirt
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total) VALUES (2, 4, 1, 55.00);  -- 1x Jeans
+--
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total) VALUES (3, 5, 1, 45.00);  -- Spring Boot in Action
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total) VALUES (3, 6, 2, 100.00); -- 2x Learning Python
+--
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total) VALUES (4, 2, 1, 1099.00); -- Samsung Galaxy S24
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total) VALUES (4, 3, 3, 75.00);   -- 3x T-Shirts
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total) VALUES (4, 5, 1, 45.00);
+--
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total) VALUES (5, 7, 2, 60.00);   -- 2x Football
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total) VALUES (5, 8, 1, 120.00);  -- Tennis Racket
+--
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total) VALUES (6, 6, 1, 50.00);   -- Learning Python
+--
+--INSERT INTO voucher_detail_tbl (voucher_id, product_id, qty, sub_total) VALUES (7, 1, 1, 1299.00); -- iPhone

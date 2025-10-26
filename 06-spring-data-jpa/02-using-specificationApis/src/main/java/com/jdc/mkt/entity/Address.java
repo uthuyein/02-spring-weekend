@@ -19,6 +19,7 @@ public class Address {
 	private String street;
 	private String township;
 	private String city;
+	
 	@OneToMany(mappedBy = "address")
 	private List<Customer> customers;
 }

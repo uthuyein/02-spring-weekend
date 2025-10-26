@@ -1,0 +1,26 @@
+package com.jdc.mkt.entity;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "voucher_detail_tbl")
+public class VoucherDetail {
+
+	@EmbeddedId
+	private VoucherDetailPk id;
+	
+	private int qty;
+	private double subTotal;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Product product;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Voucher voucher;
+}

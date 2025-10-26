@@ -7,7 +7,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -27,8 +26,8 @@ public class Customer {
 	@Enumerated(EnumType.STRING)
 	private MemberType memberType;
 	
-	@OneToOne(mappedBy = "customer")
-	private Contact contact;
+//	@OneToOne(mappedBy = "customer",optional = true,fetch = FetchType.LAZY)
+//	private Contact contact;
 	
 	public enum MemberType{
 		NoMember,Silver,Gold,Platinum,Diamond

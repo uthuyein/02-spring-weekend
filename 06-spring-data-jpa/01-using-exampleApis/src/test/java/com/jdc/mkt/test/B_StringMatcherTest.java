@@ -22,11 +22,11 @@ public class B_StringMatcherTest {
 		p.setName("iPhone".toLowerCase());
 		p.setWsPrice(1199.00);
 		
-		var matcher = ExampleMatcher.matchingAny()
+		var matcher = ExampleMatcher.matching()
 					 .withIgnoreNullValues()
 					 .withIgnorePaths("dtPrice","wsPrice","active","id")
 					 .withIgnoreCase("name")
-					 .withStringMatcher(StringMatcher.STARTING);
+					 .withStringMatcher(StringMatcher.CONTAINING);
 		
 		var example = Example.of(p,matcher);
 		System.out.println(repo.findAll(example));

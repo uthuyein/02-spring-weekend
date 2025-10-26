@@ -34,6 +34,7 @@ public class A_ExampleMatcherForAllPropertiesTest {
 	public void nullHandler() {
 		var c = new Category();
 		c.setName("Electronics");
+		c.setActive(true);
 		var matcher = ExampleMatcher.matchingAny()
 					 .withNullHandler(NullHandler.IGNORE);
 				    //.withIgnoreNullValues();

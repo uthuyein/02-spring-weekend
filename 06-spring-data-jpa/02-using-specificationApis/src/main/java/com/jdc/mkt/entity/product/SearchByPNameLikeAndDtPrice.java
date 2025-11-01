@@ -1,4 +1,4 @@
-package com.jdc.mkt.entity.search;
+package com.jdc.mkt.entity.product;
 
 import java.util.ArrayList;
 

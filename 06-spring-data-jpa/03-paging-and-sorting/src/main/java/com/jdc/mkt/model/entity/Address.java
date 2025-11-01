@@ -1,4 +1,4 @@
-package com.jdc.mkt.entity;
+package com.jdc.mkt.model.entity;
 
 import java.util.List;
 

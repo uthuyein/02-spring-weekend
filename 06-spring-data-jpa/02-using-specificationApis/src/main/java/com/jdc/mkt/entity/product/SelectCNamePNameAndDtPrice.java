@@ -1,4 +1,4 @@
-package com.jdc.mkt.entity.select;
+package com.jdc.mkt.entity.product;
 
 import com.jdc.mkt.entity.Category_;
 import com.jdc.mkt.entity.Product;

@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jdc.mkt.entity.Product;
-import com.jdc.mkt.entity.search.SearchByPNameLikeAndDtPrice;
-import com.jdc.mkt.entity.select.SelectCNamePNameAndDtPrice;
+import com.jdc.mkt.entity.product.SearchByPNameLikeAndDtPrice;
+import com.jdc.mkt.entity.product.SelectCNamePNameAndDtPrice;
 import com.jdc.mkt.repo.ProductRepo;
 
 import jakarta.persistence.criteria.CriteriaBuilder;

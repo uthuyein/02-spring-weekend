@@ -63,5 +63,6 @@
 	<modules>
 		<module>01-using-exampleApis</module>
 		<module>02-using-specificationApis</module>
+		<module>03-paging-and-sorting</module>
 	</modules>
 </project>

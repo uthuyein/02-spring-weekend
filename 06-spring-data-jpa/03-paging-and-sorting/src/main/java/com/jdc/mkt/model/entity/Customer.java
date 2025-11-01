@@ -1,6 +1,4 @@
-package com.jdc.mkt.entity;
-
-import java.util.List;
+package com.jdc.mkt.model.entity;
 
 import org.hibernate.annotations.ColumnDefault;
 
@@ -9,30 +7,31 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
-@Table(name = "category_tbl")
-public class Category {
+@Table(name = "customer_tbl")
+public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@NonNull
-	@Column(nullable = false,length = 45,unique = true)
+	@Column(nullable = false,length = 45)
 	private String name;
+	@Column(nullable = false,unique = true,length = 12)
+	private String phone;
+	private String email;
 	@ColumnDefault("true")
 	private Boolean active;
-	@OneToMany(mappedBy = "category",orphanRemoval = true)
-	private List<Product> products;
+	@ManyToOne
+	private Address address;
 }

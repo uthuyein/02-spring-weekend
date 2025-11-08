@@ -11,13 +11,10 @@ import org.springframework.data.domain.Sort.Direction;
 
 import com.jdc.mkt.model.entity.Product;
 import com.jdc.mkt.model.repo.ProductRepo;
-import com.jdc.mkt.model.repo.VoucherRepo;
 
 @SpringBootTest
 public class B_PagingTest {
 
-	@Autowired
-	private VoucherRepo repo;
 	
 	@Autowired
 	private ProductRepo pRepo;

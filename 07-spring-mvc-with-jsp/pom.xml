@@ -55,6 +55,6 @@
   </build>
   <modules>
   	<module>01-spring-mvc-with-xml</module>
-  	<module>02-spring-mvc-without-webXml</module>
+  	<module>02-spring-mvc-without-xml</module>
   </modules>
 </project>

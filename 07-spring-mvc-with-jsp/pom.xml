@@ -5,33 +5,12 @@
   <version>1.0</version>
   <packaging>pom</packaging>
   <dependencies>
-  		<dependency>
-  		  <groupId>org.springframework</groupId>
-  		  <artifactId>spring-webmvc</artifactId>
-  		  <version>6.2.12</version>
-  		</dependency>
-  		<dependency>
-		    <groupId>jakarta.servlet</groupId>
-		    <artifactId>jakarta.servlet-api</artifactId>
-		    <version>6.1.0</version>
-		    <scope>provided</scope>
-		</dependency>
-		<dependency>
-		    <groupId>jakarta.servlet.jsp</groupId>
-		    <artifactId>jakarta.servlet.jsp-api</artifactId>
-		    <version>4.0.0</version>
-		    <scope>provided</scope>
-		</dependency>
-		<dependency>
-		    <groupId>jakarta.servlet.jsp.jstl</groupId>
-		    <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-		    <version>3.0.2</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.glassfish.web</groupId>
-		    <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-		    <version>3.0.1</version>
-		</dependency>
+		  <dependency>
+			   <groupId>org.projectlombok</groupId>
+			   <artifactId>lombok</artifactId>
+			   <version>1.18.42</version>
+		  </dependency>
+  		
   </dependencies>
   <build>
   	<plugins>
@@ -56,5 +35,6 @@
   <modules>
   	<module>01-spring-mvc-with-xml</module>
   	<module>02-spring-mvc-without-xml</module>
+  	<module>03-spring-mvc-with-boot</module>
   </modules>
 </project>

@@ -1,0 +1,2 @@
+insert into messenger_tbl(message_type,message)values('Information','You should know something about mvc !');
+insert into messenger_tbl(message_type,message)values('Confirmation','Are you sure to delete something !');

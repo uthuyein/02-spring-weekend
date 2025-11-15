@@ -19,22 +19,26 @@ public class WebMvcConfig implements WebMvcConfigurer{
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addRedirectViewController("/", "/views/home.jsp");
+		
+		registry.addViewController("/").setViewName("home");
+		registry.addViewController("/controller").setViewName("controllers/viewContollerMethod");	
+		registry.addRedirectViewController("/controller/redirect", "/views/controllers/redirect.jsp");
 		
 	}
 	
 	@Bean
 	SimpleUrlHandlerMapping handlerMapping(LegacyController legacy) {
 		var map = new SimpleUrlHandlerMapping();
-		map.setUrlMap(Map.of("/legacy",legacy));		
+		map.setUrlMap(Map.of("/controller/legacy",legacy));	
+		
 		return map;
 	}
 	
 	@Bean
 	RouterFunction<ServerResponse> routerFunction(){
 		return RouterFunctions.route()
-				.GET("/function",req -> RenderingResponse.create("functional")
-						.modelAttribute("message","Hello router function")
+				.GET("/controller/router",req -> RenderingResponse.create("controllers/functional")
+						.modelAttribute("message","Using from router function")
 						.build() )
 				.build();
 	}

@@ -10,9 +10,9 @@
 				</c:url>
 				<a class="nav-link" href="${request }">Request Params</a>
 			</li>
-			<li class="nav-item" ><a class="nav-link" href="">Form Params</a></li>
-			<li class="nav-item" ><a class="nav-link" href="">Post Params</a></li>
-			<li class="nav-item" ><a class="nav-link" href="">Path Params</a></li>
+			<li class="nav-item" ><a class="nav-link" href="${root }/params/form/get?type=get">Form Params</a></li>
+			<li class="nav-item" ><a class="nav-link" href="${root }/params/form/get?type=post">Post Params</a></li>
+			<li class="nav-item" ><a class="nav-link" href="${root }/params/path/hello path message">Path Params</a></li>
 		</ul>
 	</div>
 	<div class="col">

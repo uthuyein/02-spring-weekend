@@ -14,6 +14,7 @@
 	<!-- navigation  -->
 	<nav class="navbar navbar-expand bg-light d-flex justify-content-end">
 			<ul class="navbar-nav">
+				<li class="nav-item"><a href="${root }/legacy" class="nav-link">Legacy Controller</a></li>
 				<li class="nav-item"><a href="${root }/returns" class="nav-link">ReturnType Handler</a></li>
 				<li class="nav-item"><a href="${root }/params" class="nav-link">Input params</a></li>
 			</ul>

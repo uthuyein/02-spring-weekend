@@ -20,13 +20,13 @@ public class WebMvcConfig implements WebMvcConfigurer{
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addRedirectViewController("/", "/views/home.jsp");
+		
 	}
 	
 	@Bean
 	SimpleUrlHandlerMapping handlerMapping(LegacyController legacy) {
 		var map = new SimpleUrlHandlerMapping();
-		map.setUrlMap(Map.of("/legacy",legacy));
-		
+		map.setUrlMap(Map.of("/legacy",legacy));		
 		return map;
 	}
 	

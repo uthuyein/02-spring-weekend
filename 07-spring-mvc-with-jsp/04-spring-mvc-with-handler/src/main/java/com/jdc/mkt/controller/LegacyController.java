@@ -12,7 +12,8 @@ public class LegacyController implements Controller{
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		var model = new ModelAndView("/views/legacy");		
+		var model = new ModelAndView("legacy");		
+		System.out.println("controller");
 		return model;
 	}
 

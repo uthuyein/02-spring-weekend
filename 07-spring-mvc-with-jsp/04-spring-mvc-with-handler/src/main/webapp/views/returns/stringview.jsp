@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>Hello logical view controller</h1>
-</body>
-</html>
+<%@ taglib prefix="app" tagdir="/WEB-INF/tags" %>
+
+<app:layout>
+	<app:return>
+		<h3>String View Return</h3>
+	</app:return>
+</app:layout>

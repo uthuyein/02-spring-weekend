@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/params")
 public class ParamTypeHandlerController {
+	
+	@GetMapping
+	String index() {
+		return "params/param";
+	}
 
 	@GetMapping("methodParam")
 	String reqParamMethod(

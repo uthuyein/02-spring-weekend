@@ -8,6 +8,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/returns")
 public class ReturnTypeHandlerController {
+	
+	@GetMapping
+	String index() {
+		return "returns/stringview";
+	}
 
 	//url => /returns/string
 	@GetMapping("string")

@@ -10,18 +10,18 @@
 			<i class="bi bi-file-earmark"></i> Product Form
 		</h3>
 		<label for="" class="alert-info">${message }</label>
-		<form:form action="${root }/product/add" method="post"
+		<form:form action="${root }/product" method="post"
 			modelAttribute="productForm">
 			<div class="form-group mb-3">
 				<label for="category" class="form-label">Category</label>
 				<form:input type="text" path="category" class="form-control"></form:input>
-				<small> <form:errors path="category" cssStyle="text-danger"></form:errors>
+				<small> <form:errors path="category" cssClass="text-danger"></form:errors>
 				</small>
 			</div>
 			<div class="form-group mb-3">
 				<label for="name" class="form-label">Product</label>
 				<form:input type="text" path="name" class="form-control"></form:input>
-				<small> <form:errors path="name" cssStyle="text-danger"></form:errors>
+				<small> <form:errors path="name" cssClass="text-danger"></form:errors>
 				</small>
 			</div>
 			<div class="form-group mb-3">
@@ -32,19 +32,19 @@
 						<option value="${size}">${size }</option>
 					</c:forEach>
 				</form:select>
-				<small> <form:errors path="size" cssStyle="text-danger"></form:errors>
+				<small> <form:errors path="size" cssClass="text-danger"></form:errors>
 				</small>
 			</div>
 			<div class="form-group mb-3">
 				<label for="dtPrice" class="form-label">Detail Price</label>
 				<form:input type="number" path="dtPrice" class="form-control"></form:input>
-				<small> <form:errors path="dtPrice" cssStyle="text-danger"></form:errors>
+				<small> <form:errors path="dtPrice" cssClass="text-danger"></form:errors>
 				</small>
 			</div>
 			<div class="form-group mb-3">
 				<label for="wsPrice" class="form-label">Whole Sale Price</label>
 				<form:input type="number" path="wsPrice" class="form-control"></form:input>
-				<small> <form:errors path="wsPrice" cssStyle="text-danger"></form:errors>
+				<small> <form:errors path="wsPrice" cssClass="text-danger"></form:errors>
 				</small>
 			</div>
 			<div class="form-group mb-3">

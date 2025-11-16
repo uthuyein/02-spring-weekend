@@ -38,14 +38,14 @@ public class ProductController {
 		return "/products/add";
 	}
 	
-	@PostMapping("add")
+	@PostMapping
 	String addProduct(@Validated @ModelAttribute("productForm") ProductForm form,BindingResult result,RedirectAttributes attributes) {
 		
 		if(null == form) {
 			return "redirect:/product/add";
 		}
 		if(result.hasErrors()) {
-			return "redirect:/product/add";
+			return "products/add";
 		}
 		var category = catRepo.findByName(form.getCategory());
 		productRepo.save(form.entity(category));

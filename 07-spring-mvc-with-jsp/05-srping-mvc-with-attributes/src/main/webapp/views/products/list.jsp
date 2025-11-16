@@ -4,17 +4,23 @@
 
 <app:layout>
 	<h3>Product List</h3>
-	<div class="row">
-		<div class="col">
-			<form action="${root }/product/search">
+	<form action="${root }/product/search">
+		<div class="row g-3 align-items-center">
+			<div class="<col-6></col-6>">
 				<input type="text" class="form-control" placeholder="Search ..." />
+			</div>
+			<div class="col-auto">
 				<button class="btn btn-outline-primary">
 					<i class="bi bi-search"></i>
 				</button>
-			</form>
+
+			</div>
+			<div class="col-auto">
+				<a href="${root }/product/add" class="btn btn-outline-success"><i
+					class="bi bi-plus"></i></a>
+			</div>
 		</div>
-		<div class="col">
-			<a href="${root }/product/add" class="btn btn-outline-success"><i class="bi bi-plus"></i></a>
-		</div>
-	</div>
+	</form>
+
+
 </app:layout>

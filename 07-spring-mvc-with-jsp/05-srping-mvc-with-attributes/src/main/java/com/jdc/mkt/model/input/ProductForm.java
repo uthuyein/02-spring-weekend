@@ -1,5 +1,7 @@
 package com.jdc.mkt.model.input;
 
+import com.jdc.mkt.model.entity.Category;
+import com.jdc.mkt.model.entity.Product;
 import com.jdc.mkt.model.entity.Product.Size;
 
 import jakarta.validation.constraints.NotBlank;
@@ -22,4 +24,15 @@ public class ProductForm {
 	private String category;
 	
 	private Boolean active;
+
+	public Product entity(Category cat) {
+		var p = new Product();
+		p.setCategory(cat);
+		p.setName(name);
+		p.setDtPrice(dtPrice);
+		p.setWsPrice(wsPrice);
+		p.setSize(size);
+		p.setActive(true);
+		return p;
+	}
 }

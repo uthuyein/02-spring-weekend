@@ -27,6 +27,7 @@ public class ProductForm {
 
 	public Product entity(Category cat) {
 		var p = new Product();
+		p.setId(id);
 		p.setCategory(cat);
 		p.setName(name);
 		p.setDtPrice(dtPrice);
@@ -34,5 +35,16 @@ public class ProductForm {
 		p.setSize(size);
 		p.setActive(true);
 		return p;
+	}
+	
+	public static ProductForm from(Product p) {
+		var form = new ProductForm();
+		form.setId(p.getId());
+		form.setCategory(p.getCategory().getName());
+		form.setName(p.getName());
+		form.setDtPrice(p.getDtPrice());
+		form.setWsPrice(p.getWsPrice());
+		form.setSize(p.getSize());
+		return form;
 	}
 }

@@ -35,7 +35,7 @@ public class Product {
 	@ColumnDefault("true")
 	private Boolean active;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(optional = false, cascade = CascadeType.PERSIST)
 	private Category category;
 	
 	public enum Size{

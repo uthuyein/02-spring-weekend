@@ -20,6 +20,9 @@
   		 <version>3.14.1</version>
   		 <configuration>
   		 	<release>21</release>
+  		 	<compilerArgs>
+  		 		<arg>-parameters</arg>
+  		 	</compilerArgs>
   		 </configuration>
   		</plugin>
   		<plugin>
@@ -35,5 +38,6 @@
   	<module>02-spring-mvc-without-xml</module>
   	<module>03-spring-mvc-with-boot</module>
   	<module>04-spring-mvc-with-handler</module>
+  	<module>05-srping-mvc-with-attributes</module>
   </modules>
 </project>

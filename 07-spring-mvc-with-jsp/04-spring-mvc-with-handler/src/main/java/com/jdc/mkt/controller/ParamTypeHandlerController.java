@@ -23,13 +23,13 @@ public class ParamTypeHandlerController {
 	}
 	
 	@GetMapping("path/{pMessage}")
-	String formPath(@PathVariable(name = "pMessage") String pMessage,ModelMap map) {
+	String formPath(@PathVariable String pMessage,ModelMap map) {
 		map.put("pMessage", pMessage);
 		return "params/pathParam";
 	}
 	
 	@GetMapping("form/get")
-	String formGetParam(@RequestParam(name = "type",required = false) String type,JavaBean bean, ModelMap map) {
+	String formGetParam(@RequestParam(required = false) String type,JavaBean bean, ModelMap map) {
 		map.put("type", type);
 		map.put("message",bean.getMessage() );
 		map.put("value", bean.getValue());
@@ -41,6 +41,7 @@ public class ParamTypeHandlerController {
 		map.put("message",bean.getMessage() );
 		map.put("value", bean.getValue());
 		return "params/formParam";
+		
 	}
 
 	@GetMapping("methodParam")
@@ -51,6 +52,7 @@ public class ParamTypeHandlerController {
 			) {
 		map.put("day", dayOfWeek);
 		map.put("value", count);
+		
 		return "params/requestParam";
 	}
 }

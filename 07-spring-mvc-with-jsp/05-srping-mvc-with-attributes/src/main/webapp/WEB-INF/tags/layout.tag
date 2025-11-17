@@ -18,14 +18,14 @@
 		<li class="nav-item"><a href="${root }/product" class="nav-link"><i class="bi bi-file-earmark"></i> Product</a></li>
 	</ul>
 	<c:if test="${cart ne null }">
-	<a href="${root }/checkout" class="btn btn-primary position-relative me-4">
+	<a href="${root }/checkout" class="icon-link position-relative me-4">
 		<i class="bi bi-cart"></i>
 		<span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">${cart.totalItems }</span>
 	</a>
 	</c:if>
 </nav>
 <!-- content -->
-<main class="container mt-3 p-2">
+<main class="container mt-3 w-75">
 	<jsp:doBody></jsp:doBody>
 </main>
 </body>

@@ -21,14 +21,8 @@ public class ShoppingCartController {
 	private ProductRepo repo;
 
 	@GetMapping("add/{id}")
-	String addToCart(@PathVariable Integer id, @SessionAttribute(required = false) ShoppingCart cart) {
-		
-		if (null == cart) {
-			return "redirect:/product";
-		}
-		var product = repo.findById(id).get();
-		cart.addToCart(product);
-
+	String addToCart(@PathVariable Integer id, @ModelAttribute("cart") ShoppingCart shoppingCart) {	
+		repo.findById(id).ifPresent(p ->shoppingCart.addToCart(p));
 		return "redirect:/product";
 	}
 

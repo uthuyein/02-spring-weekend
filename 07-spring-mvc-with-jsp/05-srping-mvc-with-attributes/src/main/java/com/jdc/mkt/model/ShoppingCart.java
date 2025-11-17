@@ -16,7 +16,7 @@ public class ShoppingCart {
 	
 	public void addToCart(Product p) {
 		var item = items.get(p.getId());
-		
+		System.out.println("Item :::"+item);
 		if(null == item) {
 			item = new ShoppingCartItem();
 			item.setProduct(p);
@@ -24,6 +24,7 @@ public class ShoppingCart {
 		}
 		
 		item.plusOne();
+		System.out.println("items ::::"+items);
 	}
 	
 	public void removeFromCart(int id) {

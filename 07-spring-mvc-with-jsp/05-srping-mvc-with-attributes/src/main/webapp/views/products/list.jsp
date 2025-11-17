@@ -4,29 +4,27 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <app:layout>
-	<h3>Product List</h3>
+	<h3><i class="bi bi-file-earmark"></i> Product List</h3>
 	<form action="${root }/product/search">
-		<div class="row g-2 align-items-center">
-			<div class="col-6">
+		<div class="row g-1 align-items-center">
+			<div class="col-8">
 				<input type="text" class="form-control" placeholder="Search ..." />
 			</div>
-			<div class="col-auto">
-				<button class="btn btn-outline-primary">
+			<div class="col-auto me-2">
+				<button class="btn btn-outline-primary rounded-pill">
 					<i class="bi bi-search"></i>
 				</button>
 
 			</div>
 			<div class="col-auto">
-				<a href="${root }/product/add" class="btn btn-outline-success"><i
-					class="bi bi-plus"></i></a>
+				<a href="${root }/product/add" class="btn btn-outline-success rounded-pill"><i
+					class="bi bi-plus"></i>Add New Product</a>
 			</div>
 		</div>
 	</form>
-
-	<c:if test="${products.size() ge 0 }">
-		
+	<c:choose>
+		<c:when test="${products.size() > 0 }">
 			<div class="col mt-3">
-			
 				<table class="table table-bordered table-hover">
 					<thead>
 						<tr>
@@ -52,6 +50,13 @@
 					</tbody>
 				</table>
 			</div>
-		</c:if>
+		</c:when>
+		<c:otherwise>
+			<div class="alert alert-warning mt-3">
+				 <p class="text-danger"> There is no product yet !</p>
+			</div>
+		</c:otherwise>
+	</c:choose>
+	
 
 </app:layout>

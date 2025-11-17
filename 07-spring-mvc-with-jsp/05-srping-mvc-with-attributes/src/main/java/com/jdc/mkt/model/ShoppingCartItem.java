@@ -11,11 +11,11 @@ public class ShoppingCartItem {
 	private int qty;
 	
 	public void plusOne() {
-		++ qty ;
+		 qty ++ ;
 	}
 	
 	public void minusOne() {
-		-- qty ;
+		 qty ++;
 	}
 	
 	

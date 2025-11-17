@@ -8,12 +8,14 @@
 	<h3>
 		<i class="bi bi-file-earmark"></i> Product Form
 	</h3>
-	<label for="" class="alert-info">${message }</label>
+	<c:if test="${message ne null }">
+		<div class="alert alert-info">${message }</div>
+	</c:if>
 	<div class="row">
 		<div class="col-5">
 			<form:form action="${root }/product" method="post"
 				modelAttribute="productForm">
-				<form:hidden path="id"/>
+				<form:hidden path="id" />
 				<div class="form-group mb-3">
 					<label for="category" class="form-label">Category</label>
 					<form:input type="text" path="category" class="form-control"></form:input>
@@ -31,7 +33,8 @@
 					<form:select type="text" path="size" class="form-control">
 						<option value="">Select One</option>
 						<c:forEach items="${sizes }" var="size">
-							<option value="${size}">${size }</option>
+							<option value="${size}"
+								${param.size eq size ? 'selected="selected"': productForm.size eq size ? 'selected="selected"':''}>${size }</option>
 						</c:forEach>
 					</form:select>
 					<small> <form:errors path="size" cssClass="text-danger"></form:errors>
@@ -54,11 +57,11 @@
 				</div>
 			</form:form>
 		</div>
-		
+
 		<c:if test="${products.size() ne 0 }">
 			<div class="col mt-3">
-			<label for=""></label>
-		
+				<label for=""></label>
+
 				<table class="table table-bordered table-hover">
 					<thead>
 						<tr>
@@ -78,7 +81,8 @@
 								<td>${p.name() }</td>
 								<td>${p.dtPrice() }</td>
 								<td>${p.wsPrice() }</td>
-								<td><a href="${root }/product/edit/${p.id()}" class="icon-link"><i class="bi bi-pencil"></i></a></td>
+								<td><a href="${root }/product/edit/${p.id()}"
+									class="icon-link"><i class="bi bi-pencil"></i></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

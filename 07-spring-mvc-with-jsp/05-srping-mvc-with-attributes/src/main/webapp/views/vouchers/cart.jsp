@@ -4,7 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <app:layout>
-	<h3>Shopping Cart</h3>
+	<h3 class="mb-3"><i class="bi bi-cart"></i> Shopping Cart</h3>
 	<table class="table table-borderd table-hover">
 		<thead>
 			<tr>

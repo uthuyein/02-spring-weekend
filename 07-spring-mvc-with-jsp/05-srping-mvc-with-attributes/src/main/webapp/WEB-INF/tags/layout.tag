@@ -15,11 +15,11 @@
 <c:set var="root" value="${pageContext.request.contextPath }" scope="request"></c:set>
 <nav class="navbar navbar-expand-lg bg-light navbar-light d-flex justify-content-end">
 	<ul class="nav nav-pills nav-fill ">
-		<li class="nav-item"><a href="${root }/product" class="nav-link"><i class="bi bi-file-earmark"></i> Product</a></li>
+		<li class="nav-item"><a href="${root }/product" class="nav-link"><i class="bi bi-file-earmark-fill"></i> Product</a></li>
 	</ul>
 	<c:if test="${cart ne null }">
 	<a href="${root }/checkout" class="icon-link position-relative me-4">
-		<i class="bi bi-cart"></i>
+		<i class="bi bi-cart-fill"></i>
 		<span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">${cart.totalItems }</span>
 	</a>
 	</c:if>

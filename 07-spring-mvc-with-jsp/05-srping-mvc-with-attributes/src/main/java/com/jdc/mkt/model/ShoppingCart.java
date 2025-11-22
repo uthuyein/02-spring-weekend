@@ -42,7 +42,7 @@ public class ShoppingCart {
 		return items.values().stream().mapToInt(i -> i.getQty()).sum();
 	}
 	
-	public double getTotalItemsAmount() {
+	public Double getTotalItemsAmount() {
 		return items.values().stream().mapToDouble(i -> i.getQty()*i.getPrice()).sum();
 	}
 	

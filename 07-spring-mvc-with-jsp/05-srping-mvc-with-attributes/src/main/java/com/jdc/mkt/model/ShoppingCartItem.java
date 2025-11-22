@@ -15,7 +15,7 @@ public class ShoppingCartItem {
 	}
 	
 	public void minusOne() {
-		 qty ++;
+		 qty --;
 	}
 	
 	

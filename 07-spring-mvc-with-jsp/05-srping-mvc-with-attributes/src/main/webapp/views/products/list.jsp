@@ -7,7 +7,7 @@
 	<h3 class="mb-3"><i class="bi bi-file-earmark"></i> Product List</h3>
 	<form action="${root }/product/search">
 		<div class="row g-1 align-items-center">
-			<div class="col-9">
+			<div class="col-8">
 				<input type="text" class="form-control" placeholder="Search ..." />
 			</div>
 			<div class="col-auto me-3">

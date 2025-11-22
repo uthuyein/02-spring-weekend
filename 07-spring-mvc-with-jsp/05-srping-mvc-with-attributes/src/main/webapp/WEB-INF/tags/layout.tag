@@ -17,7 +17,7 @@
 	<ul class="nav nav-pills nav-fill ">
 		<li class="nav-item"><a href="${root }/product" class="nav-link"><i class="bi bi-file-earmark-fill"></i> Product</a></li>
 	</ul>
-	<c:if test="${cart ne null }">
+	<c:if test="${cart ne null and cart.items.size() ne 0}">
 	<a href="${root }/checkout" class="icon-link position-relative me-4">
 		<i class="bi bi-cart-fill"></i>
 		<span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">${cart.totalItems }</span>

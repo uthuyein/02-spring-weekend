@@ -28,5 +28,6 @@
   </build>
   <modules>
   	<module>01-thymeleaf-javabase</module>
+  	<module>02-thymleaf-boot-with-iteration</module>
   </modules>
 </project>

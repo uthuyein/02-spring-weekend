@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" data-th-href="@{/css/common.css}" />
+</head>
+<body>
+	<div class="container p-4 w-75">
+		<div class="d-flex justify-content-end">
+			<button id="uplBtn" class="btn btn-outline-primary">
+				<i class="bi bi-upload"></i>
+			</button>
+		</div>
+		<form data-th-action="@{|/product/upload|}" id="uplForm"
+			enctype="multipart/form-data" method="post" class="d-none">
+			<input type="file" id="uplFile" name="file" />
+		</form>
+		<!-- <div class="text-info" data-th-unless="${count}">
+			<p>There is no products yet !</p>
+		</div> -->
+		<div class="" data-th-switch="${count}">
+			<div class="text-info" data-th-case="0">
+				<p>There is no products yet !</p>
+			</div>
+			<div class="" data-th-case="*">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Price</th>
+							<th>Index</th>
+							<th>Count</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-th-each="p,sts : ${products}" data-th-object="${p}">
+							<td data-th-text="*{id}"
+								data-th-class="${sts.first ? 'first': ''}"></td>
+							<td data-th-text="*{name}"
+								data-th-class="${sts.last ? 'last':''}"></td>
+							<td data-th-text="*{price}"></td>
+							<td data-th-text="${sts.index}"></td>
+							<td data-th-text="${sts.count}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" data-th-src="@{/js/common.js}"></script>
+</body>
+
+</html>

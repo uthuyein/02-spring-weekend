@@ -11,6 +11,7 @@
 		<div class="col">
 			<form action="${root }/product/search">
 				<div class="row g-1 align-items-center">
+				
 					<div class="col-6">
 						<input type="text" class="form-control" placeholder="Search ..." />
 					</div>

@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
+import lombok.Getter;
 
 @Data
 @Entity
@@ -32,13 +33,24 @@ public class Product {
 	@Enumerated(EnumType.STRING)
 	private Size size;
 	
+	
+	
 	@ColumnDefault("true")
 	private Boolean active;
 	
 	@ManyToOne(optional = false, cascade = CascadeType.PERSIST)
 	private Category category;
 	
+	
+	@Getter
 	public enum Size{
-		SMALL,MEDIUM,LARGE
+		SMALL(128),MEDIUM(256),LARGE(512),DEFAULT(0);
+		
+		private int limit;
+		
+		Size(int limit){
+			this.limit = limit;
+		}
+			
 	}
 }

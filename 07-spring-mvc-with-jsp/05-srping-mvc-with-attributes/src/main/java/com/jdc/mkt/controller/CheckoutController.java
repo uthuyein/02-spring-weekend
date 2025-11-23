@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
@@ -74,7 +73,6 @@ public class CheckoutController {
 		invoice.setTotalAmount(cart.getTotalItemsAmount());
 		invoice.setTotalCount(cart.getTotalItems());
 		invoice = invRepo.save(invoice);
-		System.out.println("Invoice ::"+invoice);
 		for(var item : items) {
 			var invItem = new InvoiceItem();
 			

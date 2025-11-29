@@ -8,7 +8,7 @@ import com.jdc.mkt.PrintLogger;
 import com.jdc.mkt.utils.anno.Connector;
 
 @TestMethodOrder(OrderAnnotation.class)
-@Connector(name = "testDb", user = "root", password = "admin")
+@Connector(name = "testDb", user = "root", password = "admin",port="3306")
 public class JunitFactory {
 
 	static PrintLogger logger;

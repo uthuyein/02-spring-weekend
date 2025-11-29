@@ -11,7 +11,7 @@ import com.jdc.mkt.utils.anno.Connector;
 
 @Aspect
 @Component
-@Connector(database = DatabaseType.MYSQL,name = "testDb",password = "admin",user = "root")
+@Connector(database = DatabaseType.MYSQL,name = "testDb",password = "admin",user = "root",port="3306")
 public class ServiceAspect {
 
 	@Value("${p.select}")

@@ -14,7 +14,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-@Connector
+@Connector(port="3306")
 @TestMethodOrder(OrderAnnotation.class)
 public class JpaFactory {
 

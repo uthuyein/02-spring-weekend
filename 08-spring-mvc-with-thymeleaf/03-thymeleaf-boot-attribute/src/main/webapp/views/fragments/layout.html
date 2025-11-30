@@ -14,6 +14,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
+	<link rel="stylesheet" data-th-href="@{static/css/common.css}" />
+	<script data-th-src="@{/static/js/common.js}"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,7 +23,7 @@
 			<a data-th-href="@{/form}" class="nav-link"><i class="bi bi-pencil"></i>&nbsp; Course Form</a>
 		</div>
 		<div class="nav-item">
-			<a data-th-href="@{/list}" class="nav-link"><i class="bi bi-list"></i>&nbsp;Course List</a>
+			<a data-th-href="@{/list}" class="nav-link" ><i class="bi bi-list"></i>&nbsp;Course List</a>
 		</div>
 	</nav>
 	<div class="container mt-4 p-2">

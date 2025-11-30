@@ -17,8 +17,8 @@ public class Course {
 	@Column(nullable = false)
 	private String name;
 	private Level level;
-	private Integer fees;
-	private Integer duration;
+	private Double fees;
+	private Double duration;
 	private String description;
 	
 	public enum Level{

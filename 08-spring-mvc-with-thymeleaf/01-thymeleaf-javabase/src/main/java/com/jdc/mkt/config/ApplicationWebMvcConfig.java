@@ -22,6 +22,8 @@ public class ApplicationWebMvcConfig {
 		return bean;
 	}
 	
+	
+	
 	@Bean
 	SpringTemplateEngine tmeplEngine(SpringResourceTemplateResolver templateResolver) {
 		var bean = new SpringTemplateEngine();

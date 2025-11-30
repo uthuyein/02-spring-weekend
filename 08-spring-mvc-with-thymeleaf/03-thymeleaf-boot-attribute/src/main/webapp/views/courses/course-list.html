@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html
-	data-th-replace="~{fragments/layout(title='Course List',content= ~{ :: #content})}">
+	data-th-replace="~{fragments/layout(title='Course List',content= ~{ this :: #content})}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -8,30 +8,62 @@
 <body>
 	<div id="content" class="w-75">
 		<div class="row">
-			<form action="">
-				<input type="text" class="form-input w-75" />
-				<button class="btn btn-outline-primary">
-					<i class="bi bi-search"></i>
-				</button>
-
-				<button class="btn btn-outline-secondary">
-					<i class="bi bi-plus"></i>
-				</button>
-				<button class="btn btn-outline-secondary">
+			<form data-th-action="@{/search}" class="row col-auto">
+				<div class="form-group col">
+					<label for="level" class="form-label">Course Level</label> <select
+						class="form-select" name="level">
+						<option value="">Select One</option>
+						<option  
+							data-th-each="lev : ${levels}"
+							data-th-text="${lev}"
+							data-th-value="${lev}"
+							data-th-selected="${#strings.equals(lev,param.level)}"
+							></option>
+					</select>
+				</div>
+				<div class="form-group col-auto">
+					<label for="name" class="form-label">Course Search</label> <input
+						id="name" type="text" name="name" data-th-value="${param.name}" class="form-input w-100" />
+				</div>
+				<div class="from-group col-auto button-top me-2">
+					<button class="btn btn-outline-primary">
+						<i class="bi bi-search"></i>
+					</button>
+				</div>
+			</form>
+			<div class="form-group col-auto button-top">
+				<a data-th-href="@{/form}" class="btn btn-outline-secondary"> <i class="bi bi-plus"></i>Add
+					New
+				</a>
+				<button id="upBtn" class="btn btn-outline-secondary">
 					<i class="bi bi-upload"></i>
 				</button>
-			</form>
+				<form id="upForm" data-th-action="@{/upload}" enctype="multipart/form-data" method="post"  class="d-none">
+					<input id="upFile" type="file" name="file" />
+				</form>
+			</div>
 		</div>
+
 		<table class="table table-stripped mt-3">
 			<thead>
 				<tr>
+					<th></th>
 					<th>Course</th>
 					<th>Fees</th>
 					<th>Duration</th>
 					<th>Description</th>
 				</tr>
 			</thead>
+			<tbody>
+				<tr data-th-each="cou,sts : ${courses}" data-th-object="${cou}">
+					<td data-th-text="${sts.count}"></td>
+					<td data-th-text="*{name}"></td>
+					<td data-th-text="*{fees}"></td>		
+					<td data-th-text="*{duration}"></td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
 </body>
+
 </html>

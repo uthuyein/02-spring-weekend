@@ -17,7 +17,9 @@ public class CourseService {
 	@Autowired
 	private CourseRepo repo;
 
+	@SuppressWarnings("removal")
 	public List<Course> search(Optional<Level> level, Optional<String> name) {
+
 		Specification<Course> whichLevel = level.isEmpty() ? Specification.where(null)
 				: (root, query, cb) -> cb.equal(root.get("level"), level.get());
 
@@ -25,6 +27,10 @@ public class CourseService {
 				: (root, query, cb) -> cb.like(cb.lower( root.get("name")), name.get().toLowerCase().concat("%"));
 
 		return repo.findAll(whichLevel.and(whichName));
+	}
+
+	public Course save(Course entity) {
+		return repo.save(entity);
 	}
 
 }

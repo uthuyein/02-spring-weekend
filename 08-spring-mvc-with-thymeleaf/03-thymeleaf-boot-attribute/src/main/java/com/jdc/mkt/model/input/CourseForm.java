@@ -1,5 +1,6 @@
 package com.jdc.mkt.model.input;
 
+import com.jdc.mkt.model.entity.Course;
 import com.jdc.mkt.model.entity.Course.Level;
 
 import jakarta.validation.constraints.NotEmpty;
@@ -15,9 +16,19 @@ public class CourseForm {
 	@NotNull(message = "Select Course Level !")
 	private Level level;
 	@NotNull(message = "Type Course Fees !")
-	private Integer fees;
+	private Double fees;
 	@NotNull(message = "Type Course Duration With Months !")
-	private Integer duration;
+	private Double duration;
 	
 	private String description;
+
+	public Course entity() {
+		var c  = new Course();
+		c.setName(name);
+		c.setFees(fees);
+		c.setDuration(duration);
+		c.setLevel(level);
+		c.setDescription(description);
+		return c;
+	}
 }

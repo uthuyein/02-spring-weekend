@@ -1,6 +1,5 @@
 package com.jdc.mkt.controller;
 
-import java.io.FileInputStream;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +11,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -66,9 +66,9 @@ public class CourseController {
 			for (Row row : sheet) {
 				var course = new Course();
 				course.setName(row.getCell(0).toString());
-				course.setLevel(Level.valueOf(row.getCell(1).toString()));
-				course.setDuration(Double.parseDouble(row.getCell(2).toString()));
-				course.setFees(Double.parseDouble(row.getCell(3).toString()));
+				course.setLevel(null == row.getCell(1) ?Level.Basic : Level.valueOf(row.getCell(1).toString()));
+				course.setDuration(getCellValue(row.getCell(2)));
+				course.setFees(getCellValue(row.getCell(3)));
 				
 				var oldCourse = repo.findByNameAndLevel(course.getName(), course.getLevel());
 				if (null == oldCourse) {
@@ -82,12 +82,27 @@ public class CourseController {
 
 		return "redirect:/list";
 	}
+	
+	@SuppressWarnings("deprecation")
+	Double getCellValue(Cell cell) {
+		if(!StringUtils.isEmpty(cell)) {			
+			return Double.parseDouble(cell.toString());
+		}
+		return 0.0;
+	}
 
 	@PostMapping("course")
 	String save(@Validated @ModelAttribute("courseForm") CourseForm form, BindingResult result) {
 		if (result.hasErrors()) {
 			return "courses/course-form";
 		}
+		
+		if(null == form) {
+			return "courses/course-form";
+		}
+		
+		service.save(form.entity());
+		
 		return "redirect:/list";
 	}
 

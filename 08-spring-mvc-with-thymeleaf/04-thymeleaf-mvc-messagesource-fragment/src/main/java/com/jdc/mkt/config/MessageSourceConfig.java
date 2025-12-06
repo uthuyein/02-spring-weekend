@@ -6,12 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 
 @Configuration
-public class InternalizationMessageConfig {
+public class MessageSourceConfig {
 
 	@Bean
 	MessageSource messageSource() {
 		var bean = new ResourceBundleMessageSource();
-		bean.setBasename("app-labels");
+		bean.addBasenames("languages/message");
 		return bean;
 	}
 }

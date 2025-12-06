@@ -33,5 +33,6 @@
   	<module>01-thymeleaf-javabase</module>
   	<module>02-thymleaf-boot-with-iteration</module>
   	<module>03-thymeleaf-boot-attribute</module>
+  	<module>04-thymeleaf-mvc-messagesource-fragment</module>
   </modules>
 </project>

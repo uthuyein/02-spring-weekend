@@ -49,6 +49,7 @@
 				<tr>
 					<th></th>
 					<th>Course</th>
+					<th>Level</th>
 					<th>Fees</th>
 					<th>Duration</th>
 					<th>Description</th>
@@ -58,6 +59,7 @@
 				<tr data-th-each="cou,sts : ${courses}" data-th-object="${cou}">
 					<td data-th-text="${sts.count}"></td>
 					<td data-th-text="*{name}"></td>
+					<td data-th-text="*{level}"></td>
 					<td data-th-text="*{fees}"></td>		
 					<td data-th-text="*{duration}"></td>
 				</tr>

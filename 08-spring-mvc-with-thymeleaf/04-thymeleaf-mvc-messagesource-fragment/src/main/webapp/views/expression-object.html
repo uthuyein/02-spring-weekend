@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html data-th-replace="~{components/layout(title=#{expression},content=~{ :: #content})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="" id="content">
+		<h1 class="text-primary">Date Time Object</h1>
+		<table class="table table-stripped w-75">
+			<thead>
+			<tr>
+				<th>Object</th>
+				<th>Format</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>#dates</td>
+					<td data-th-text="${#dates.format(date,'dd-MM-yyyy hh:mm:ss')}"></td>
+				</tr>
+				<tr>
+					<td>#calendars</td>
+					<td data-th-text="${#calendars.format(calendar,'yyyy-MM-dd')}"></td>
+				</tr>
+				<tr>
+					<td>#temporals</td>
+					<td data-th-text="${#temporals.format(temporal)}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html
+	data-th-replace="~{components/layout(title='Basic Data Type',content=~{ :: #component})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="component">
+		<div class="container">
+			<h3 class="text-primary">Objects Data Types</h3>
+			<table class="table table-stripped w-75">
+				<thead>
+					<tr>
+						<th>Object</th>
+						<th>Method</th>
+						<th>Result</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+				<tr>
+						<td colspan="3"  class="text-primary">Objects</td>
+					</tr>
+					<tr>
+						<td>#objects</td>
+						<td>nullSafe(object,default)</td>
+						<td data-th-text="${#objects.nullSafe(list,'Null Value')}"></td>
+					</tr>
+					<tr>
+						<td>#objects</td>
+						<td>arrayNullSafe(objectArray,default)</td>
+						<td data-th-text="${#objects.arrayNullSafe(array,'Null Value')}"></td>
+					</tr>
+					
+					<tr>
+						<td colspan="3"  class="text-primary">Boolean</td>
+					</tr>
+					
+					<tr>
+						<td>#bools</td>
+						<td>arrayIsTrue(objarray)</td>
+						<td data-th-text="${#bools.arrayIsTrue(array)}"></td>
+					</tr>
+					
+					<tr>
+						<td colspan="3"  class="text-primary">Numbers</td>
+					</tr>
+					
+					<tr>
+						<td>#numbers</td>
+						<td>formatInteger(num,min,sep)</td>
+						<td data-th-text="${#numbers.formatInteger(decimal,2,'COMMA')}"></td>
+					</tr>
+					<tr>
+						<td>#numbers</td>
+						<td>formatDecimal(num,mind,mSep,minS,mPoint)</td>
+						<td data-th-text="${#numbers.formatDecimal(decimal,3,'COMMA',2,'POINT')}"></td>
+					</tr>
+					
+					<tr>
+						<td colspan="3" class="text-primary" >String</td>
+					</tr>
+					<tr>
+						<td>#strings(default)</td>
+						<td>defaultString(value,default)</td>
+						<td data-th-text="${#strings.defaultString(value,'No Value')}"></td>
+					</tr>
+					<tr>
+						<td>#strings (comparism) </td>
+						<td>equalsIgnoreCase(first,second)</td>
+						<td data-th-text="${#strings.equalsIgnoreCase(value,'hello java')}"></td>
+					</tr>
+					<tr>
+						<td colspan="3"  class="text-primary">Collection</td>
+					</tr>
+					<tr>
+						<td>#arrays</td>
+						<td>toStringArrays(object)</td>
+						<td data-th-text="${#arrays.toStringArray(set)}"></td>
+					</tr>
+					<tr>
+						<td>#lists</td>
+						<td>toList</td>
+						<td data-th-text="${#lists.toList(array)}"></td>
+					</tr>
+					<tr>
+						<td>#maps</td>
+						<td>containsKey(map,key)</td>
+						<td data-th-text="${#maps.containsKey(map,1)}"></td>
+					</tr>
+					
+					<tr>
+						<td colspan="3" class="text-primary" >Messages Utility Class</td>
+					</tr>
+					<tr>
+						<td>#messages</td>
+						<td>msg(key,prams)</td>
+						<td>
+						 	<ul>
+						 		<li data-th-each="lan : ${ #arrays.toStringArray(#messages.msg('menu.list'))}">
+						 			[[${lan}]]
+						 		</li>
+						 	</ul>
+						</td> >
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

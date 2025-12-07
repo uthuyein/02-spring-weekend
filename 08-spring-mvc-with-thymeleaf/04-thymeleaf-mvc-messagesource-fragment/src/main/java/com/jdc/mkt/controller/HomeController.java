@@ -12,6 +12,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.jdc.mkt.model.Card;
+
 @Controller
 @RequestMapping("/")
 public class HomeController {
@@ -21,8 +23,18 @@ public class HomeController {
 		return "home";
 	}
 	
+	@GetMapping("images")
+	String cardTest(ModelMap map) {
+		map.put("cards", List.of(
+				new Card("puppy1.jpeg","Happy Puppy","Happy puppy working on somewhere !"),
+				new Card("puppy2.jpeg","Happy Group Puppy","Happy puppies working on somewhere !"),
+				new Card("puppy3.jpeg","Cute Puppy","Happy puppy has white color !")));
+		return "image-test";
+	}
+	
 	@GetMapping("objects")
 	String objectTest(ModelMap map) {
+		map.put("ints", new int[] {2,3,4});
 		map.put("value", "Hello Java");
 		map.put("number", 23232323);
 		map.put("decimal", 232323.4523);

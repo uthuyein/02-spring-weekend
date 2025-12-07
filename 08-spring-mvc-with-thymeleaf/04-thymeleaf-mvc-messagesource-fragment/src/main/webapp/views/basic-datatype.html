@@ -20,7 +20,7 @@
 				</thead>
 				<tbody>
 				<tr>
-						<td colspan="3"  class="text-primary">Objects</td>
+						<td colspan="3"  class="text-primary fs-2">Objects</td>
 					</tr>
 					<tr>
 						<td>#objects</td>
@@ -34,7 +34,7 @@
 					</tr>
 					
 					<tr>
-						<td colspan="3"  class="text-primary">Boolean</td>
+						<td colspan="3"  class="text-primary fs-2">Boolean</td>
 					</tr>
 					
 					<tr>
@@ -44,7 +44,7 @@
 					</tr>
 					
 					<tr>
-						<td colspan="3"  class="text-primary">Numbers</td>
+						<td colspan="3"  class="text-primary fs-2">Numbers</td>
 					</tr>
 					
 					<tr>
@@ -59,7 +59,7 @@
 					</tr>
 					
 					<tr>
-						<td colspan="3" class="text-primary" >String</td>
+						<td colspan="3" class="text-primary fs-2" >String</td>
 					</tr>
 					<tr>
 						<td>#strings(default)</td>
@@ -91,18 +91,39 @@
 					</tr>
 					
 					<tr>
-						<td colspan="3" class="text-primary" >Messages Utility Class</td>
+						<td colspan="3" class="text-primary fs-2" >Messages Utility Class</td>
+					</tr>
+					<tr>
+						<td>#messages</td>
+						<td>msgOrNullWithParams(key,object[] params)</td>
+						<td data-th-text="${#messages.msgOrNullWithParams('message.greeting',{'thymeleaf','spring framework'})}"></td>
 					</tr>
 					<tr>
 						<td>#messages</td>
 						<td>msg(key,prams)</td>
 						<td>
 						 	<ul>
-						 		<li data-th-each="lan : ${ #arrays.toStringArray(#messages.msg('menu.list'))}">
+						 		<li data-th-each="lan : ${#messages.msg('menu.list').split(',')}">
 						 			[[${lan}]]
 						 		</li>
 						 	</ul>
 						</td> >
+					</tr>
+					<tr>
+						<td colspan="3" class="text-primary fs-2">Conversions</td> 
+					</tr>
+					<tr>
+						<td>#conversions</td>
+						<td>convert(object,package name with Class Name)</td>
+						<td data-th-text="${#conversions.convert(number,T(java.lang.String))}"></td>
+					</tr>
+					<tr>
+						<td colspan="3" class="text-primary fs-2">Aggregations</td> 
+					</tr>
+					<tr>
+						<td>#aggregates</td>
+						<td>sum()</td>
+						<td data-th-text="${#aggregates.sum(ints)}"></td>
 					</tr>
 				</tbody>
 			</table>

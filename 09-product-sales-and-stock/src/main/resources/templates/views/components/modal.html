@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div data-th-fragment="modal(id, title, bodyContent)">
+    <div class="modal fade" data-th-id="${id}" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" data-th-text="${title}"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div data-th-utext="${bodyContent}"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

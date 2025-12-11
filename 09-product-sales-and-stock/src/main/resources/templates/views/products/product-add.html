@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html
+	data-th-replace="~{components/layout(title=#{product-form},content=~{this :: #content})}">
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="content">
+		<div class="row">
+			<div class="col-4">
+				<form data-th-action="@{/product}" method="post"
+					data-th-object="${productForm}">
+					<form:hidden path="id" />
+					<div class="form-group mb-3">
+						<div class="row">
+							<label for="category" class="form-label"
+								data-th-text="#{category}"></label>
+							<div class="col-9">
+								<select data-th-field="*{category}" name="category" id=""
+									class="form-select">
+									<option value="" data-th-text="#{select}"></option>
+								</select>
+							</div>
+							<div class="col">
+								<a type="button" class="btn btn-outline-primary px-4" data-bs-toggle="modal"
+									data-bs-target="#catModal"><i class="bi bi-plus"></i> </a>
+							</div>
+							<span data-th-fields="${#fields.hasErrors('category')}"
+								data-th-errors="*{category}" class="error text-danger"></span>
+						</div>
+					</div>
+					<div class="form-group mb-3">
+						<div class="row">
+							<label for="size" class="form-label" data-th-text="#{size}"></label>
+							<div class="col-9">
+								<select data-th-field="*{size}" name="size" id=""
+									class="form-select">
+									<option value="" data-th-text="#{select}"></option>
+								</select>
+							</div>
+							<div class="col">
+								<a href="#" data-bs-toggle="modal" data-bs-target="#sizeModal"
+									class="btn btn-outline-primary px-4"><i class="bi bi-plus"></i></a>
+							</div>
+							<span data-th-fields="${#fields.hasErrors('size')}"
+								data-th-errors="*{size}" class="error text-danger"></span>
+						</div>
+					</div>
+					<div class="form-group mb-3">
+						<label for="name" class="form-label" data-th-text="#{product}">Product</label>
+						<input type="text" name="name" class="form-control"
+							data-th-field="*{name}" /> <span class="error text-danger"
+							data-th-if="${#fields.hasErrors('name')}"
+							data-th-errors="*{name}"></span>
+					</div>
+
+					<div class="form-group mb-3 d-flex justify-content-end">
+						<a href="" class="btn btn-outline-primary px-4"> <i
+							class="bi bi-file-earmark-plus"></i>
+						</a>
+						<button class="btn btn-outline-primary ms-2">Save Product</button>
+					</div>
+				</form>
+			</div>
+			<div class="col">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th></th>
+							<th data-th-text="#{category}">Category</th>
+							<th data-th-text="#{product}">Product</th>
+							<th data-th-text="#{size}">Size</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="bi bi-edit"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div
+			data-th-replace="~{components/modal :: modal(
+        'catModal',
+        #{new-category},
+        ~{components/input-form-modal :: form(#{category})})}">
+		</div>
+		<div
+			data-th-replace="~{components/modal :: modal(
+        'sizeModal',
+        #{new-size},
+        ~{components/input-form-modal :: form(#{size})})}">
+		</div>
+	</div>
+</body>
+</html>

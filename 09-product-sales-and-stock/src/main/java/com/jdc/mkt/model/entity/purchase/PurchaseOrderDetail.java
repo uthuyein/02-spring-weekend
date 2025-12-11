@@ -18,7 +18,7 @@ public class PurchaseOrderDetail {
 	
 	@ManyToOne
 	private PurchaseOrder purchaseOrder;
-	@ManyToOne
+	@ManyToOne	
 	private Product product;
 	
 	private int qty;

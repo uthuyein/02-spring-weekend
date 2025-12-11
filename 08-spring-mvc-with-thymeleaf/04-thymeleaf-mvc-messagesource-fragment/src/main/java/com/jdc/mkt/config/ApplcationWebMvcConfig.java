@@ -17,11 +17,11 @@ public class ApplcationWebMvcConfig implements WebMvcConfigurer{
 	@Autowired
 	private LocaleChangeInterceptor interceptor;
 	
-//	@Override
-//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//		registry.addResourceHandler("/images/**")
-//		.addResourceLocations("/resources/images/");
-//	}
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/images/**")
+		.addResourceLocations("classpath:/images/");
+	}
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {

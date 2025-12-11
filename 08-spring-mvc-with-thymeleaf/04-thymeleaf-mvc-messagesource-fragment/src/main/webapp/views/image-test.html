@@ -8,7 +8,7 @@
 	<div id="content">
 		<div class="row row-cols-4 gy-3">
 			<div data-th-each="card : ${cards}" data-th-object="${card}">
-				<div class="" data-th-replace="~{components/card(imgName=*{image()},imgTitle=*{title()},imgText=*{text()})}"></div>
+				<div class="" data-th-replace="~{components/image :: #card(imgName=*{image()},imgTitle=*{title()},imgText=*{text()})}"></div>
 			</div>
 		</div>
 	</div>

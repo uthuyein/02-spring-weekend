@@ -1,10 +1,7 @@
-package com.jdc.mkt.model.entity.sale;
+package com.jdc.mkt.model.entity;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.UUID;
-
-import com.jdc.mkt.model.entity.Customer;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,18 +13,18 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "sale_order_tbl")
-public class SaleOrder {
+@Table(name = "purchase_tbl")
+public class Purchase {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
 	
 	@ManyToOne
-	private Customer customer;
+	private Supplier supplier;
 	
-	private LocalDate saleDate;
-	private LocalTime saleTime;
+	private LocalDate orderDate;
+	private LocalDate issuedDate;
 	
 	
 	 

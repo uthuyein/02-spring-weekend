@@ -5,13 +5,14 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link rel="stylesheet" data-th-href="@{/common.css}" />
 <title data-th-text="${title}"></title>
 </head>
 <body>
 	<nav
 		class="navbar navbar-expand-lg bg-light navbar-light d-flex justify-content-between">
 		<div class="nav-brand ms-2 w-50">
-			<a href="" class="nav-link">Product Sale</a>
+			<h4 class="text-primary">Product Sale</h4>
 		</div>
 		<ul class="nav">
 			<li class="nav-item dropdown"><a href="#"
@@ -26,15 +27,14 @@
 
 				</ul></li>
 
-			<li class="nav-item dropdown"><a href="#"
-				class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
 				aria-expanded="false" data-th-text="#{purchase}"><i
-					class="bi bi-file-earmark-fill"></i> Sale</a>
+					class="bi bi-file-earmark-fill"></i> </a>
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="#"
-						data-th-text="#{purchase-form}">Sale Form</a></li>
-					<li><a class="dropdown-item" href="#"
-						data-th-text="#{purchase-list}">Sale List</a></li>
+					<li><a class="dropdown-item" data-th-href="@{/purchase/form}"
+						data-th-text="#{purchase-form}"></a></li>
+					<li><a class="dropdown-item" data-th-href="@{/purchase}"
+						data-th-text="#{purchase-list}"></a></li>
 
 				</ul></li>
 
@@ -44,6 +44,8 @@
 				aria-expanded="false" data-th-text="#{sale}"><i
 					class="bi bi-file-earmark-fill"></i> Sale</a>
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<li><a class="dropdown-item" href="#"
+						data-th-text="#{sale-product}">Sale Product</a></li>
 					<li><a class="dropdown-item" href="#"
 						data-th-text="#{sale-form}">Sale Form</a></li>
 					<li><a class="dropdown-item" href="#"
@@ -69,7 +71,8 @@
 	</nav>
 	<!-- content -->
 	<main class="container mt-3 w-75">
-		<div class="text-primary fs-2 mb-3" data-th-text="${title}"></div>
+		<h4 class="text-primary mb-3" data-th-text="${title}"></h4>
+		<hr class="border border-primary border-2">
 		<div data-th-replace="${content}"></div>
 	</main>
 </body>

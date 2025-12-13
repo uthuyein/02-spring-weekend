@@ -1,4 +1,4 @@
-package com.jdc.mkt.model.entity.sale;
+package com.jdc.mkt.model.entity;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -9,12 +9,12 @@ import lombok.Data;
 
 @Data
 @Embeddable
-public class SaleOrderDetailPk implements Serializable{
+public class PurchaseDetailPk implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "sale_order_id",insertable = false,updatable = false)
-	private UUID saleOrderId;
+	@Column(name = "purchase_id",insertable = false,updatable = false)
+	private UUID purchaseOrderId;
 	@Column(name = "product_id",insertable = false,updatable = false)
 	private int productId;
 	

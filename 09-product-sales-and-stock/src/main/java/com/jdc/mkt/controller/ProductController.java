@@ -45,8 +45,5 @@ public class ProductController {
 		return "redirect:/product";
 	}
 	
-//	@ModelAttribute
-//	ProductForm productForm() {
-//		return new ProductForm();
-//	}
+
 }

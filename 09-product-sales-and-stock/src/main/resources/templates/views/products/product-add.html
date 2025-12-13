@@ -12,9 +12,9 @@
 			<div class="col-4">
 				<form data-th-action="@{/product}" method="post"
 					data-th-object="${productForm}">
-					<form:hidden path="id" />
+					<input type="hidden" name="id" />
 					<div class="form-group mb-3">
-						<div class="row">
+						<div class="row g-1">
 							<label for="category" class="form-label"
 								data-th-text="#{category}"></label>
 							<div class="col-9">
@@ -32,7 +32,7 @@
 						</div>
 					</div>
 					<div class="form-group mb-3">
-						<div class="row">
+						<div class="row g-1">
 							<label for="size" class="form-label" data-th-text="#{size}"></label>
 							<div class="col-9">
 								<select data-th-field="*{size}" name="size" id=""
@@ -92,13 +92,13 @@
 			data-th-replace="~{components/modal :: modal(
         'catModal',
         #{new-category},
-        ~{components/input-form-modal :: form(#{category})})}">
+        ~{components/input-form :: form(#{category})})}">
 		</div>
 		<div
 			data-th-replace="~{components/modal :: modal(
         'sizeModal',
         #{new-size},
-        ~{components/input-form-modal :: form(#{size})})}">
+        ~{components/input-form :: form(#{size})})}">
 		</div>
 	</div>
 </body>

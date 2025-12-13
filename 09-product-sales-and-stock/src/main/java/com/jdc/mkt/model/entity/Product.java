@@ -21,6 +21,7 @@ public class Product {
 	private int id;
 	@Column(nullable = false,length = 45)
 	private String name;
+	
 	@ManyToOne
 	private Category category;
 	@ManyToOne

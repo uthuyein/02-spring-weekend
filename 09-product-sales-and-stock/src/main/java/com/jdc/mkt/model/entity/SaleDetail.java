@@ -1,6 +1,4 @@
-package com.jdc.mkt.model.entity.sale;
-
-import com.jdc.mkt.model.entity.Product;
+package com.jdc.mkt.model.entity;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -10,16 +8,16 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "sale_order_detail_tbl")
-public class SaleOrderDetail {
+@Table(name = "sale_detail_tbl")
+public class SaleDetail {
 
 	@EmbeddedId
-	private SaleOrderDetailPk id;
+	private SaleDetailPk id;
 	
 	@ManyToOne
-	private SaleOrder saleOrder;
+	private Sale sale;
 	@ManyToOne
-	private Product product;
+	private SaleProduct saleProduct;
 	
 	private int qty;
 	private double price;

@@ -17,19 +17,19 @@
 		<ul class="nav">
 			<li class="nav-item dropdown"><a href="#"
 				class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-				aria-expanded="false" data-th-text="#{product}"><i
-					class="bi bi-file-earmark-fill"></i> Sale</a>
+				aria-expanded="false" > <i
+					class="bi bi-sticky"></i> [[#{product}]]</a>
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<li><a class="dropdown-item" data-th-href="@{/product/product-form}"
-						data-th-text="#{product-form}">Product Form</a></li>
+						data-th-text="#{product-form}"> Product Form</a></li>
 					<li><a class="dropdown-item" data-th-href="@{/product}"
 						data-th-text="#{product-list}">Product List</a></li>
 
 				</ul></li>
 
 			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-				aria-expanded="false" data-th-text="#{purchase}"><i
-					class="bi bi-file-earmark-fill"></i> </a>
+				aria-expanded="false" ><i
+					class="bi bi-file-earmark-arrow-up"></i>&nbsp;[[#{purchase}]] </a>
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<li><a class="dropdown-item" data-th-href="@{/purchase/form}"
 						data-th-text="#{purchase-form}"></a></li>
@@ -41,14 +41,13 @@
 
 			<li class="nav-item dropdown"><a href="#"
 				class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-				aria-expanded="false" data-th-text="#{sale}"><i
-					class="bi bi-file-earmark-fill"></i> Sale</a>
+				aria-expanded="false"><i class="bi bi-wallet"></i>&nbsp;[[#{sale}]]</a>
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<li><a class="dropdown-item" href="#"
+				<li><a class="dropdown-item" data-th-href="@{/sale/product}"
 						data-th-text="#{sale-product}">Sale Product</a></li>
-					<li><a class="dropdown-item" href="#"
+					<li><a class="dropdown-item" data-th-href="@{/sale/productAdd}"
 						data-th-text="#{sale-form}">Sale Form</a></li>
-					<li><a class="dropdown-item" href="#"
+					<li><a class="dropdown-item" data-th-href="@{/sale/productList}"
 						data-th-text="#{sale-list}">Sale List</a></li>
 
 				</ul></li>
@@ -56,7 +55,7 @@
 
 		<div class="dropdown">
 			<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-				data-th-text="#{|lang.${#locale}|}"></a>
+				><i class="bi bi-gear"></i>&nbsp;[[#{|lang.${#locale}|}]]</a>
 			<ul class="dropdown-menu">
 				<li><a class="dropdown-item" data-th-href="@{''(lang=en_US)}"
 					data-th-text="#{lang.en_US}">English</a>
@@ -64,14 +63,13 @@
 					data-th-text="#{lang.my_MM}">Myanmar</a></li>
 			</ul>
 		</div>
-		<a href="#" class="icon-link position-relative me-4"> <i
-			class="bi bi-cart-fill"></i> <span
-			class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">card</span>
+		<a href="#" class="icon-link  me-3"> <i
+			class="bi bi-person"></i> 
 		</a>
 	</nav>
 	<!-- content -->
 	<main class="container mt-3 w-75">
-		<h4 class="text-primary mb-3" data-th-text="${title}"></h4>
+		<h4 class="text-primary mb-3"><i data-th-class="'bi '+${iconClass}"></i>&nbsp;[[${title}]]</h4>
 		<hr class="border border-primary border-2">
 		<div data-th-replace="${content}"></div>
 	</main>

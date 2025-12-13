@@ -23,7 +23,6 @@ public class Purchase {
 	@ManyToOne
 	private Supplier supplier;
 	
-	private LocalDate orderDate;
 	private LocalDate issuedDate;
 	
 	

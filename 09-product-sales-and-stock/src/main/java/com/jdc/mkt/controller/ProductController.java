@@ -1,6 +1,5 @@
 package com.jdc.mkt.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -11,17 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jdc.mkt.model.entity.product.ProductForm;
-import com.jdc.mkt.model.repo.CategoryRepo;
-import com.jdc.mkt.model.repo.SizeRepo;
 
 @Controller
 @RequestMapping("/product")
 public class ProductController {
 	
-	@Autowired
-	private CategoryRepo catRepo;
-	@Autowired
-	private SizeRepo sizeRepo;
+	
 	
 	@GetMapping
 	String index() {
@@ -30,9 +24,6 @@ public class ProductController {
 	
 	@GetMapping("/product-form")
 	String addForm(@ModelAttribute ProductForm  productForm, ModelMap map) {
-		map.put("sizes", sizeRepo.findAll());
-		map.put("categories", catRepo.findAll());
-		
 		return "products/product-add";
 	}
 	

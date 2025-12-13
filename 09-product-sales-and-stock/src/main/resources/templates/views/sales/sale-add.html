@@ -1,41 +1,54 @@
 <!DOCTYPE html>
 <html
-	data-th-replace="~{components/layout(title=#{sale-form},content=~{this :: #content})}">
+	data-th-replace="~{components/layout(title=#{sale-form},iconClass='bi-wallet',content=~{this :: #content})}">
 
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="content" class="w-75">
+	<div id="content">
 		<form data-th-action="@{/purchase}" method="post"
-			data-th-object="${purchaseForm}">
+			data-th-object="${saleForm}">
 			<input type="hidden" name="id" />
 			<div class="row g-1 mb-2">
 				<div class="col-4">
-					<div class="form-group ">
-						<label for="orderDate" class="form-label">Order Date</label><input
-							type="date" data-th-field="*{orderDate}" name="orderDate" id=""
-							class="form-control date-input" /> <span
-							data-th-fields="${#fields.hasErrors(orderDate)}"
-							data-th-errors="*{orderDate}" class="error text-danger"></span>
+					<div class="row g-1">
+						<label for="customer" class="form-label"> <i
+							class="bi bi-person"></i>&nbsp;[[#{customer}]]
+						</label>
+						<div class="col-9">
+							<select name="customer" id="" class="form-select">
+								<option value="" data-th-text="#{select}"></option>
+							</select>
+						</div>
+						<div class="col">
+							<a type="button" class="btn btn-outline-primary px-4"
+								data-bs-toggle="modal" data-bs-target="#customerModal"><i
+								class="bi bi-plus"></i> </a>
+						</div>
+						<span data-th-fields="${#fields.hasErrors('customer')}"
+							data-th-errors="*{customer}" class="error text-danger"></span> <span
+							class="error text-danger"></span>
 					</div>
 				</div>
-				<div class="col-4">
+
+				<div class="col-2 mt-2">
 					<div class="form-group ">
-						<label for="issuedDate" class="form-label">Sale Date</label><input
-							type="date" data-th-field="*{issuedDate}" name="issuedDate" id=""
+						<label for="saleDate" class="form-label"><i
+							class="bi bi-calendar"></i>&nbsp;[[#{issueDate}]]</label><input
+							type="date" data-th-field="*{saleDate}" name="saleDate" id=""
 							class="form-control date-input" /> <span
-							data-th-fields="${#fields.hasErrors(issuedDate)}"
-							data-th-errors="*{issuedDate}" class="error text-danger"></span>
+							data-th-fields="${#fields.hasErrors(saleDate)}"
+							data-th-errors="*{saleDate}" class="error text-danger"></span>
 					</div>
 				</div>
 			</div>
 			<div class="row g-1 mb-2">
 				<div class="col-2">
 					<div class="form-group ">
-						<label for="supplier" class="form-label" data-th-inline="text"><i
-							class="bi bi-person-fill"></i> &nbsp;[[#{supplier}]]</label> <select
+						<label for="category" class="form-label"><i
+							class="bi bi-stickies"></i>&nbsp;[[#{category}]] </label><select
 							data-th-field="*{product.category}" name="category" id=""
 							class="form-select">
 							<option value="" data-th-text="#{select}"></option>
@@ -45,19 +58,9 @@
 				</div>
 				<div class="col-2">
 					<div class="form-group ">
-						<label for="category" class="form-label"
-							data-th-text="#{category}"></label> <select
-							data-th-field="*{product.category}" name="category" id=""
-							class="form-select">
-							<option value="" data-th-text="#{select}"></option>
-						</select> <span data-th-fields="${#fields.hasErrors('category')}"
-							data-th-errors="*{product.category}" class="error text-danger"></span>
-					</div>
-				</div>
-				<div class="col-2">
-					<div class="form-group ">
-						<label for="product" class="form-label" data-th-text="#{product}"></label>
-						<select data-th-field="*{product}" name="product" id=""
+						<label for="product" class="form-label"><i
+							class="bi bi-sticky"></i>&nbsp;[[#{product}]] </label> <select
+							data-th-field="*{product}" name="product" id=""
 							class="form-select">
 							<option value="" data-th-text="#{select}"></option>
 						</select><span data-th-fields="${#fields.hasErrors(product)}"
@@ -66,33 +69,29 @@
 				</div>
 				<div class="col-2">
 					<div class="form-group ">
-						<label for="size" class="form-label" data-th-text="#{size}"></label>
-						<select data-th-field="*{product.size}" name="size" id=""
+						<label for="size" class="form-label"> <i
+							class="bi bi-aspect-ratio"></i>&nbsp;[[#{size}]]
+						</label> <select data-th-field="*{product.size}" name="size" id=""
 							class="form-select">
 							<option value="" data-th-text="#{select}"></option>
 						</select><span data-th-fields="${#fields.hasErrors('product.size')}"
 							data-th-errors="*{product.size}" class="error text-danger"></span>
 					</div>
 				</div>
+				
 				<div class="col-2">
 					<div class="form-group mb-3">
-						<label for="" class="form-label">Price</label> <input
-							type="number" class="form-control" />
-					</div>
-				</div>
-				<div class="col-2">
-					<div class="form-group mb-3">
-						<label for="" class="form-label">Qtys</label> <input type="number"
-							class="form-control" />
+						<label for="" class="form-label"><i class="bi bi-wallet"></i>&nbsp;[[#{qty}]]
+						</label> <input type="number" class="form-control" />
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="form-group mb-4">
-					<button class="btn btn-outline-primary">Save Purchase</button>
-					<a href="" class="btn btn-outline-primary px-4"> <i
+			<div class="row ">
+				<div class="form-group mb-4 d-flex justify-content-end">
+					<button class="btn btn-outline-primary me-2">Save Purchase</button>
+					<a href="" class="btn btn-outline-primary me-2"> <i
 						class="bi bi-plus"></i>&nbsp;Add
-					</a> <a href="" class="btn btn-outline-primary px-4 me-2"> <i
+					</a> <a href="" class="btn btn-outline-primary "> <i
 						class="bi bi-file-earmark-plus"></i>
 					</a>
 				</div>
@@ -121,6 +120,12 @@
 				</tr>
 			</tbody>
 		</table>
+		<div
+			data-th-replace="~{components/modal :: modal(
+        'customerModal',
+        #{new-customer},
+        ~{components/input-form :: form(#{supplier})})}">
+		</div>
 	</div>
 </body>
 </html>

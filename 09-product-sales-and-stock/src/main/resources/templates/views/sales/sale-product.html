@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html
-	data-th-replace="~{components/layout(title=#{product-form},iconClass='bi-pencil',content=~{this :: #content})}">
+	data-th-replace="~{components/layout(title=#{sale-product},iconClass='bi-wallet',content=~{this :: #content})}">
 
 <head>
 <meta charset="UTF-8">
@@ -8,34 +8,35 @@
 </head>
 <body>
 	<div id="content">
+
 		<div class="row">
 			<div class="col-4">
-				<form data-th-action="@{/product}" method="post"
-					data-th-object="${productForm}">
+				<form data-th-action="@{/product}" method="post">
 					<input type="hidden" name="id" />
 					<div class="form-group mb-3">
 						<div class="row g-1">
-							<label for="category" class="form-label"><i class="bi bi-stickies"></i>&nbsp;[[#{category}]]</label>
+							<label for="category" class="form-label"><i
+								class="bi bi-stickies"></i>&nbsp;[[#{category}]]</label>
 							<div class="col-9">
-								<select data-th-field="*{category}" name="category" id=""
-									class="form-select">
+								<select name="category" id="" class="form-select">
 									<option value="" data-th-text="#{select}"></option>
 								</select>
 							</div>
 							<div class="col">
-								<a type="button" class="btn btn-outline-primary px-4" data-bs-toggle="modal"
-									data-bs-target="#catModal"><i class="bi bi-plus"></i> </a>
+								<a type="button" class="btn btn-outline-primary px-4"
+									data-bs-toggle="modal" data-bs-target="#catModal"><i
+									class="bi bi-plus"></i> </a>
 							</div>
-							<span data-th-fields="${#fields.hasErrors('category')}"
-								data-th-errors="*{category}" class="error text-danger"></span>
+							<!-- <span data-th-fields="${#fields.hasErrors('category')}"
+								data-th-errors="*{category}" class="error text-danger"></span> -->
 						</div>
 					</div>
 					<div class="form-group mb-3">
 						<div class="row g-1">
-							<label for="size" class="form-label" ><i class="bi bi-aspect-ratio"></i>&nbsp;[[#{size}]]</label>
+							<label for="size" class="form-label"><i
+								class="bi bi-aspect-ratio"></i>&nbsp;[[#{size}]]</label>
 							<div class="col-9">
-								<select data-th-field="*{size}" name="size" id=""
-									class="form-select">
+								<select name="size" id="" class="form-select">
 									<option value="" data-th-text="#{select}"></option>
 								</select>
 							</div>
@@ -43,16 +44,29 @@
 								<a href="#" data-bs-toggle="modal" data-bs-target="#sizeModal"
 									class="btn btn-outline-primary px-4"><i class="bi bi-plus"></i></a>
 							</div>
-							<span data-th-fields="${#fields.hasErrors('size')}"
-								data-th-errors="*{size}" class="error text-danger"></span>
+							<span class="error text-danger"></span>
 						</div>
 					</div>
 					<div class="form-group mb-3">
-						<label for="name" class="form-label"> <i class="bi bi-sticky"></i>&nbsp;[[#{product}]]</label>
-						<input type="text" name="name" class="form-control"
-							data-th-field="*{name}" /> <span class="error text-danger"
-							data-th-if="${#fields.hasErrors('name')}"
-							data-th-errors="*{name}"></span>
+						<div class="row g-1">
+							<label for="name" class="form-label"> <i
+								class="bi bi-sticky"></i>&nbsp;[[#{product}]]
+							</label>
+							<div class="col-9">
+								<select name="size" id="" class="form-select">
+									<option value="" data-th-text="#{select}"></option>
+								</select>
+							</div>
+							<div class="col">
+								<a data-th-href="@{/product/product-form}" class="btn btn-outline-primary px-4"><i class="bi bi-plus"></i></a>
+							</div>
+							<span class="error text-danger"></span>
+						</div>
+					</div>
+					<div class="form-group mb-3">
+						<label for="price" class="form-label"> <i class="bi bi-wallet"></i>&nbsp;[[#{price}]]</label>
+						<input type="number" name="price" class="form-control"
+							 /> <span class="error text-danger"></span>
 					</div>
 
 					<div class="form-group mb-3 d-flex justify-content-end">
@@ -99,6 +113,7 @@
         #{new-size},
         ~{components/input-form :: form(#{size})})}">
 		</div>
+		
 	</div>
 </body>
 </html>

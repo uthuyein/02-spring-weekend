@@ -1,5 +1,6 @@
 package com.jdc.mkt.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -8,12 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.jdc.mkt.model.entity.product.CategoryForm;
 import com.jdc.mkt.model.entity.product.ProductForm;
+import com.jdc.mkt.model.entity.product.SizeForm;
+import com.jdc.mkt.model.repo.CategoryRepo;
 
 @Controller
 @RequestMapping("/product")
 public class ProductController {
+	
+	@Autowired
+	private CategoryRepo repo;
 	
 	
 	
@@ -27,12 +36,23 @@ public class ProductController {
 		return "products/product-add";
 	}
 	
+	@PostMapping("/category")
+	String saveCategory(@RequestParam String redirectUrl,  @ModelAttribute CategoryForm categoryForm) {	
+		System.out.println("test:"+categoryForm);
+		return "redirect:"+redirectUrl;
+	}
+	
+	@PostMapping("/size")
+	String saveSize(@RequestParam String redirectUrl,  @ModelAttribute SizeForm sizeForm) {	
+		return "redirect:"+redirectUrl;
+	}
 
 	@PostMapping
-	String save(@Validated @ModelAttribute ProductForm form,BindingResult result) {
+	String save(@Validated @ModelAttribute ProductForm productForm,BindingResult result,RedirectAttributes redirect) {
 		if(result.hasErrors()) {
 			return "products/product-add";
 		}
+		redirect.addFlashAttribute("success", "Successfully save product !");
 		return "redirect:/product";
 	}
 	

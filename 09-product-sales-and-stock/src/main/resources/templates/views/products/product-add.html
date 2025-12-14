@@ -91,13 +91,13 @@
 			data-th-replace="~{components/modal :: modal(
         'catModal',
         #{new-category},
-        ~{components/input-form :: form(#{category})})}">
+        ~{components/input-form :: form(name = 'name',obj='categoryForm',action = @{/product/category})})}">
 		</div>
 		<div
 			data-th-replace="~{components/modal :: modal(
         'sizeModal',
         #{new-size},
-        ~{components/input-form :: form(#{size})})}">
+        ~{components/input-form :: form(name = #{size},obj='sizeForm',action = @{/product/size})})}">
 		</div>
 	</div>
 </body>

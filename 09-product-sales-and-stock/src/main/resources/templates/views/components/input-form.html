@@ -6,13 +6,17 @@
 </head>
 <body>
 	<div data-th-fragment="form(name)">
-		<form action="#" class="form" method="post">
+		<form data-th-action="${action}" class="form" method="get" data-th-object="${obj}">
+		<input type="hidden"
+               name="redirectUrl"
+               data-th-value="${#httpServletRequest.requestURI}" />
+               
 			<div class="modal-body">
-				<label for="" class="form-label text-primary" data-th-text="${name}"></label> <input
+				<label for="" class="form-label text-primary" >[[${name}]]</label> <input
 					type="text" data-th-name="${name}" class="form-control" />
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-outline-primary">Save changes</button>
+				<button  class="btn btn-outline-primary">Save changes</button>
 				<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
 			</div>
 		</form>

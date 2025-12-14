@@ -16,25 +16,28 @@
 <body>
 
 	<div class="container m-4 w-50">
-		<h3 class="text-primary" data-th-text="#{title}"></h3>
+		<h3 class="text-primary" ></h3>
 
 
 		<form data-th-action="@{/sendConvert}" method="get">
 			<div class="row">
 				<div class="col-5">
 					<div class="form-group mb-2">
-						<label for="number" class="form-label">Number of id </label> <input
-							name="number" type="number" class="form-control" />
+						<label for="idMember" class="form-label">Number of id </label> <input
+							name="idMember" type="number" class="form-control" />
 					</div>
 				</div>
 				<div class="col-auto mt-4">
-					<h3 class="text-primary" data-th-object="${memberConvert}"  data-th-text="*{name}"></h3>
+					<div data-th-if="${memberConvert}">
+						<h3 class="text-primary" data-th-object="${memberConvert}"
+							data-th-text="*{name}"></h3>
+					</div>
 				</div>
 				<button class="btn btn-outline-primary">Send ID</button>
 
 			</div>
 		</form>
-		<form data-th-action="@{/sendFormat}" method="get">
+		<!-- <form data-th-action="@{/sendFormat}" method="get">
 			<div class="row">
 				<div class="col-5">
 					<div class="form-group mb-2">
@@ -48,7 +51,7 @@
 				<button class="btn btn-outline-primary">Send Name</button>
 
 			</div>
-		</form>
+		</form> -->
 	</div>
 
 

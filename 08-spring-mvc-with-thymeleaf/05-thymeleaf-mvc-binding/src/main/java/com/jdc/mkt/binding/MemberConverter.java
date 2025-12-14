@@ -7,25 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import com.jdc.mkt.model.entity.Member;
-import com.jdc.mkt.model.repo.MemberRepo;
+import com.jdc.mkt.model.Member;
+import com.jdc.mkt.services.MemberServices;
 
 @Component
 public class MemberConverter implements Converter<String, Member>{
 
 	@Autowired
-	private MemberRepo repo;
+	private MemberServices service;
 	
 	@Override
-	public @Nullable Member convert(String source) {
+	public @Nullable Member convert(String id) {
 		
-		return Optional.ofNullable(source)
-				.filter(s -> !s.isEmpty())
-				.map(Integer::parseInt)
-				.flatMap(id -> repo.findById(id))
-				.orElse(null);
-		
-	
+		return service.getMember()
+				.stream().filter(m -> m.id() == Optional.ofNullable(id).filter(i -> !i.isEmpty()).map(Integer ::parseInt).get())
+				.findFirst().orElse(null);
+				
 		
 	}
 

@@ -34,5 +34,6 @@
   	<module>02-thymleaf-boot-with-iteration</module>
   	<module>03-thymeleaf-boot-attribute</module>
   	<module>04-thymeleaf-mvc-messagesource-fragment</module>
+  	<module>05-thymeleaf-mvc-binding</module>
   </modules>
 </project>

@@ -35,5 +35,6 @@
   	<module>03-thymeleaf-boot-attribute</module>
   	<module>04-thymeleaf-mvc-messagesource-fragment</module>
   	<module>05-thymeleaf-mvc-binding</module>
+  	<module>06-thymeleaf-mvc-model</module>
   </modules>
 </project>

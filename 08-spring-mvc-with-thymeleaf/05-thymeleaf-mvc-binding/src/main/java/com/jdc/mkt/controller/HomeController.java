@@ -13,23 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.jdc.mkt.binding.MemberConverter;
 import com.jdc.mkt.model.Member;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 
 @Controller
 @RequestMapping("/")
 public class HomeController {
 	
-	@Autowired
-	MemberConverter converter;
-	
-	@InitBinder
-	void converterConfig(WebDataBinder binder) {
-		
-		if(binder.getConversionService() instanceof ConfigurableConversionService registery) {
-			registery.addConverter(converter);
-		}
-		
-	}
-
 	@GetMapping
 	String index(ModelMap map) {	
 		return "home";
@@ -37,11 +27,16 @@ public class HomeController {
 	
 
 	@GetMapping("sendConvert")
-	String findName(@RequestParam Member idMember ,ModelMap map) {
-		
-		map.put("memberConvert", idMember);
+	String sendConvert(@RequestParam(name = "id") Member member ,ModelMap map) {		
+		map.put("memberConvert", member);
 		return "/home";
 	}
+	
+//	@GetMapping("sendFormat")
+//	String sendFormat(@RequestParam(name = "name") Member member ,ModelMap map) {		
+//		map.put("memberFormat", member);
+//		return "/home";
+//	}
 	
 	
 }

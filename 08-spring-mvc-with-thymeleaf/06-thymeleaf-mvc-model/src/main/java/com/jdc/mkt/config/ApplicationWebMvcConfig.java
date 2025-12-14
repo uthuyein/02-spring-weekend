@@ -7,18 +7,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {
-		"com.jdc.mkt.controller",
-		"com.jdc.mkt.binding",
-		"com.jdc.mkt.services"})
-public class ApplcationWebMvcConfig implements WebMvcConfigurer{
+@ComponentScan(basePackages = "com.jdc.mkt.controller")
+public class ApplicationWebMvcConfig implements WebMvcConfigurer{
 
-//	@Autowired
-//	private MemberConverter contverter;
-//	
 //	@Override
-//	public void addFormatters(FormatterRegistry registry) {
-//		registry.addConverter(contverter);
-//		
+//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//		registry.addResourceHandler("/**").addResourceLocations("/views/");
 //	}
+	
 }

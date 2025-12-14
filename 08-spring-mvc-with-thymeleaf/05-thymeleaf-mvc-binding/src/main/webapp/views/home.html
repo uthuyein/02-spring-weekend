@@ -16,15 +16,15 @@
 <body>
 
 	<div class="container m-4 w-50">
-		<h3 class="text-primary" ></h3>
+		<h3 class="text-primary"></h3>
 
 
 		<form data-th-action="@{/sendConvert}" method="get">
 			<div class="row">
 				<div class="col-5">
 					<div class="form-group mb-2">
-						<label for="idMember" class="form-label">Number of id </label> <input
-							name="idMember" type="number" class="form-control" />
+						<label for="id" class="form-label">Number of id </label> <input
+							name="id" type="text" class="form-control" />
 					</div>
 				</div>
 				<div class="col-auto mt-4">
@@ -42,11 +42,14 @@
 				<div class="col-5">
 					<div class="form-group mb-2">
 						<label for="name" class="form-label">Number of Name </label> <input
-							name="name" type="text" class="form-control" />
+							name="id" type="text" class="form-control" />
 					</div>
 				</div>
 				<div class="col-auto mt-4">
-					<h3 class="text-primary" data-th-object="${memberFormat}" data-th-text="*{name}"></h3>
+					<div data-th-if="${memberFormat}">
+						<h3 class="text-primary" data-th-object="${memberFormat}"
+							data-th-text="*{name}"></h3>
+					</div>
 				</div>
 				<button class="btn btn-outline-primary">Send Name</button>
 

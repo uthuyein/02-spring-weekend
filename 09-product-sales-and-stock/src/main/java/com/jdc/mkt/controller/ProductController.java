@@ -36,13 +36,14 @@ public class ProductController {
 		return "products/product-add";
 	}
 	
-	@PostMapping("/category")
+	@GetMapping("/category")
 	String saveCategory(@RequestParam String redirectUrl,  @ModelAttribute CategoryForm categoryForm) {	
-		System.out.println("test:"+categoryForm);
-		return "redirect:"+redirectUrl;
+		System.out.println("test::::::          "+categoryForm);
+		System.out.println("Test :::::      "+redirectUrl);
+		return "redirect:/"+redirectUrl;
 	}
 	
-	@PostMapping("/size")
+	@GetMapping("/size")
 	String saveSize(@RequestParam String redirectUrl,  @ModelAttribute SizeForm sizeForm) {	
 		return "redirect:"+redirectUrl;
 	}

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.jdc.mkt.model.Counter;
+import com.jdc.mkt.model.ScopeBean;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.ServletContext;
@@ -34,6 +35,9 @@ public class CounterController {
 	Counter applicationCounter;
 	
 	@Autowired
+	ScopeBean scopeBean;
+	
+	@Autowired
 	private ServletContext context;
 	
 	@PostConstruct
@@ -46,10 +50,12 @@ public class CounterController {
 		map.put("requestCount", requestCounter.countUp());
 		map.put("sessionCount", sessionCounter.countUp());
 		map.put("applicationCount", applicationCounter.countUp());
+		map.put("scopeBean", scopeBean.increase());
+		
 		
 		map.put("reqAttribute", reqCount.countUp());
 		map.put("sessionAttribute", sessionCount.countUp());
-		
+			
 		Counter contextCounter = (Counter) context.getAttribute("appCount");		
 		map.put("appCount", contextCounter.countUp() );
 		

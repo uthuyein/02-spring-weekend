@@ -36,5 +36,6 @@
   	<module>04-thymeleaf-mvc-messagesource-fragment</module>
   	<module>05-thymeleaf-mvc-binding</module>
   	<module>06-thymeleaf-mvc-model</module>
+  	<module>07-thymeleaf-mvc-async</module>
   </modules>
 </project>

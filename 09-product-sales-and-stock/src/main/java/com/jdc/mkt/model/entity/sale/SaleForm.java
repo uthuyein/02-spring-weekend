@@ -7,7 +7,6 @@ import java.util.UUID;
 import com.jdc.mkt.model.entity.Customer;
 import com.jdc.mkt.model.entity.Product;
 
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 

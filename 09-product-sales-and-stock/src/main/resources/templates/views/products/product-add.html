@@ -10,21 +10,25 @@
 	<div id="content">
 		<div class="row">
 			<div class="col-4">
-				<form data-th-action="@{/product}" method="post"
+				<form data-th-action="@{/product/update}" method="post"
 					data-th-object="${productForm}">
 					<input type="hidden" name="id" />
 					<div class="form-group mb-3">
 						<div class="row g-1">
-							<label for="category" class="form-label"><i class="bi bi-stickies"></i>&nbsp;[[#{category}]]</label>
+							<label for="category" class="form-label"><i
+								class="bi bi-stickies"></i>&nbsp;[[#{category}]]</label>
 							<div class="col-9">
 								<select data-th-field="*{category}" name="category" id=""
 									class="form-select">
 									<option value="" data-th-text="#{select}"></option>
+									<option data-th-value="${cat.id}"
+										data-th-each="cat : ${categories}" data-th-text="${cat.name}"></option>
 								</select>
 							</div>
 							<div class="col">
-								<a type="button" class="btn btn-outline-primary px-4" data-bs-toggle="modal"
-									data-bs-target="#catModal"><i class="bi bi-plus"></i> </a>
+								<a type="button" class="btn btn-outline-primary px-4"
+									data-bs-toggle="modal" data-bs-target="#catModal"><i
+									class="bi bi-plus"></i> </a>
 							</div>
 							<span data-th-fields="${#fields.hasErrors('category')}"
 								data-th-errors="*{category}" class="error text-danger"></span>
@@ -32,11 +36,14 @@
 					</div>
 					<div class="form-group mb-3">
 						<div class="row g-1">
-							<label for="size" class="form-label" ><i class="bi bi-aspect-ratio"></i>&nbsp;[[#{size}]]</label>
+							<label for="size" class="form-label"><i
+								class="bi bi-aspect-ratio"></i>&nbsp;[[#{size}]]</label>
 							<div class="col-9">
 								<select data-th-field="*{size}" name="size" id=""
 									class="form-select">
 									<option value="" data-th-text="#{select}"></option>
+									<option data-th-value="${siz.id}" data-th-each="siz : ${sizes}"
+										data-th-text="${siz.name}"></option>
 								</select>
 							</div>
 							<div class="col">
@@ -48,8 +55,9 @@
 						</div>
 					</div>
 					<div class="form-group mb-3">
-						<label for="name" class="form-label"> <i class="bi bi-sticky"></i>&nbsp;[[#{product}]]</label>
-						<input type="text" name="name" class="form-control"
+						<label for="name" class="form-label"> <i
+							class="bi bi-sticky"></i>&nbsp;[[#{product}]]
+						</label> <input type="text" name="name" class="form-control"
 							data-th-field="*{name}" /> <span class="error text-danger"
 							data-th-if="${#fields.hasErrors('name')}"
 							data-th-errors="*{name}"></span>
@@ -59,7 +67,8 @@
 						<a href="" class="btn btn-outline-primary px-4"> <i
 							class="bi bi-file-earmark-plus"></i>
 						</a>
-						<button class="btn btn-outline-primary ms-2">Save Product</button>
+						<button type="submit" class="btn btn-outline-primary ms-2">Save
+							Product</button>
 					</div>
 				</form>
 			</div>
@@ -75,12 +84,12 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td class="bi bi-edit"></td>
+						<tr data-th-each="prod,sts : ${products}" data-th-object="${prod}">
+							<td data-th-text="${sts.count}"></td>
+							<td data-th-text="*{category}"></td>
+							<td data-th-text="*{name}"></td>
+							<td data-th-text="*{size}"></td>
+							<td class="bi bi-pencil text-primary"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -91,13 +100,13 @@
 			data-th-replace="~{components/modal :: modal(
         'catModal',
         #{new-category},
-        ~{components/input-form :: form(name = 'Name',obj=${categoryForm},action = @{/product/category})})}">
+        ~{components/input-form :: form(name = 'Name',entity='categoryForm',field='name',action = 'category')})}">
 		</div>
 		<div
 			data-th-replace="~{components/modal :: modal(
         'sizeModal',
         #{new-size},
-        ~{components/input-form :: form(name = 'Size',obj=${sizeForm},action = @{/product/size})})}">
+        ~{components/input-form :: form(name = 'Size',entity='sizeForm',field='name',action = 'size')})}">
 		</div>
 	</div>
 </body>

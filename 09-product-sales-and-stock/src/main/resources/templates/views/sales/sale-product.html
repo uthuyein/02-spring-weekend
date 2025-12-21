@@ -13,38 +13,25 @@
 			<div class="col-4">
 				<form data-th-action="@{/product}" method="post">
 					<input type="hidden" name="id" />
-					<div class="form-group mb-3">
-						<div class="row g-1">
+					<div class="row g-1">
+						<div class="col form-group mb-3">
 							<label for="category" class="form-label"><i
-								class="bi bi-stickies"></i>&nbsp;[[#{category}]]</label>
-							<div class="col-9">
-								<select name="category" id="" class="form-select">
-									<option value="" data-th-text="#{select}"></option>
-								</select>
-							</div>
-							<div class="col">
-								<a type="button" class="btn btn-outline-primary px-4"
-									data-bs-toggle="modal" data-bs-target="#catModal"><i
-									class="bi bi-plus"></i> </a>
-							</div>
-							<!-- <span data-th-fields="${#fields.hasErrors('category')}"
-								data-th-errors="*{category}" class="error text-danger"></span> -->
+								class="bi bi-stickies"></i>&nbsp;[[#{category}]]</label> <select
+								name="category" id="" class="form-select">
+								<option value="" data-th-text="#{select}"></option>
+								<option data-th-value="${cat.id}"
+									data-th-each="cat : ${categories}" data-th-text="${cat.name}"></option>
+							</select>
 						</div>
-					</div>
-					<div class="form-group mb-3">
-						<div class="row g-1">
+
+						<div class="col form-group mb-3">
 							<label for="size" class="form-label"><i
-								class="bi bi-aspect-ratio"></i>&nbsp;[[#{size}]]</label>
-							<div class="col-9">
-								<select name="size" id="" class="form-select">
-									<option value="" data-th-text="#{select}"></option>
-								</select>
-							</div>
-							<div class="col">
-								<a href="#" data-bs-toggle="modal" data-bs-target="#sizeModal"
-									class="btn btn-outline-primary px-4"><i class="bi bi-plus"></i></a>
-							</div>
-							<span class="error text-danger"></span>
+								class="bi bi-aspect-ratio"></i>&nbsp;[[#{size}]]</label> <select
+								name="size" id="" class="form-select">
+								<option value="" data-th-text="#{select}"></option>
+								<option data-th-value="${siz.id}" data-th-each="siz : ${sizes}"
+									data-th-text="${siz.name}"></option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group mb-3">
@@ -55,18 +42,22 @@
 							<div class="col-9">
 								<select name="size" id="" class="form-select">
 									<option value="" data-th-text="#{select}"></option>
+									<option data-th-value="${p.id}"
+								data-th-each="p : ${products}" data-th-text="${p.name}"></option>
 								</select>
 							</div>
 							<div class="col">
-								<a data-th-href="@{/product/product-form}" class="btn btn-outline-primary px-4"><i class="bi bi-plus"></i></a>
+								<a data-th-href="@{/product/product-form}"
+									class="btn btn-outline-primary px-4"><i class="bi bi-plus"></i></a>
 							</div>
 							<span class="error text-danger"></span>
 						</div>
 					</div>
 					<div class="form-group mb-3">
-						<label for="price" class="form-label"> <i class="bi bi-wallet"></i>&nbsp;[[#{price}]]</label>
-						<input type="number" name="price" class="form-control"
-							 /> <span class="error text-danger"></span>
+						<label for="price" class="form-label"> <i
+							class="bi bi-wallet"></i>&nbsp;[[#{price}]]
+						</label> <input type="number" name="price" class="form-control" /> <span
+							class="error text-danger"></span>
 					</div>
 
 					<div class="form-group mb-3 d-flex justify-content-end">
@@ -105,15 +96,15 @@
 			data-th-replace="~{components/modal :: modal(
         'catModal',
         #{new-category},
-        ~{components/input-form :: form(#{category})})}">
+        ~{components/input-form :: form(name = 'Category Name',entity='categoryForm',field='name',action = 'product/category')})}">
 		</div>
 		<div
 			data-th-replace="~{components/modal :: modal(
         'sizeModal',
         #{new-size},
-        ~{components/input-form :: form(#{size})})}">
+        ~{components/input-form :: form(name = 'Size Name',entity='sizeForm',field='name',action = 'product/size')})}">
 		</div>
-		
+
 	</div>
 </body>
 </html>

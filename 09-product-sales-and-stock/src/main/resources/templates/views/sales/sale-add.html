@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div id="content">
-		<form data-th-action="@{/purchase}" method="post"
+		<form data-th-action="@{/sale}" method="post"
 			data-th-object="${saleForm}">
 			<input type="hidden" name="id" />
 			<div class="row g-1 mb-2">
@@ -20,6 +20,8 @@
 						<div class="col-9">
 							<select name="customer" id="" class="form-select">
 								<option value="" data-th-text="#{select}"></option>
+								<option data-th-value="${cu.id}"
+										data-th-each="cu : ${customers}" data-th-text="${cu.name}"></option>
 							</select>
 						</div>
 						<div class="col">
@@ -52,6 +54,8 @@
 							data-th-field="*{product.category}" name="category" id=""
 							class="form-select">
 							<option value="" data-th-text="#{select}"></option>
+							<option data-th-value="${cat.id}"
+										data-th-each="cat : ${categories}" data-th-text="${cat.name}"></option>
 						</select> <span data-th-fields="${#fields.hasErrors('category')}"
 							data-th-errors="*{product.category}" class="error text-danger"></span>
 					</div>
@@ -63,6 +67,8 @@
 							data-th-field="*{product}" name="product" id=""
 							class="form-select">
 							<option value="" data-th-text="#{select}"></option>
+							<option data-th-value="${p.id}"
+								data-th-each="p : ${products}" data-th-text="${p.name}"></option>
 						</select><span data-th-fields="${#fields.hasErrors(product)}"
 							data-th-errors="*{product}" class="error text-danger"></span>
 					</div>
@@ -74,6 +80,8 @@
 						</label> <select data-th-field="*{product.size}" name="size" id=""
 							class="form-select">
 							<option value="" data-th-text="#{select}"></option>
+							<option data-th-value="${siz.id}"
+								data-th-each="siz : ${sizes}" data-th-text="${siz.name}"></option>
 						</select><span data-th-fields="${#fields.hasErrors('product.size')}"
 							data-th-errors="*{product.size}" class="error text-danger"></span>
 					</div>
@@ -124,7 +132,7 @@
 			data-th-replace="~{components/modal :: modal(
         'customerModal',
         #{new-customer},
-        ~{components/input-form :: form(#{supplier})})}">
+        ~{components/input-form :: form(name = 'Customer Name',entity='customerForm',field='name',action = 'customer')})}">
 		</div>
 	</div>
 </body>

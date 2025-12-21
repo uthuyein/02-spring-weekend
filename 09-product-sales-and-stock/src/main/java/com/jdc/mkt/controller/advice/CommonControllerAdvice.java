@@ -7,11 +7,15 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.jdc.mkt.model.entity.Category;
-import com.jdc.mkt.model.entity.Product;
 import com.jdc.mkt.model.entity.Size;
+import com.jdc.mkt.model.entity.product.CategoryForm;
+import com.jdc.mkt.model.entity.product.SelectProduct;
+import com.jdc.mkt.model.entity.product.SizeForm;
 import com.jdc.mkt.model.repo.CategoryRepo;
 import com.jdc.mkt.model.repo.ProductRepo;
 import com.jdc.mkt.model.repo.SizeRepo;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class CommonControllerAdvice {
@@ -32,9 +36,24 @@ public class CommonControllerAdvice {
 	List<Size> sizes(){
 		return sizeRepo.findAll();
 	}
-	
+		
 	@ModelAttribute("products")
-	List<Product> products(){
-		return prodRepo.findAll();
+	List<SelectProduct> products(){
+		return prodRepo.findAll().stream().map(SelectProduct :: selectProduct).toList();
+	}
+	
+	@ModelAttribute("categoryForm")
+	CategoryForm categoryForm() {
+		return new CategoryForm();
+	}
+	
+	@ModelAttribute("sizeForm")
+	SizeForm sizeForm() {
+		return new SizeForm();
+	}
+		
+	@ModelAttribute("currentUri")
+	String currentUri(HttpServletRequest request) {
+		return request.getRequestURI();
 	}
 }

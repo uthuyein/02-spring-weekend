@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,16 +16,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.jdc.mkt.model.entity.product.CategoryForm;
 import com.jdc.mkt.model.entity.product.ProductForm;
 import com.jdc.mkt.model.entity.product.SizeForm;
-import com.jdc.mkt.model.repo.CategoryRepo;
+import com.jdc.mkt.model.service.ProductService;
 
 @Controller
 @RequestMapping("/product")
 public class ProductController {
 	
 	@Autowired
-	private CategoryRepo repo;
-	
-	
+	private ProductService service;
 	
 	@GetMapping
 	String index() {
@@ -36,25 +35,35 @@ public class ProductController {
 		return "products/product-add";
 	}
 	
-	@GetMapping("/category")
-	String saveCategory(@RequestParam String redirectUrl,  @ModelAttribute CategoryForm categoryForm) {	
-		System.out.println("test::::::          "+categoryForm);
-		System.out.println("Test :::::      "+redirectUrl);
-		return "redirect:/"+redirectUrl;
-	}
-	
-	@GetMapping("/size")
-	String saveSize(@RequestParam String redirectUrl,  @ModelAttribute SizeForm sizeForm) {	
+	@PostMapping("/category")
+	String saveCategory(@ModelAttribute("categoryForm") CategoryForm form,String redirectUrl) {		
+		service.saveCategory(form);	
 		return "redirect:"+redirectUrl;
 	}
+	
+	@PostMapping("/size")
+	String saveSize(@ModelAttribute("sizeForm")SizeForm form, @RequestParam String redirectUrl) {	
+		service.saveSize(form);	
+		return "redirect:"+redirectUrl;
+	}
+	
+	@GetMapping("edit/{id}")
+	String edit(@PathVariable(required = false) Integer id,@ModelAttribute ProductForm productForm) {
+		return "/products/add";
+	}
 
-	@PostMapping
+	@PostMapping("update")
 	String save(@Validated @ModelAttribute ProductForm productForm,BindingResult result,RedirectAttributes redirect) {
+		
 		if(result.hasErrors()) {
 			return "products/product-add";
 		}
-		redirect.addFlashAttribute("success", "Successfully save product !");
-		return "redirect:/product";
+		var p =	service.saveProduct(productForm);
+		if(null != p) {
+			redirect.addFlashAttribute("success",p.name()+" has uccessfully save ! ");
+			
+		}
+		return "redirect:/product/product-form";
 	}
 	
 

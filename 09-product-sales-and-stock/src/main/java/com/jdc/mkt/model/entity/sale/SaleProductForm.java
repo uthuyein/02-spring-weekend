@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class ProductSaleForm {
+public class SaleProductForm {
 
 	private UUID id;
 	@NotNull(message = "Please Select One Product  !")	

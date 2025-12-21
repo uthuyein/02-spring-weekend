@@ -36,11 +36,6 @@ public class CommonControllerAdvice {
 	List<Size> sizes(){
 		return sizeRepo.findAll();
 	}
-		
-	@ModelAttribute("products")
-	List<SelectProduct> products(){
-		return prodRepo.findAll().stream().map(SelectProduct :: selectProduct).toList();
-	}
 	
 	@ModelAttribute("categoryForm")
 	CategoryForm categoryForm() {

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jdc.mkt.model.entity.Supplier;
+import com.jdc.mkt.model.entity.product.SelectProduct;
 import com.jdc.mkt.model.entity.purchase.PurchaseForm;
 import com.jdc.mkt.model.entity.purchase.SupplierForm;
 import com.jdc.mkt.model.service.PurchaseService;
@@ -46,6 +47,11 @@ public class PurchaseController {
 	@ModelAttribute("suppliers")
 	List<Supplier> suppliers(){
 		return service.findAll();
+	}
+	
+	@ModelAttribute("products")
+	List<SelectProduct> products(){
+		return service.products().stream().map(SelectProduct :: selectProduct).toList();
 	}
 
 }

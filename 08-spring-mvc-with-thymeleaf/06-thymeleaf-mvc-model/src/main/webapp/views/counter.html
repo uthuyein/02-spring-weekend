@@ -22,6 +22,7 @@
 	</nav>
 	
 	<div class="container mt-4 w-50">
+	<h3>From Scope Bean</h3>
 		<div class="row">
 			<div class="col">
 				<div class="card">
@@ -50,6 +51,39 @@
 					</div>
 					<div class="card-body">
 						<h5 class="text-primary">[[${applicationCount}]]</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+		<h3>From Request/Session/Appplication Attribute</h3>
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header">
+						<h4>Request Scope</h4>
+					</div>
+					<div class="card-body">
+						<h5 class="text-primary">[[${reqAttribute}]]</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card">
+					<div class="card-header">
+						<h4>Session Scope</h4>
+					</div>
+					<div class="card-body">
+						<h5 class="text-primary">[[${sessionAttribute}]]</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+			<div class="card">
+					<div class="card-header">
+						<h4>Application Scope</h4>
+					</div>
+					<div class="card-body">
+						<h5 class="text-primary">[[${appCount}]]</h5>
 					</div>
 				</div>
 			</div>

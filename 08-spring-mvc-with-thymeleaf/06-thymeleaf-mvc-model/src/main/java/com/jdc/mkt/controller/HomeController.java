@@ -10,7 +10,7 @@ import com.jdc.mkt.model.User;
 
 
 @Controller
-@RequestMapping({"/","/home"})
+@RequestMapping({"/"})
 public class HomeController {
 	
 	@GetMapping

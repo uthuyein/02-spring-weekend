@@ -29,11 +29,17 @@ import com.jdc.mkt.model.repo.ProductRepo;
 @RequestMapping("product")
 public class ProductController {
 
+    private final ShoppingCartController shoppingCartController;
+
    
 	@Autowired
     private  ProductRepo productRepo;
 	@Autowired
 	private CategoryRepo catRepo;
+
+    ProductController(ShoppingCartController shoppingCartController) {
+        this.shoppingCartController = shoppingCartController;
+    }
 
 	@GetMapping
 	String index() {
@@ -41,7 +47,8 @@ public class ProductController {
 	}
 	
 	@GetMapping("edit/{id}")
-	String edit(@PathVariable(required = false) Integer id,@ModelAttribute ProductForm productForm) {
+	String edit(@PathVariable(required = false) Integer id,@ModelAttribute("productForm") ProductForm form) {
+		System.out.println("Name ::::"+form.getName());
 		return "/products/add";
 	}
 	

@@ -14,12 +14,15 @@ import com.jdc.mkt.model.entity.Supplier;
 import com.jdc.mkt.model.entity.product.SelectProduct;
 import com.jdc.mkt.model.entity.purchase.PurchaseForm;
 import com.jdc.mkt.model.entity.purchase.SupplierForm;
+import com.jdc.mkt.model.service.ProductService;
 import com.jdc.mkt.model.service.PurchaseService;
 
 @Controller
 @RequestMapping("purchase")
 public class PurchaseController {
 	
+	@Autowired
+	private ProductService pService;
 	@Autowired
 	private PurchaseService service;
 	
@@ -51,7 +54,7 @@ public class PurchaseController {
 	
 	@ModelAttribute("products")
 	List<SelectProduct> products(){
-		return service.products().stream().map(SelectProduct :: selectProduct).toList();
+		return pService.products();
 	}
 
 }

@@ -11,14 +11,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jdc.mkt.model.entity.Customer;
+import com.jdc.mkt.model.entity.product.SelectProduct;
 import com.jdc.mkt.model.entity.sale.CustomerForm;
 import com.jdc.mkt.model.entity.sale.SaleForm;
+import com.jdc.mkt.model.service.ProductService;
 import com.jdc.mkt.model.service.SaleService;
 
 @Controller
 @RequestMapping("sale")
 public class SaleController {
 	
+	@Autowired
+	private ProductService pService;
 	@Autowired
 	private SaleService service;
 	
@@ -45,6 +49,11 @@ public class SaleController {
 	@GetMapping("product")
 	String saleProduct(@ModelAttribute SaleForm saleForm,ModelMap map) {
 		return "sales/sale-product";
+	}
+	
+	@ModelAttribute("products")
+	List<SelectProduct> products(){
+		return pService.products();
 	}
 	
 	@ModelAttribute("customers")

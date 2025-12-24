@@ -1,5 +1,6 @@
 package com.jdc.mkt.model.service;
 
+import java.util.List;
 import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,14 @@ public class ProductService {
 	private SizeRepo sizeRepo;
 	@Autowired
 	private ProductRepo prodRepo;
+	
+	public List<SelectProduct> products(){
+		return prodRepo.findAll().stream().map(SelectProduct :: selectProduct).toList();
+	}
+	
+	public ProductForm productForm(Integer id) {
+		return null == id ? new ProductForm():prodRepo.findById(id).map(ProductForm::from).orElse(new ProductForm());
+	}
 
 	public Category saveCategory(CategoryForm form) {
 		if(null == catRepo.findByName(form.getName())) {	

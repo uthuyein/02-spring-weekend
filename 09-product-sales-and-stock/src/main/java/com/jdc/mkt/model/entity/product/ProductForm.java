@@ -26,10 +26,21 @@ public class ProductForm {
 	@NotNull(message = "Please select one size !")
 	private Size size;
 	
+	public static ProductForm from(Product p) {
+		var f = new ProductForm();
+		f.setId(p.getId());
+		f.setName(p.getName());
+		f.setCategory(p.getCategory());
+		f.setSize(p.getSize());
+		return f;
+	}
+	
 	
 	public Predicate[] search(CriteriaBuilder cb, Root<Product> root) {
 		
 		var params = new ArrayList<Predicate>();
+		
+	
 		if (StringUtils.hasLength(name)) {
 			params.add(cb.equal(root.get("name"), name));
 		}
@@ -44,6 +55,8 @@ public class ProductForm {
 	
 	public Product entity() {
 		var p = new Product();
+		
+		p.setId(id);
 		p.setCategory(category);
 		p.setSize(size);
 		p.setName(name);

@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jdc.mkt.model.entity.Purchase;
 import com.jdc.mkt.model.entity.Supplier;
+import com.jdc.mkt.model.entity.purchase.PurchaseForm;
 import com.jdc.mkt.model.entity.purchase.SupplierForm;
 import com.jdc.mkt.model.repo.SupplierRepo;
 
@@ -24,6 +26,10 @@ public class PurchaseService {
 
 	public List<Supplier> findAll(){
 		return supRepo.findAll();
+	}
+
+	public Purchase savePurchase(PurchaseForm form) {
+		return null;
 	}
 	
 	

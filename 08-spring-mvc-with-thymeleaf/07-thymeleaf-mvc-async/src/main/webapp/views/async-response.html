@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div style="padding:50px;">
+		<h2 data-th-text="${title}"></h2>
+		<p style="color:blue;font-size:15px;" data-th-text="${message}"></p>
+		
+		<ul id="output">
+			<li></li>
+		</ul>
+		
+		<div class="">
+			<button id="responseTrigger">Response Emitter</button>
+			<button id="sseTrigger">SSE Emitter</button>
+			<a data-th-href="@{/}">Home</a>
+		</div>		
+	</div>
+	
+	<script type="text/javascript" data-th-src="@{/resources/js/stream.js}"></script>
+</body>
+</html>

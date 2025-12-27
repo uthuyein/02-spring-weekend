@@ -6,12 +6,7 @@
 	<artifactId>03-spring-data-jdbc</artifactId>
 	<version>1.0</version>
 	<packaging>pom</packaging>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.8</version>
-		<relativePath /> <!-- lookup parent from repository -->
-	</parent>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-version>21</java-version>
@@ -24,6 +19,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>1.18.42</version>
 		</dependency>
 		<dependency>
 			<groupId>com.jdc.mkt</groupId>
@@ -33,6 +29,7 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
+			<version>6.0.1</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -41,13 +38,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.14.1</version>
 				<configuration>
 					<release>${java-version}</release>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
@@ -55,5 +49,6 @@
 		<module>01-using-jdbc-api</module>
 		<module>02-using-spring-jdbc</module>
 		<module>03-using-spring-data-jdbc</module>
+		<module>04-spring-tx-propogation</module>
 	</modules>
 </project>

@@ -16,7 +16,8 @@ public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherSe
 	protected Class<?> @Nullable [] getServletConfigClasses() {
 		return new Class[] {
 				ApplicationMvcConfig.class,
-				ApplicationThymeleafConfig.class
+				ApplicationThymeleafConfig.class,
+				ApplicationAsyncConfig.class
 		};
 	}
 

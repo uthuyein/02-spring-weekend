@@ -49,6 +49,5 @@
 		<module>01-using-jdbc-api</module>
 		<module>02-using-spring-jdbc</module>
 		<module>03-using-spring-data-jdbc</module>
-		<module>04-spring-tx-propogation</module>
 	</modules>
 </project>
